@@ -1,0 +1,15 @@
+@use "/src/styles/utilities/mixins";
+
+.container {
+    display: block;
+    max-width: 1220px;
+    width: 100%;   
+    margin: 0 auto;
+
+    .col {
+        margin: 0 20px;
+        @include mixins.for-phone-only(){
+            margin: 0 16px;
+        }
+    }
+}

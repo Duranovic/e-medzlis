@@ -1,0 +1,30 @@
+@use '/src/styles/utilities/variables';
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .form-group {
+        display: flex;
+        &--inline{
+            flex-direction: row;
+            gap: 10px;
+            app-input{
+                flex: 1;
+            }
+        }
+        &--block{
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+    p{
+    &.error-msg{
+            font-size: 14px;
+            text-align: left;
+            color: variables.$red;
+            margin: 8px 0;
+        }
+    }
+}

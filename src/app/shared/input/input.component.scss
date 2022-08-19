@@ -1,0 +1,47 @@
+@use '/src/styles/utilities/variables';
+
+$left-padding: 20px;
+
+input{
+    border: none;
+    background-color: variables.$light-gray;
+    border-radius: 10px;
+    box-shadow: 0 3px 0 gainsboro;
+    padding: 22px 27px 12px $left-padding;
+    font-size: 14px;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.iz-input{
+    position: relative;
+    width: 100%;
+    label{
+        position: absolute;
+        left: $left-padding;
+        top: 50%;
+        transform: translateY(-50%);
+        color: variables.$gray;
+        font-family: Arial, Helvetica, sans-serif;
+        transition: top .3s, font-size .3s;
+    }
+    input{
+        margin: 0;
+        transition: transform .3s;
+        &:focus + label {
+            top: 12px;
+            font-size: 10px;
+        }
+    }
+
+    &--focused{
+        label {
+            top: 12px;
+            font-size: 10px;
+        }
+    }
+}
+
+label{
+    font-size: 14px;
+}

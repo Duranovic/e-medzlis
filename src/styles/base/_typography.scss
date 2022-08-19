@@ -1,0 +1,12 @@
+@use '/src/styles/utilities/variables';
+
+a{
+    text-decoration: none;
+    &.primary {
+        color: variables.$primary_color;
+    }
+}
+
+p{
+    font-family: variables.$font_ubuntu__regular;
+}
