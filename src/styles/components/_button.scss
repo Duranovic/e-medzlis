@@ -18,6 +18,7 @@ button {
   color: variables.$white;
   background-color: variables.$primary_color;
   transition: filter 0.2s, background-color .2s;
+  box-shadow: 0 3px 6px rgba($color: #000000, $alpha: 0.16);
 
   &:hover {
     &:not(:disabled){
@@ -38,6 +39,15 @@ button {
     font-size: 14px;
     line-height: 1;
     padding: 18px 28px;
+  }
+  &--add{
+    &::before{
+      content: '';
+      width: 20px;
+      height: 20px;
+      background-image: url('/assets/images/icon-add.svg');
+      background-size: contain;
+    }
   }
 }
 

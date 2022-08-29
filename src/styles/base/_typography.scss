@@ -7,6 +7,11 @@ a{
     }
 }
 
-p{
+h1, h2, h3, h4, h5, h6, button {
+    font-family: variables.$font_ubuntu__bold;
+}
+
+p, span, th, td, label{
     font-family: variables.$font_ubuntu__regular;
+    font-size: 14px;
 }
