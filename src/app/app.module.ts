@@ -7,7 +7,9 @@ import { FeaturesModule } from './features/features.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { ViewsModule } from './views/views.module';
-import { LayoutModule } from '../layout/layout.module';
+import { LayoutModule } from './layout/layout.module';
+import { LoginService } from './core/services/login.service';
+import { DzematiModule } from './features/dzemati/dzemati.module';
 
 @NgModule({
   declarations: [
@@ -21,8 +23,9 @@ import { LayoutModule } from '../layout/layout.module';
     LayoutModule,    
     FeaturesModule,
     AppRoutingModule,
+    DzematiModule,
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

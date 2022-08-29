@@ -1,0 +1,36 @@
+h1{
+    // font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom: 6px;
+}
+
+
+span{
+    // font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: rgb(174, 174, 174);
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+button{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 65px;
+    height: 100%;
+}
+
+
+iz-table{
+    margin-top: 20px;
+}

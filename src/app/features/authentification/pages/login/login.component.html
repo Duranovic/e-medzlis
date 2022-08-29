@@ -4,7 +4,7 @@
     <p>Dobrodosli na eDzemat medzlisa islamske zajednice Jajce,
     <br>Muftijstvo Travnicko</p>
     
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="logIn()">
         <iz-input [type]="inputType.TEXT" [label]="formLabels.username" [frmControl]="form.get(formControlNames.username) | formControl"></iz-input>
         <iz-input [type]="inputType.PASSWORD" [label]="formLabels.password" [frmControl]="form.get(formControlNames.password) | formControl"></iz-input>
         <p class="error-msg" *ngIf="false">Korisničko ime ili lozinka nisu ispravni! Pokušajte ponovo sa ispravnim kredencijalima.</p>

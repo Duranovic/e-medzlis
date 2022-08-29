@@ -1,5 +1,8 @@
 @use '/src/styles/utilities/variables';
 
+::ng-deep body{
+    background: variables.$white;
+}
 .login-container{
     position: absolute;
     left: 50%;
