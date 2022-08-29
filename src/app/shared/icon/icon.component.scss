@@ -1,0 +1,72 @@
+@use "/src/styles/utilities/variables";
+
+.iz-icon {
+  transition: fill 0.2s;
+  display: inline-block;
+
+  &--xs {
+    width: 12px;
+    height: 12px;
+  }
+
+  &--sm {
+    width: 18px;
+    height: 18px;
+  }
+
+  &--md {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--lg {
+    width: 32px;
+    height: 32px;
+  }
+
+  &-color {
+    &--primary {
+      fill: variables.$primary_color;
+    }
+
+    &--grey {
+      fill: variables.$lighter-gray;
+    }
+
+    &--dark {
+      fill: rgb(1, 0, 30);
+    }
+
+    &--white {
+      fill: variables.$white;
+    }
+  }
+
+  &-stroke {
+    &--primary {
+      stroke: variables.$primary_color;
+    }
+
+    &--grey {
+      stroke: variables.$lighter-gray;
+    }
+
+    &--dark {
+      stroke: rgb(1, 0, 30);
+    }
+
+    &--white {
+      stroke: variables.$white;
+    }
+  }
+
+  &--active {
+    fill: variables.$primary_color;
+  }
+
+  &:hover {
+    &:not(.iz-icon--disable-hover) {
+      fill: variables.$primary_color;
+    }
+  }
+}

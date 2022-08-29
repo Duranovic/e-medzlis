@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27" height="6">
+<symbol viewBox="0 0 27 6" id="icon-more-horizontal">
+  <g id="Icon_feather-more-horizontal" data-name="Icon feather-more-horizontal" transform="translate(-4.5 -15)">
+    <path id="Path_11" data-name="Path 11" d="M19.5,18A1.5,1.5,0,1,1,18,16.5,1.5,1.5,0,0,1,19.5,18Z" fill="currentColor" stroke="inherit" outline="inherit" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Path_12" data-name="Path 12" d="M30,18a1.5,1.5,0,1,1-1.5-1.5A1.5,1.5,0,0,1,30,18Z" fill="currentColor" stroke="inherit" outline="inherit" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Path_13" data-name="Path 13" d="M9,18a1.5,1.5,0,1,1-1.5-1.5A1.5,1.5,0,0,1,9,18Z" fill="currentColor" stroke="inherit" outline="inherit" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  </g>
+  </symbol>
+</svg>
