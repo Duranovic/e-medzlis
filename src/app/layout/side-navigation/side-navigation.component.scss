@@ -1,0 +1,51 @@
+@use "/src/styles/utilities/variables";
+
+.profile-button {
+  border-radius: 50%;
+  background-color: variables.$primary_color;
+  padding: 18px 16px 16px;
+  span {
+    color: variables.$white;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+aside {
+  position: fixed;
+  padding-top: 32px;
+  width: 5vw;
+  max-width: 5vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 100px;
+  box-shadow: 2px 0 5px variables.$gray--800;
+}
+nav {
+  ul {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 36px;
+    a,
+    iz-icon {
+      display: inline-block;
+    }
+    a {
+      padding: 12px 16px 10px;
+      border-radius: 0;
+      transition: border-radius 0.2s;
+      &.active {
+        border-radius: 30%;
+        background: variables.$white;
+        box-shadow: 0 0 5px gainsboro;
+      }
+    }
+  }
+}
+svg {
+  width: inherit;
+  height: inherit;
+}

@@ -1,0 +1,34 @@
+<aside>
+  <button class="profile-button">
+    <span>VD</span>
+  </button>
+  <nav>
+    <ul>
+      <li>
+        <a [routerLink]="['/pocetna']" routerLinkActive #activePocetna="routerLinkActive" [ngClass]="{'active': activePocetna.isActive}">
+          <iz-icon name="icon-home" color="grey" [size]="SvgSize.medium" [active]="activePocetna.isActive"></iz-icon>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/clanovi']" routerLinkActive #activeClanovi="routerLinkActive" [ngClass]="{'active': activeClanovi.isActive}">
+          <iz-icon name="icon-people" color="grey" [size]="SvgSize.medium" [active]="activeClanovi.isActive"></iz-icon>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/dzemati']" routerLinkActive #activeReports="routerLinkActive" [ngClass]="{'active': activeReports.isActive}">
+          <iz-icon name="icon-reports" color="grey" [size]="SvgSize.medium" [active]="activeReports.isActive"></iz-icon>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['statistika']" routerLinkActive #activeStatistika="routerLinkActive" [ngClass]="{'active': activeStatistika.isActive}">
+          <iz-icon name="icon-graph" color="grey" [size]="SvgSize.medium" [active]="activeStatistika.isActive"></iz-icon>      
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['postavke']" routerLinkActive #activePostavke="routerLinkActive" [ngClass]="{'active': activePostavke.isActive}">
+          <iz-icon name="icon-settings" color="grey" [size]="SvgSize.medium" [active]="activePostavke.isActive"></iz-icon>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>
