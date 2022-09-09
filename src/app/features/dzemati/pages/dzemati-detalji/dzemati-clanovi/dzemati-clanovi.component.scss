@@ -1,0 +1,24 @@
+@use '/src/styles/utilities/variables';
+
+.table-heading{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    .search-container{
+        width: 100%;
+        max-width: 35%;
+    }
+}
+
+iz-title{
+    margin-bottom: 32px;
+}
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 65px;
+    height: 100%;
+    background: red;
+}

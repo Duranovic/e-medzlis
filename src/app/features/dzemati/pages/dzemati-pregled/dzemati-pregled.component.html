@@ -1,14 +1,12 @@
 <div class="main-container">
     <div class="header">
-      <div class="title">
-        <h1>Dzemati</h1>
-        <span>4 dzemata prikazano</span>
-      </div>
+     <iz-title></iz-title>
       <button class="button button--round button--bigger button--add">
         Dodaj Dzemat
       </button>
     </div>
     <iz-search
+      [isSmall]="false"
       placeholder="Pretrazi dzemate po imenu ili postanskom broju "
     ></iz-search>
     <iz-table [source]="[1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]"></iz-table>

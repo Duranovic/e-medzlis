@@ -10,6 +10,7 @@ import { ViewsModule } from './views/views.module';
 import { LayoutModule } from './layout/layout.module';
 import { LoginService } from './core/services/login.service';
 import { DzematiModule } from './features/dzemati/dzemati.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { DzematiModule } from './features/dzemati/dzemati.module';
     FeaturesModule,
     AppRoutingModule,
     DzematiModule,
+    BrowserAnimationsModule,
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
