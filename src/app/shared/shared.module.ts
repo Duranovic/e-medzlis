@@ -5,6 +5,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IconComponent } from './icon/icon.component';
 import { InputSearchComponent } from './input-search/input-search.component';
 import { TableComponent } from './table/table.component';
+import { TitleComponent } from './title/title.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { RouterModule } from '@angular/router';
+import { NavTabsComponent } from './nav-tabs/nav-tabs.component';
 
 
 
@@ -13,17 +17,24 @@ import { TableComponent } from './table/table.component';
     InputComponent,
     IconComponent,
     InputSearchComponent,
-    TableComponent
+    TableComponent,
+    TitleComponent,
+    BreadcrumbComponent,
+    NavTabsComponent
   ],
   imports: [
     CommonModule,
+    RouterModule,
     ReactiveFormsModule,
   ],
   exports: [
     InputComponent,
     IconComponent,
     InputSearchComponent,
-    TableComponent
+    TableComponent,
+    TitleComponent,
+    BreadcrumbComponent,
+    NavTabsComponent
   ]
 })
 export class SharedModule { }

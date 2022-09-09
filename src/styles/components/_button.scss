@@ -41,6 +41,10 @@ button {
     padding: 18px 28px;
   }
   &--add{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
     &::before{
       content: '';
       width: 20px;
