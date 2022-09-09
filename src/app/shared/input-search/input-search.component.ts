@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputSearchComponent implements OnInit {
+  @Input() isSmall: boolean = true;
   @Input() placeholder: string;
 
   constructor() { }

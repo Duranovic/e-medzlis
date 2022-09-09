@@ -59,5 +59,9 @@ table{
         &:not(:last-child){
             border-bottom: 1px solid gainsboro;
         }
+        &:hover, &:focus{
+            cursor: pointer;           
+           background: rgb(244, 253, 255);
+        }
     }
 }
