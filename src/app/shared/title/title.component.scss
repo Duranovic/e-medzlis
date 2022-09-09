@@ -1,0 +1,13 @@
+@use '/src/styles/utilities/variables';
+
+h1{
+    color: variables.$font-color;
+    font-size: 32px;
+    margin-bottom: 6px;
+}
+
+
+span{
+    font-size: 14px;
+    color: variables.$lighter-gray;
+}
