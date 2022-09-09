@@ -1,0 +1,53 @@
+@use '/src/styles/utilities/variables';
+
+:host{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+}
+
+nav{
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid rgba(220, 220, 220, 0.521);
+    max-width: fit-content;
+    min-width: 30vw;
+    padding: 0 30px 0 8px;
+    margin-top: 25px;
+
+    a{
+        font-family: variables.$font_ubuntu__regular;
+        color: variables.$font-color;
+        font-size: 14px;
+        line-height: 20px;
+        padding-bottom: 6px;
+    
+        &:last-child{
+            margin-right: 30px;
+        }
+    
+        &.active{
+            color: variables.$black;
+            position: relative;
+            
+            &::after{
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: calc(100% + 12px);
+                height: 2px;
+                background: variables.$primary_color;            
+            }
+        }
+    }
+}
+
+.nav-tabs-content{
+    margin-top: 30px;
+    overflow: hidden;
+    height: 100%;
+}
