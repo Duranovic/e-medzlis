@@ -1,0 +1,84 @@
+@use '/src/styles/utilities/variables';
+
+.custom-dropdown{
+    max-width: 150px;
+    margin-bottom: 32px;
+    position: relative;
+
+    &.show-options{
+        ul{
+            display: block;
+        }
+    }
+
+    button {
+        font-size: 14px;
+        font-family: variables.$font_ubuntu__regular;
+        color: variables.$lighter-gray;
+    }
+
+    .button-selected{
+        button{
+            position: relative;
+            background-color: variables.$white;
+            border-radius: 10px;
+            padding: 14px 20px;
+            width: 100%;
+            text-align: left;
+            box-shadow: 0 3px 6px gainsboro;
+
+            &::after{
+                content: '';
+                position: absolute;
+                right: 16px;
+                top: calc(50% - 2px);
+                transform: translateX(-50%);
+                width: 12px;
+                height: 12px;
+                background: url('/assets/images/icon-arrow-down.svg');
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+
+    ul{
+        display: none;
+        position: absolute;
+        z-index: 10;
+        top: 50px;
+        width: 100%;
+        max-height: 300px;
+        overflow: auto;
+        background-color: variables.$white;
+        border-radius: 10px;
+        box-shadow: 0 3px 6px gainsboro;
+
+        li{
+            button{
+                width: 100%;
+                padding: 12px 20px;  
+                text-align: left; 
+                
+                &:hover{
+                    background-color: variables.$focus-color--darker;
+                }
+            }
+
+            &:first-child {
+                button{
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                }
+            }
+
+            &:last-child{
+                button{
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                }
+            }
+        }
+    }
+
+}

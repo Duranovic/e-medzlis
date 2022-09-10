@@ -61,7 +61,7 @@ table{
         }
         &:hover, &:focus{
             cursor: pointer;           
-           background: rgb(244, 253, 255);
+           background: variables.$focus-color;
         }
     }
 }

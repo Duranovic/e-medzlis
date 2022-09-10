@@ -9,6 +9,7 @@ import { TitleComponent } from './title/title.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RouterModule } from '@angular/router';
 import { NavTabsComponent } from './nav-tabs/nav-tabs.component';
+import { SelectComponent } from './select/select.component';
 
 
 
@@ -20,7 +21,8 @@ import { NavTabsComponent } from './nav-tabs/nav-tabs.component';
     TableComponent,
     TitleComponent,
     BreadcrumbComponent,
-    NavTabsComponent
+    NavTabsComponent,
+    SelectComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { NavTabsComponent } from './nav-tabs/nav-tabs.component';
     TableComponent,
     TitleComponent,
     BreadcrumbComponent,
-    NavTabsComponent
+    NavTabsComponent,
+    SelectComponent
   ]
 })
 export class SharedModule { }
