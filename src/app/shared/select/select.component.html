@@ -1,15 +1,12 @@
-<div class="custom-dropdown">
+<div class="custom-dropdown" [ngClass]="{'open': isOpened}">
     <div class="button-selected">
-       <button>Select</button>
+       <button (click)="open()">{{selected || 'Odaberi'}}</button>
     </div>
-    <ul>
-      <li class="active"><button>2022</button></li>
-      <li><button>2021</button></li>
-      <li><button>2020</button></li>
-      <li><button>2019</button></li>
-      <li><button>2018</button></li>
-      <li><button>2018</button></li>
-      <li><button>2018</button></li>
-      <li><button>2018</button></li>
+    <ul>    
+      <li *ngFor="let option of [2022, 2021, 2020, 2019, 2018, 2017]" (click)="selectOption(option)" [ngClass]="{'active': option == selected}">
+        <button>
+          {{option}}
+        </button>
+      </li>
     </ul>
   </div>

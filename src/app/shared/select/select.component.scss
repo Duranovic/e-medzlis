@@ -5,7 +5,7 @@
     margin-bottom: 32px;
     position: relative;
 
-    &.show-options{
+    &.open {
         ul{
             display: block;
         }
@@ -60,7 +60,13 @@
                 padding: 12px 20px;  
                 text-align: left; 
                 
-                &:hover{
+                &:hover {
+                    background-color: variables.$focus-color--darker;
+                }
+            }
+
+            &.active{
+                button{
                     background-color: variables.$focus-color--darker;
                 }
             }
