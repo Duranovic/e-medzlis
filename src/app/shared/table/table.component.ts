@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataTableType } from 'src/app/core/models/tableConfig.model';
 
 @Component({
   selector: 'iz-table',
@@ -7,17 +8,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableComponent implements OnInit {
-  @Input() source: any[];
+export class TableComponent {
+  @Input() data: DataTableType;
 
   constructor(private router: Router) { 
-    console.log(this.router.getCurrentNavigation()?.previousNavigation);
+    // console.log(this.router.getCurrentNavigation()?.previousNavigation);
   }
 
-  ngOnInit(): void {
-  }
-
-  click(index: any){
+  public click(index: any): void{
     this.router.navigateByUrl(`/dzemati/${index}`);
+  }
+
+  public parseField(fieldData: any, dataProperty: string) {
+    if(fieldData[dataProperty]?.value != undefined){
+      return fieldData[dataProperty]?.value;
+    }
+    return fieldData[dataProperty];
+  }
+
+  public getExtraClass(fieldData: any, dataProperty: string){
+    if(fieldData[dataProperty]?.extraClass != undefined){
+      return fieldData[dataProperty]?.extraClass;
+    }
+    return ''; 
   }
 }

@@ -51,6 +51,49 @@ table{
                         margin: 0 32px 0 auto;
                     }
                    } 
+                   span{
+                        &.error, &.success {
+                            font-weight: bold;
+                        }
+                       border-radius: 15px;
+                       padding: 6px 18px;
+                        &.success{
+                            color: variables.$green--light;
+                            background-color: variables.$green--lighter;
+                        }
+
+                        &.error{
+                            color: variables.$red--light;
+                            background-color: variables.$red--lighter;
+                        }
+
+                        &.status{
+                            position: relative;
+                            padding-left: 32px;
+                            &::before {
+                                content: '';
+                                width: 5px;
+                                height: 5px;
+                                border-radius: 50%;
+                                position: absolute;
+                                left: 16px;
+                                top: 50%;
+                                transform: translateY(-50%);
+                            }
+
+                            &.success {
+                                &::before {
+                                    background-color: variables.$primary_color;
+                                }
+                            }
+
+                            &.error {
+                                &::before {
+                                    background-color: variables.$red--light;
+                                }
+                            }
+                        }
+                   }
             }
         }
     }

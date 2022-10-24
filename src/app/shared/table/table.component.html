@@ -1,16 +1,19 @@
-<table>
+<table *ngIf="data">
     <thead>
-      <th>Naziv</th>
-      <th>Broj platitelja</th>
-      <th>Broj dzematlija</th>
-      <th></th>
+      <th *ngFor="let column of data.columns">
+        {{ column.title }}
+      </th>
+      <th *ngIf="data.rowActions"></th>
     </thead>
     <tbody>
-      <tr *ngFor="let i of source; let index" (click)="click(index)">
-        <td>Divicani</td>
-        <td>400</td>
-        <td>800</td>
-        <td class="action-button">
+      <tr *ngFor="let dataArray of data.source; let index" (click)="click(index)">
+        <td *ngFor="let field of data.columns">
+          <!-- <span [ngClass]="['extra-class--' + dataArray?.fieldData?.extraClass]"> -->
+          <span [ngClass]="getExtraClass(dataArray.fieldData, field.dataProperty)">
+            {{ parseField(dataArray.fieldData, field.dataProperty) }}
+          </span>
+        </td>
+        <td class="action-button" *ngIf="data.rowActions">
           <button>
             <iz-icon
               name="icon-more-horizontal"
