@@ -15,7 +15,12 @@
         </a>
       </li>
       <li>
-        <a [routerLink]="['/dzemati']" routerLinkActive #activeReports="routerLinkActive" [ngClass]="{'active': activeReports.isActive}">
+        <a [routerLink]="['/dzemati']" routerLinkActive #activeDzemat="routerLinkActive" [ngClass]="{'active': activeDzemat.isActive}">
+          <iz-icon name="icon-city" color="grey" [size]="SvgSize.medium" [active]="activeDzemat.isActive"></iz-icon>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/reporti']" routerLinkActive #activeReports="routerLinkActive" [ngClass]="{'active': activeReports.isActive}">
           <iz-icon name="icon-reports" color="grey" [size]="SvgSize.medium" [active]="activeReports.isActive"></iz-icon>
         </a>
       </li>
