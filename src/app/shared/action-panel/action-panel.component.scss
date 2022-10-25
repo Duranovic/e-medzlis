@@ -45,6 +45,7 @@
 }
 
 .shadow-panel {
+    opacity: 0;
     cursor: default;
     position: fixed;
     width: 100vw;
@@ -52,5 +53,15 @@
     left: 0;
     top: 0;
     z-index: 49; // one lower than it is action dots / action panel
-    background-color: rgba(209, 209, 209, 0.333);
+    background-color: rgba(0, 0, 0, 0.333);
+    animation: show-shadow-panel .5s forwards;
+
+    @keyframes show-shadow-panel {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 }
