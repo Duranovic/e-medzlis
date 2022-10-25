@@ -9,7 +9,8 @@ import { DataTableRowActions } from 'src/app/core/models/tableConfig.model';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class ActionPanelComponent {
-  public isOpened: boolean = false;
+  public isOpened: boolean;
+
   @Input() actions: DataTableRowActions[];
   constructor(private ch: ChangeDetectorRef) { }
 
@@ -25,10 +26,12 @@ export class ActionPanelComponent {
 
   public edit($event: MouseEvent | PointerEvent): void {
     this.closePanel($event);
+    console.log("EDIT ACTION");
   }
 
   public delete($event: MouseEvent | PointerEvent): void {
     this.closePanel($event);
+    console.log("DELETE ACTOION");
 
   }
 
