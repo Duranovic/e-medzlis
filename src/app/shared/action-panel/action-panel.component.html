@@ -1,0 +1,16 @@
+<div class="actions-panel-container">
+    <button (click)="openPanel($event)">
+        <iz-icon
+          name="icon-more-horizontal"
+          size="sm"
+          stroke="dark"
+        ></iz-icon>
+    </button>
+
+    <ul class="action-panel" *ngIf="isOpened">
+        <li *ngFor="let action of actions">
+            <button [ngClass]="[action.extraClass ?? '']" (click)="callSpecificMethod(action.actionId, $event)"> {{ action.label }}</button>
+        </li>
+    </ul>
+</div>
+<div class="shadow-panel" (click)="closePanel($event)" aria-label="Hidden box for managing action panel" *ngIf="isOpened"></div>

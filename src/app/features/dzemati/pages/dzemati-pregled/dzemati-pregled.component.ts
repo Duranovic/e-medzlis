@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { tableStandardActionRows } from 'src/app/core/constants/table.constants';
 import { DataTableType } from 'src/app/core/models/tableConfig.model';
 
 @Component({
@@ -6,12 +7,11 @@ import { DataTableType } from 'src/app/core/models/tableConfig.model';
   styleUrls: ['./dzemati-pregled.component.scss']
 })
 export class DzematiPregledComponent implements OnInit {
-
   public dzematiTableSource: DataTableType;
 
   constructor() { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.dzematiTableSource = {
       columns: [
         {
@@ -30,47 +30,29 @@ export class DzematiPregledComponent implements OnInit {
           sortable: false,
         }
       ],
-      rowActions: [
-        {
-          actionId: 'edit',
-          label: 'Uredi',
-        },
-        {
-          actionId: 'delete',
-          label: 'Izbrisi',
-        }
-      ],
+      rowActions: tableStandardActionRows,
       source: [
         {
-          fieldData: {
-            naziv: "Divicani",
-            brojPlatitelja: 100,
-            brojDzematlija: 400,
-          },
+          naziv: "Divicani",
+          brojPlatitelja: 100,
+          brojDzematlija: 400,
         },
         {
-          fieldData: {
-            naziv: "Lupnica",
-            brojPlatitelja: 50,
-            brojDzematlija: 300,
-          },
+          naziv: "Lupnica",
+          brojPlatitelja: 50,
+          brojDzematlija: 300,
         },
         {
-          fieldData: {
-            naziv: "Doribaba",
-            brojPlatitelja: 40,
-            brojDzematlija: 200,
-          },
+          naziv: "Doribaba",
+          brojPlatitelja: 40,
+          brojDzematlija: 200,
         },
         {
-          fieldData: {
-            naziv: "Bistrica",
-            brojPlatitelja: 100,
-            brojDzematlija: 300,
-          },
+          naziv: "Bistrica",
+          brojPlatitelja: 100,
+          brojDzematlija: 300,
         },
       ]
     }
   }
-
 }

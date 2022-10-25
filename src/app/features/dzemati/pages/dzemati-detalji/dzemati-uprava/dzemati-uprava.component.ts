@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { tableStandardActionRows } from 'src/app/core/constants/table.constants';
 import { DataTableType } from 'src/app/core/models/tableConfig.model';
 
 @Component({
@@ -29,43 +30,26 @@ export class DzematiUpravaComponent implements OnInit {
           sortable: false,
         }
       ],
-      rowActions: [
-        {
-          actionId: 'edit',
-          label: 'Uredi',
-        },
-        {
-          actionId: 'delete',
-          label: 'Izbrisi',
-        }
-      ],
+      rowActions: tableStandardActionRows,
       source: [
         {
-          fieldData: {
-            name: "Velid Duranovic",
-            phoneNumber: "+38762421855",
-            position: "Efendija",
-          },
+          name: "Velid Duranovic",
+          phoneNumber: "+38762421855",
+          position: "Efendija",
         },
         {
-          fieldData: {
-            name: "Salvedin Duranovic",
-            phoneNumber: "+38761403723",
-            position: "Blagajnik"
-          },
+          name: "Salvedin Duranovic",
+          phoneNumber: "+38761403723",
+          position: "Blagajnik"
         },
         {
-          fieldData: {
-            name: "Nudzejma Mujic Duranovic",
-            position: "Clan upravnog odbora",
-          },
+          name: "Nudzejma Mujic Duranovic",
+          position: "Clan upravnog odbora",
         },
         {
-          fieldData: {
-            name: "Niko Nikic",
+          name: "Niko Nikic",
             phoneNumber: "+38762421855",
             position: "Clan upravnog odbora",
-          },
         },
       ]
     }

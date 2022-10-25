@@ -8,7 +8,7 @@ export class DzematiDetaljiComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
 
 }

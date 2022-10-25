@@ -1,21 +1,17 @@
 export interface DataTableType {
     columns: DataTableColumn [],
     rowActions?: DataTableRowActions [],
-    source: DataTableSource [],
+    source: any [], // It can be different models
 };
 
-interface DataTableColumn {
+export interface DataTableColumn {
     title: string,
     dataProperty: string,
     sortable: boolean
 };
 
-interface DataTableRowActions {
+export interface DataTableRowActions {
     label: string,
     actionId: string,
-}
-
-interface DataTableSource {
-    fieldData: any,
     extraClass?: string,
 }

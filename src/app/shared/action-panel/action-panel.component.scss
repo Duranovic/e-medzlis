@@ -1,0 +1,70 @@
+@use '/src/styles/utilities/variables';
+
+.actions-panel-container {
+    margin: 0 32px 0 auto;
+    position: relative;
+
+    > iz-icon {
+        position: relative;
+        z-index: 1;
+    }
+
+    .action-panel {
+        z-index: 50;
+        list-style: none;
+        position: absolute;
+        top: 30px;
+        right: -20px;
+        background-color: variables.$white;
+        width: 150px;
+        box-shadow: 0 0 5px variables.$gray--800;
+        border-radius: 8px;
+        
+        li {
+            display: flex;
+            
+            &:not(:last-child){
+                button {
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+                    border-bottom: 1px solid gainsboro;
+                }
+            }
+
+            button {
+                font-family: variables.$font_ubuntu__regular;
+                padding: 18px;
+                flex: 1;
+                text-align: left;
+                border-radius: 8px;
+                transition: background-color .3s ease-in-out;
+
+                &:hover, &:active {
+                    background-color: variables.$focus-color;
+                }
+            }
+        }
+    }
+}
+
+.shadow-panel {
+    opacity: 0;
+    cursor: default;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 49; // one lower than it is action dots / action panel
+    background-color: rgba(0, 0, 0, 0.333);
+    animation: show-shadow-panel .5s forwards;
+
+    @keyframes show-shadow-panel {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+}
