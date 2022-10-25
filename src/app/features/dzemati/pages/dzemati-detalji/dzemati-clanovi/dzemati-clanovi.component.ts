@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { tableStandardActionRows } from 'src/app/core/constants/table.constants';
 import { DataTableType } from 'src/app/core/models/tableConfig.model';
 
 @Component({
@@ -37,16 +38,7 @@ export class DzematiClanoviComponent implements OnInit {
           sortable: false,
         }
       ],
-      rowActions: [
-        {
-          actionId: 'edit',
-          label: 'Uredi',
-        },
-        {
-          actionId: 'delete',
-          label: 'Izbrisi',
-        }
-      ],
+      rowActions: tableStandardActionRows,
       source: [
         {
           fieldData: {

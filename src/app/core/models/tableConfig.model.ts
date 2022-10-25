@@ -4,18 +4,19 @@ export interface DataTableType {
     source: DataTableSource [],
 };
 
-interface DataTableColumn {
+export interface DataTableColumn {
     title: string,
     dataProperty: string,
     sortable: boolean
 };
 
-interface DataTableRowActions {
+export interface DataTableRowActions {
     label: string,
     actionId: string,
+    extraClass?: string,
 }
 
-interface DataTableSource {
+export interface DataTableSource {
     fieldData: any,
     extraClass?: string,
 }

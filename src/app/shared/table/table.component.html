@@ -6,7 +6,7 @@
       <th *ngIf="data.rowActions"></th>
     </thead>
     <tbody>
-      <tr *ngFor="let dataArray of data.source; let index" (click)="click(index)">
+      <tr *ngFor="let dataArray of data.source; let index = index" (click)="click(index)" clickable>
         <td *ngFor="let field of data.columns">
           <!-- <span [ngClass]="['extra-class--' + dataArray?.fieldData?.extraClass]"> -->
           <span [ngClass]="getExtraClass(dataArray.fieldData, field.dataProperty)">
@@ -14,13 +14,7 @@
           </span>
         </td>
         <td class="action-button" *ngIf="data.rowActions">
-          <button>
-            <iz-icon
-              name="icon-more-horizontal"
-              size="sm"
-              stroke="dark"
-            ></iz-icon>
-          </button>
+          <iz-action-panel [actions]="data.rowActions"></iz-action-panel>
         </td>
       </tr>
     </tbody>

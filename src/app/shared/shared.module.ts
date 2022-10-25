@@ -10,6 +10,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RouterModule } from '@angular/router';
 import { NavTabsComponent } from './nav-tabs/nav-tabs.component';
 import { SelectComponent } from './select/select.component';
+import { ActionPanelComponent } from './action-panel/action-panel.component';
 
 
 
@@ -22,7 +23,8 @@ import { SelectComponent } from './select/select.component';
     TitleComponent,
     BreadcrumbComponent,
     NavTabsComponent,
-    SelectComponent
+    SelectComponent,
+    ActionPanelComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import { SelectComponent } from './select/select.component';
     TitleComponent,
     BreadcrumbComponent,
     NavTabsComponent,
-    SelectComponent
+    SelectComponent,
+    ActionPanelComponent
   ]
 })
 export class SharedModule { }

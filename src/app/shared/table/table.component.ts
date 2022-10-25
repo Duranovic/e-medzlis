@@ -9,6 +9,7 @@ import { DataTableType } from 'src/app/core/models/tableConfig.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableComponent {
+  public actionPanelOpened: boolean = false;
   @Input() data: DataTableType;
 
   constructor(private router: Router) { 
@@ -31,5 +32,9 @@ export class TableComponent {
       return fieldData[dataProperty]?.extraClass;
     }
     return ''; 
+  }
+
+  public openActionPanel(): void {
+    this.actionPanelOpened = true;
   }
 }

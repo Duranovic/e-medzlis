@@ -47,9 +47,6 @@ table{
                 flex: 1;
                 &.action-button{
                     text-align: right;
-                    button{
-                        margin: 0 32px 0 auto;
-                    }
                    } 
                    span{
                         &.error, &.success {
