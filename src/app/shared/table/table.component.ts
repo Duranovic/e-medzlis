@@ -20,14 +20,14 @@ export class TableComponent {
     this.router.navigateByUrl(`/dzemati/${index}`);
   }
 
-  public parseField(fieldData: any, dataProperty: string) {
+  public parseField(fieldData: any, dataProperty: string): any {
     if(fieldData[dataProperty]?.value != undefined){
       return fieldData[dataProperty]?.value;
     }
     return fieldData[dataProperty];
   }
 
-  public getExtraClass(fieldData: any, dataProperty: string){
+  public getExtraClass(fieldData: any, dataProperty: string):any {
     if(fieldData[dataProperty]?.extraClass != undefined){
       return fieldData[dataProperty]?.extraClass;
     }

@@ -1,7 +1,7 @@
 export interface DataTableType {
     columns: DataTableColumn [],
     rowActions?: DataTableRowActions [],
-    source: DataTableSource [],
+    source: any [], // It can be different models
 };
 
 export interface DataTableColumn {
@@ -13,10 +13,5 @@ export interface DataTableColumn {
 export interface DataTableRowActions {
     label: string,
     actionId: string,
-    extraClass?: string,
-}
-
-export interface DataTableSource {
-    fieldData: any,
     extraClass?: string,
 }

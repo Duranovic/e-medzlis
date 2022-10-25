@@ -1,21 +1,20 @@
 <table *ngIf="data">
-    <thead>
-      <th *ngFor="let column of data.columns">
-        {{ column.title }}
-      </th>
-      <th *ngIf="data.rowActions"></th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let dataArray of data.source; let index = index" (click)="click(index)" clickable>
-        <td *ngFor="let field of data.columns">
-          <!-- <span [ngClass]="['extra-class--' + dataArray?.fieldData?.extraClass]"> -->
-          <span [ngClass]="getExtraClass(dataArray.fieldData, field.dataProperty)">
-            {{ parseField(dataArray.fieldData, field.dataProperty) }}
-          </span>
-        </td>
-        <td class="action-button" *ngIf="data.rowActions">
-          <iz-action-panel [actions]="data.rowActions"></iz-action-panel>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <th *ngFor="let column of data.columns">
+      {{ column.title }}
+    </th>
+    <th *ngIf="data.rowActions"></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dataArray of data.source; let index = index" (click)="click(index)">
+      <td *ngFor="let field of data.columns">
+        <span [ngClass]="getExtraClass(dataArray, field.dataProperty)">
+          {{ parseField(dataArray, field.dataProperty) }}
+        </span>
+      </td>
+      <td class="action-button" *ngIf="data.rowActions">
+        <iz-action-panel [actions]="data.rowActions"></iz-action-panel>
+      </td>
+    </tr>
+  </tbody>
+</table>

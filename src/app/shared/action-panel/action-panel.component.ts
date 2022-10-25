@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ActionRowType } from 'src/app/core/enums/table.enums';
 import { DataTableRowActions } from 'src/app/core/models/tableConfig.model';
 
@@ -6,13 +6,13 @@ import { DataTableRowActions } from 'src/app/core/models/tableConfig.model';
   selector: 'iz-action-panel',
   templateUrl: './action-panel.component.html',
   styleUrls: ['./action-panel.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActionPanelComponent {
   public isOpened: boolean;
-
   @Input() actions: DataTableRowActions[];
-  constructor(private ch: ChangeDetectorRef) { }
+
+  constructor() { }
 
   public openPanel($event: MouseEvent | PointerEvent): void {
     this.isOpened = true;
@@ -32,7 +32,6 @@ export class ActionPanelComponent {
   public delete($event: MouseEvent | PointerEvent): void {
     this.closePanel($event);
     console.log("DELETE ACTOION");
-
   }
 
   public callSpecificMethod(methodName: string, $event: MouseEvent | PointerEvent): void {
@@ -48,5 +47,4 @@ export class ActionPanelComponent {
         break;
     }
   }
-
 }

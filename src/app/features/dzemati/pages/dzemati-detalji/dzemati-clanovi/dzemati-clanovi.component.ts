@@ -14,7 +14,7 @@ export class DzematiClanoviComponent implements OnInit {
     console.log(this.router.getCurrentNavigation()?.previousNavigation);
    }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.clanoviTableSource = {
       columns: [
         {
@@ -41,59 +41,51 @@ export class DzematiClanoviComponent implements OnInit {
       rowActions: tableStandardActionRows,
       source: [
         {
-          fieldData: {
-            name: "Velid Duranovic",
-            phoneNumber: "+38762421855",
-            obligations: {
-              value: "DA",
-              extraClass: 'success',
-            },
-            status: {
-              value: "Aktivan",
-              extraClass: 'success status'
-            }
+          name: "Velid Duranovic",
+          phoneNumber: "+38762421855",
+          obligations: {
+            value: "DA",
+            extraClass: 'success',
           },
+          status: {
+            value: "Aktivan",
+            extraClass: 'success status'
+          }
         },
         {
-          fieldData: {
-            name: "Salvedin Duranovic",
-            phoneNumber: "+38761403723",
-            obligations: {
-              value: "NE",
-              extraClass: 'error',
-            },
-            status: {
-              value: "Aktivan",
-              extraClass: 'success status'
-            }
+          name: "Salvedin Duranovic",
+          phoneNumber: "+38761403723",
+          obligations: {
+            value: "NE",
+            extraClass: 'error',
           },
+          status: {
+            value: "Aktivan",
+            extraClass: 'success status'
+          }
         },
         {
-          fieldData: {
-            name: "Nudzejma Mujic Duranovic",
-            obligations: {
-              value: "DA",
-              extraClass: 'success',
-            },
-            status: {
-              value: "Aktivan",
-              extraClass: 'success status'
-            }
+          name: "Nudzejma Mujic Duranovic",
+          obligations: {
+            value: "DA",
+            extraClass: 'success',
           },
+          status: {
+            value: "Aktivan",
+            extraClass: 'success status'
+          }
         },
         {
-          fieldData: {
-            name: "Niko Nikic",
-            phoneNumber: "+38762421855",
-            obligations: {
-              value: "NE",
-              extraClass: 'error',
-            },
-            status: {
-              value: "Neaktivan",
-              extraClass: 'error status'
-            }
+          name: "Niko Nikic",
+          phoneNumber: "+38762421855",
+          obligations: {
+            value: "NE",
+            extraClass: 'error',
           },
+          status: {
+            value: "Neaktivan",
+            extraClass: 'error status'
+          }
         },
       ]
     }

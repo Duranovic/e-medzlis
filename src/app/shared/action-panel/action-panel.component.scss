@@ -3,10 +3,12 @@
 .actions-panel-container {
     margin: 0 32px 0 auto;
     position: relative;
+
     > iz-icon {
         position: relative;
         z-index: 1;
     }
+
     .action-panel {
         z-index: 50;
         list-style: none;
@@ -20,6 +22,7 @@
         
         li {
             display: flex;
+            
             &:not(:last-child){
                 button {
                     border-bottom-left-radius: 0;
