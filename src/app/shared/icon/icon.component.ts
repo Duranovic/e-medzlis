@@ -13,12 +13,13 @@ export class IconComponent implements OnInit {
   @Input() stroke: string;
   @Input() active: boolean;
   @Input() disableHover: boolean;
+  @Input() rotate: number;
 
   public link: string = '';
+  
   constructor() { }
 
   ngOnInit(): void {
     this.link = `assets/images/${this.name}.svg#${this.name}`
   }
-
 }

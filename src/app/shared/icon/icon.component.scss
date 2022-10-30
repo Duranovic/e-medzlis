@@ -40,6 +40,10 @@
     &--white {
       fill: variables.$white;
     }
+
+    &--red {
+      fill: variables.$red--light;
+    }
   }
 
   &-stroke {

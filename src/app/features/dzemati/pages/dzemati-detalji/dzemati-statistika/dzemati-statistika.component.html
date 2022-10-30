@@ -1,1 +1,19 @@
-<p>dzemati-statistika works!</p>
+<iz-select></iz-select>
+<div class="cards-container">
+    <div class="cards-inner-container">
+        <div class="cards-list">
+            <iz-statistics-card title="Mekteblije" description="Iz aktivne godine" [value]=300 color="beige"
+                chartOneLabel="Musko" chartTwoLabel="Zensko" [chartOnePercent]=30 [chartTwoPercent]=70>
+            </iz-statistics-card>
+            <iz-statistics-card title="Clanova" description="Iz aktivne godine" [value]=800 color="green"
+                [type]="cardTypes.TREND_POSITIVE" chartOneLabel="Musko" chartTwoLabel="Zensko" [chartOnePercent]=55
+                [chartTwoPercent]=45></iz-statistics-card>
+            <iz-statistics-card title="Mekteblije" description="Iz aktivne godine" [value]=300 color="beige"
+                chartOneLabel="Musko" chartTwoLabel="Zensko" [chartOnePercent]=80 [chartTwoPercent]=20>
+            </iz-statistics-card>
+            <iz-statistics-card title="Clanova" description="Iz aktivne godine" [value]=800 color="green"
+                [type]="cardTypes.TREND_NEGATIVE" chartOneLabel="Musko" chartTwoLabel="Zensko" [chartOnePercent]=65
+                [chartTwoPercent]=35></iz-statistics-card>
+        </div>
+    </div>
+</div>
