@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { NavTabsComponent } from './nav-tabs/nav-tabs.component';
 import { SelectComponent } from './select/select.component';
 import { ActionPanelComponent } from './action-panel/action-panel.component';
+import { StatisticsCardComponent } from './statistics-card/statistics-card.component';
 
 
 
@@ -24,7 +25,8 @@ import { ActionPanelComponent } from './action-panel/action-panel.component';
     BreadcrumbComponent,
     NavTabsComponent,
     SelectComponent,
-    ActionPanelComponent
+    ActionPanelComponent,
+    StatisticsCardComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { ActionPanelComponent } from './action-panel/action-panel.component';
     BreadcrumbComponent,
     NavTabsComponent,
     SelectComponent,
-    ActionPanelComponent
+    ActionPanelComponent,
+    StatisticsCardComponent
   ]
 })
 export class SharedModule { }
