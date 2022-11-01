@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AuthentificationModule } from './authentification/authentification.module';
 import { DzematiModule } from './dzemati/dzemati.module';
 import { SharedModule } from '../shared/shared.module';
+import { ClanoviModule } from './clanovi/clanovi.module';
 
 
 
@@ -12,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     AuthentificationModule,
     DzematiModule,
+    ClanoviModule,
     SharedModule,
   ]
 })

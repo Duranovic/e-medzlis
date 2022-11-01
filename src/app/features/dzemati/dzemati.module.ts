@@ -9,6 +9,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { DzematiDetaljiComponent } from './pages/dzemati-detalji/dzemati-detalji.component';
 import { DzematiUpravaComponent } from './pages/dzemati-detalji/dzemati-uprava/dzemati-uprava.component';
 import { DzematiStatistikaComponent } from './pages/dzemati-detalji/dzemati-statistika/dzemati-statistika.component';
+import { ClanoviComponent } from 'src/app/standalone/clanovi/clanovi.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DzematiStatistikaComponent } from './pages/dzemati-detalji/dzemati-stat
     CommonModule,
     DzematiRoutingModule,
     SharedModule,
+    ClanoviComponent,
     MatTabsModule,
   ]
 })
