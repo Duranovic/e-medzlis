@@ -11,13 +11,15 @@ import { DataTableType } from 'src/app/core/models/tableConfig.model';
 export class TableComponent {
   public actionPanelOpened: boolean = false;
   @Input() data: DataTableType;
+  @Input() route: string;
 
   constructor(private router: Router) { 
     // console.log(this.router.getCurrentNavigation()?.previousNavigation);
   }
 
-  public click(index: any): void{
-    this.router.navigateByUrl(`/dzemati/${index}`);
+  public click(index: any): void {
+    if(this.route) 
+      this.router.navigateByUrl(`${this.route}/${index}`);
   }
 
   public parseField(fieldData: any, dataProperty: string): any {
