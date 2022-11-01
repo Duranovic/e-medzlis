@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { NavigationTabs } from 'src/app/core/models/navigation-tabs.model';
 
 @Component({
   selector: 'iz-nav-tabs',
@@ -10,7 +11,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation } 
 })
 export class NavTabsComponent implements OnInit {
 
-  @Input() links: any[];
+  @Input() tabs: NavigationTabs[];
 
   constructor() { }
 
