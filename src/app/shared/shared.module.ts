@@ -13,8 +13,6 @@ import { SelectComponent } from './select/select.component';
 import { ActionPanelComponent } from './action-panel/action-panel.component';
 import { StatisticsCardComponent } from './statistics-card/statistics-card.component';
 
-
-
 @NgModule({
   declarations: [
     InputComponent,

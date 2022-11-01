@@ -14,5 +14,4 @@ export class TitleComponent implements OnInit {
 
   public ngOnInit(): void {
   }
-
 }

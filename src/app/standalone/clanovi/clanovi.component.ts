@@ -94,5 +94,4 @@ export class ClanoviComponent implements OnInit {
       ]
     }
   }
-
 }

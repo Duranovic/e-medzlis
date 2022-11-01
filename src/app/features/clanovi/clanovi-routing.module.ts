@@ -8,9 +8,9 @@ import { ClanoviPregledComponent } from './pages/clanovi-pregled/clanovi-pregled
 
 const routes: Routes = [
   { path: 'clanovi', component: ClanoviPregledComponent },
-  { 
+  {
     path: 'clanovi/:id', component: ClanoviDetaljiComponent, children: [
-      { path: '', redirectTo: 'opcenito', pathMatch: 'full'},
+      { path: '', redirectTo: 'opcenito', pathMatch: 'full' },
       { path: 'opcenito', component: ClanoviOpcenitoComponent },
       { path: 'statistika', component: ClanoviStatistikaComponent },
       { path: 'placanje', component: ClanoviPlacanjeComponent },
