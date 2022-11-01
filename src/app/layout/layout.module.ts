@@ -4,8 +4,6 @@ import { SideNavigationComponent } from './side-navigation/side-navigation.compo
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 
-
-
 @NgModule({
   declarations: [
     SideNavigationComponent

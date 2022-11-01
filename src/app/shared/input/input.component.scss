@@ -2,21 +2,24 @@
 
 $left-padding: 20px;
 
-input{
+input {
     border: none;
-    background-color: variables.$light-gray;
     border-radius: 10px;
     box-shadow: 0 3px 0 gainsboro;
     padding: 22px 27px 12px $left-padding;
     font-size: 14px;
     margin-bottom: 12px;
     width: 100%;
+    background-color: #F5F8FA;
 }
 
-.iz-input{
+.iz-input  {
     position: relative;
     width: 100%;
-    label{
+    background-color: #F5F8FA;
+    border-radius: 10px;
+
+    label {
         position: absolute;
         left: $left-padding;
         top: 50%;
@@ -25,16 +28,18 @@ input{
         font-family: Arial, Helvetica, sans-serif;
         transition: top .3s, font-size .3s;
     }
-    input{
+
+    input {
         margin: 0;
         transition: transform .3s;
+
         &:focus + label {
             top: 12px;
             font-size: 10px;
         }
     }
 
-    &--focused{
+    &--focused {
         label {
             top: 12px;
             font-size: 10px;
@@ -42,6 +47,6 @@ input{
     }
 }
 
-label{
+label {
     font-size: 14px;
 }

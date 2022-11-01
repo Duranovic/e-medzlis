@@ -1,0 +1,23 @@
+@use '/src/styles/utilities/variables';
+
+.info-bar {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 16px;
+
+    > :not(.info) {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        &::before {
+            content: '';
+            background-color: variables.$lighter-gray;
+            border-radius: 50%;
+            width: 6px;
+            height: 6px;
+        }
+    }
+}
