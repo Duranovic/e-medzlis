@@ -8,9 +8,44 @@
         display: flex;
         flex-direction: column;
         flex: 1;
-        gap: 32px;
+        gap: 16px;
         background: variables.$white;
         border-radius: 20px;
         padding: 48px;
+
+        .radio-controls {
+            > label {
+                display: block;
+                margin-bottom: 12px;
+            }
+        }
+        .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+
+            .radio {
+                display: flex;
+                align-items: center;
+
+                input {
+                    margin: 0 8px 0 0;
+                    width: 14px;
+                    height: 14px;
+                }
+            }
+        }
+        input[type="radio"] {
+            accent-color: variables.$green;
+        }
+
+        .checkbox-control {
+            display: flex;
+            align-items: center;
+            input {
+                margin: 0 8px 0 0;
+                accent-color: variables.$green;
+            }
+        }
     }
 }

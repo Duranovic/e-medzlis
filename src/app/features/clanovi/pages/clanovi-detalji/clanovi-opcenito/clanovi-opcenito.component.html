@@ -1,5 +1,62 @@
-<div class="cards">
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-</div>
+<form [formGroup]="form">
+    <div class="cards">
+        <div class="card">
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.first_name"
+                [frmControl]="form.get(formControlNames.first_name) | formControl"></iz-input>
+
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.last_name"
+                [frmControl]="form.get(formControlNames.last_name) | formControl"></iz-input>
+
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.date_birth"
+                [frmControl]="form.get(formControlNames.date_birth) | formControl"></iz-input>
+
+            <div class="radio-controls">
+                <label for="sex">Odaberi spol</label>
+                <div class="radio-group">
+                    <div class="radio">
+                        <input type="radio" id="musko" name="sex" value="Musko"
+                            [formControlName]="formControlNames.sex">
+                        <label for="musko">Musko</label>
+                    </div>
+
+                    <div class="radio">
+                        <input type="radio" id="zensko" name="sex" value="Zensko"
+                            [formControlName]="formControlNames.sex">
+                        <label for="zensko">Zensko</label>
+                    </div>
+                </div>
+            </div>
+            <div class="checkbox-control">
+                <input type="checkbox" id="payer" name="payer" checked [formControlName]="formControlNames.payer">
+                <label for="payer">{{ formLabels.payer }}</label>
+            </div>
+        </div>
+        <div class="card">
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.father_name"
+                [frmControl]="form.get(formControlNames.father_name) | formControl"></iz-input>
+
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.mother_name"
+                [frmControl]="form.get(formControlNames.mother_name) | formControl"></iz-input>
+
+            <div class="checkbox-control">
+                <input type="checkbox" id="married" name="married" checked [formControlName]="formControlNames.married">
+                <label for="married">{{ formLabels.married }}</label>
+            </div>
+
+            <iz-select *ngIf="form?.get(formControlNames.married)?.value" [secondary]="true"
+                [label]="formLabels.spouse"></iz-select>
+        </div>
+        <div class="card">
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.phone_number"
+                [frmControl]="form.get(formControlNames.phone_number) | formControl"></iz-input>
+
+            <iz-input [type]="inputType.EMAIL" [label]="formLabels.email"
+                [frmControl]="form.get(formControlNames.email) | formControl"></iz-input>
+
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.address"
+                [frmControl]="form.get(formControlNames.address) | formControl"></iz-input>
+
+            <iz-number-placeholder [value]="form.get(formControlNames.jmbg)?.value" [label]="formLabels.jmbg"></iz-number-placeholder>
+        </div>
+    </div>
+</form>

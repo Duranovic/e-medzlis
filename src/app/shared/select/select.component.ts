@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'iz-select',
@@ -10,9 +10,12 @@ export class SelectComponent implements OnInit {
   public isOpened = false;
   public selected: any;
 
+  @Input() secondary: boolean;
+  @Input() label: string;
+
   constructor() { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
 
   public open() : void{
@@ -23,5 +26,4 @@ export class SelectComponent implements OnInit {
     this.selected = option;
     this.isOpened = false;
   }
-
 }

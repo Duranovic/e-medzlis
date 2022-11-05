@@ -1,7 +1,11 @@
 @use '/src/styles/utilities/variables';
 
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
 .custom-dropdown{
-    max-width: 150px;
     margin-bottom: 32px;
     position: relative;
 
@@ -11,14 +15,22 @@
         }
     }
 
+    &.secondary {
+        .button-selected {
+            button {
+                background-color: variables.$light-gray;
+            }
+        }
+    }
+
     button {
         font-size: 14px;
         font-family: variables.$font_ubuntu__regular;
         color: variables.$lighter-gray;
     }
 
-    .button-selected{
-        button{
+    .button-selected {
+        button {
             position: relative;
             background-color: variables.$white;
             border-radius: 10px;
@@ -27,7 +39,7 @@
             text-align: left;
             box-shadow: 0 3px 6px gainsboro;
 
-            &::after{
+            &::after {
                 content: '';
                 position: absolute;
                 right: 16px;
@@ -42,7 +54,7 @@
         }
     }
 
-    ul{
+    ul {
         display: none;
         position: absolute;
         z-index: 10;
@@ -54,8 +66,8 @@
         border-radius: 10px;
         box-shadow: 0 3px 6px gainsboro;
 
-        li{
-            button{
+        li {
+            button {
                 width: 100%;
                 padding: 12px 20px;  
                 text-align: left; 
@@ -65,26 +77,25 @@
                 }
             }
 
-            &.active{
-                button{
+            &.active {
+                button {
                     background-color: variables.$focus-color--darker;
                 }
             }
 
             &:first-child {
-                button{
+                button {
                     border-top-left-radius: 10px;
                     border-top-right-radius: 10px;
                 }
             }
 
-            &:last-child{
-                button{
+            &:last-child {
+                button {
                     border-bottom-left-radius: 10px;
                     border-bottom-right-radius: 10px;
                 }
             }
         }
     }
-
 }

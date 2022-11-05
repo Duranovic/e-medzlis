@@ -1,0 +1,9 @@
+<div class="jmbg-container">
+    <button (click)="copyJmbg()">
+        <img title="Kopiraj JMBG" src="assets/images/icon-copy.svg" alt="Copy jmbg number">
+    </button>
+    <div class="jmbg-inner-container">
+        <span>{{ label }}</span>
+        <span *ngFor="let char of value | split">{{ char }}</span>
+    </div>
+</div>

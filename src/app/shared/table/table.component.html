@@ -8,9 +8,15 @@
   <tbody>
     <tr *ngFor="let dataArray of data.source; let index = index" (click)="click(index)">
       <td *ngFor="let field of data.columns">
-        <span [ngClass]="getExtraClass(dataArray, field.dataProperty)">
+        <button [ngClass]="getExtraClass(dataArray, field.dataProperty)" *ngIf="(getTypeOfHtmlELement(dataArray, field.dataProperty) === 'button'); else span">
           {{ parseField(dataArray, field.dataProperty) }}
-        </span>
+        </button>
+
+        <ng-template #span>
+          <span [ngClass]="getExtraClass(dataArray, field.dataProperty)">
+            {{ parseField(dataArray, field.dataProperty) }}
+          </span>
+        </ng-template>
       </td>
       <td class="action-button" *ngIf="data.rowActions">
         <iz-action-panel [actions]="data.rowActions"></iz-action-panel>

@@ -14,4 +14,5 @@ export interface DataTableRowActions {
     label: string,
     actionId: string,
     extraClass?: string,
+    typeOfElement?: HTMLElement
 }

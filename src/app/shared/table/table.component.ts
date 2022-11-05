@@ -10,6 +10,7 @@ import { DataTableType } from 'src/app/core/models/tableConfig.model';
 })
 export class TableComponent {
   public actionPanelOpened: boolean = false;
+
   @Input() data: DataTableType;
   @Input() route: string;
 
@@ -30,10 +31,14 @@ export class TableComponent {
   }
 
   public getExtraClass(fieldData: any, dataProperty: string):any {
-    if(fieldData[dataProperty]?.extraClass != undefined){
+    if(fieldData[dataProperty]?.extraClass != undefined) {
       return fieldData[dataProperty]?.extraClass;
     }
     return ''; 
+  }
+
+  public getTypeOfHtmlELement(fieldData: any, dataProperty: string): any {
+      return fieldData[dataProperty]?.typeOfElement;
   }
 
   public openActionPanel(): void {
