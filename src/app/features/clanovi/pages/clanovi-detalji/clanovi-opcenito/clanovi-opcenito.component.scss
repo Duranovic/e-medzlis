@@ -19,6 +19,7 @@
                 margin-bottom: 12px;
             }
         }
+
         .radio-group {
             display: flex;
             align-items: center;
@@ -35,6 +36,7 @@
                 }
             }
         }
+
         input[type="radio"] {
             accent-color: variables.$green;
         }
@@ -42,6 +44,7 @@
         .checkbox-control {
             display: flex;
             align-items: center;
+            
             input {
                 margin: 0 8px 0 0;
                 accent-color: variables.$green;
