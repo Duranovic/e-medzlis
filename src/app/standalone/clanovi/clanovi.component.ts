@@ -13,7 +13,6 @@ import { tableStandardActionRows } from 'src/app/core/constants/table.constants'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClanoviComponent implements OnInit {
-
   @Input() clanoviTableSource: DataTableType;
 
   constructor() { }

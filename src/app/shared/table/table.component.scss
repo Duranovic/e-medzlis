@@ -107,6 +107,13 @@ table {
                         }
                     }
                 }
+
+                button {
+                    border-radius: 30px;
+                    padding: 8px 20px;
+                    font-family: variables.$font_ubuntu__regular;
+                    background-color: variables.$lighter-gray;
+                }
             }
         }
     }
@@ -118,7 +125,6 @@ table {
 
         &:hover,
         &:focus {
-            cursor: pointer;
             background: variables.$focus-color;
         }
     }

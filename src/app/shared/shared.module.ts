@@ -12,6 +12,8 @@ import { NavTabsComponent } from './nav-tabs/nav-tabs.component';
 import { SelectComponent } from './select/select.component';
 import { ActionPanelComponent } from './action-panel/action-panel.component';
 import { StatisticsCardComponent } from './statistics-card/statistics-card.component';
+import { NumberPlaceholderComponent } from './number-placeholder/number-placeholder.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -24,10 +26,12 @@ import { StatisticsCardComponent } from './statistics-card/statistics-card.compo
     NavTabsComponent,
     SelectComponent,
     ActionPanelComponent,
-    StatisticsCardComponent
+    StatisticsCardComponent,
+    NumberPlaceholderComponent
   ],
   imports: [
     CommonModule,
+    CoreModule,
     RouterModule,
     ReactiveFormsModule,
   ],
@@ -41,7 +45,8 @@ import { StatisticsCardComponent } from './statistics-card/statistics-card.compo
     NavTabsComponent,
     SelectComponent,
     ActionPanelComponent,
-    StatisticsCardComponent
+    StatisticsCardComponent,
+    NumberPlaceholderComponent
   ]
 })
 export class SharedModule { }

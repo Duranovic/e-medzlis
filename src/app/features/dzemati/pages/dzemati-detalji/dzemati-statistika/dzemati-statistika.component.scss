@@ -1,6 +1,10 @@
 @use '/src/styles/utilities/variables';
 @use '/src/styles/utilities/mixins';
 
+.select-container {
+    max-width: 200px;
+}
+
 .cards-container { 
     position: relative;
     display: flex;

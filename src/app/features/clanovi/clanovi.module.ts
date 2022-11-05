@@ -13,6 +13,9 @@ import { ClanoviDetaljiComponent } from './pages/clanovi-detalji/clanovi-detalji
 import { ClanoviOpcenitoComponent } from './pages/clanovi-detalji/clanovi-opcenito/clanovi-opcenito.component';
 import { ClanoviPlacanjeComponent } from './pages/clanovi-detalji/clanovi-placanje/clanovi-placanje.component';
 import { ClanoviStatistikaComponent } from './pages/clanovi-detalji/clanovi-statistika/clanovi-statistika.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CoreModule } from 'src/app/core/core.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -25,9 +28,12 @@ import { ClanoviStatistikaComponent } from './pages/clanovi-detalji/clanovi-stat
   ],
   imports: [
     CommonModule,
+    MatSnackBarModule,
     SharedModule,
+    CoreModule,
+    ReactiveFormsModule,
     ClanoviComponent,
-    ClanoviRoutingModule
+    ClanoviRoutingModule,
   ]
 })
 export class ClanoviModule { }
