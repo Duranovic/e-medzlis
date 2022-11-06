@@ -16,6 +16,9 @@ import { ClanoviStatistikaComponent } from './pages/clanovi-detalji/clanovi-stat
 import { ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from 'src/app/core/core.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ClanoviEvidencijaComponent } from './pages/clanovi-evidencija/clanovi-evidencija.component';
+import { ClanoviEvidentirajModalComponent } from './pages/clanovi-evidentiraj-modal/clanovi-evidentiraj-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -24,11 +27,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ClanoviDetaljiComponent,
     ClanoviOpcenitoComponent,
     ClanoviPlacanjeComponent,
-    ClanoviStatistikaComponent
+    ClanoviStatistikaComponent,
+    ClanoviEvidencijaComponent,
+    ClanoviEvidentirajModalComponent
   ],
   imports: [
     CommonModule,
     MatSnackBarModule,
+    MatDialogModule,
     SharedModule,
     CoreModule,
     ReactiveFormsModule,
