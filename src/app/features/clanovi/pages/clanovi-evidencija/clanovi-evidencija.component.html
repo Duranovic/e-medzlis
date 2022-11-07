@@ -1,18 +1,21 @@
 <iz-breadcrumb label="Velid Duranovic" route="/clanovi/1/placanje"></iz-breadcrumb>
 
-<div class="clanovi-evidencija-container">
+<div class="clanovi-evidencija">
     <div class="status-container">
         <span class="year">2022</span>
         <span class="info error">Nije izmirio obaveze</span>
     </div>
-    <div class="logo-container">
-        <img src="assets/images/iz-logo.svg" alt="Iz logo">
-    </div>
-    <h1>Izvještaj o plaćanju članarine</h1>
-    <p>Velid Duranović nastanjen na adresi u Divičani bb, I koji je član u džematu Divičani, nije izmirio obaveze za 2022. godinu 
-        do dana 13.05.2022. godine</p>
-        <div class="buttons-container">
-            <button class="button primary-btn button--round" (click)="showEvidentiraj()">Evidentiraj</button>
-            <button class="button primary-btn button--round button--alter">Isprintaj</button>
+    <div class="clanovi-evidencija-inner-container" #evidencijaPdf>
+        <div class="logo-container">
+            <img src="assets/images/iz-logo.svg" alt="Iz logo">
         </div>
+        <h1>Izvještaj o plaćanju članarine</h1>
+        <p>Velid Duranović nastanjen na adresi u Divičani bb, I koji je član u džematu Divičani, nije izmirio obaveze za
+            2022. godinu
+            do dana 13.05.2022. godine</p>
+    </div>
+    <div class="buttons-container">
+        <button class="button primary-btn button--round" (click)="showEvidentiraj()">Evidentiraj</button>
+        <button class="button primary-btn button--round button--alter" (click)="savePDF()">Isprintaj</button>
+    </div>
 </div>
