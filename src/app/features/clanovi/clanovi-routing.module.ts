@@ -4,6 +4,7 @@ import { ClanoviDetaljiComponent } from './pages/clanovi-detalji/clanovi-detalji
 import { ClanoviOpcenitoComponent } from './pages/clanovi-detalji/clanovi-opcenito/clanovi-opcenito.component';
 import { ClanoviPlacanjeComponent } from './pages/clanovi-detalji/clanovi-placanje/clanovi-placanje.component';
 import { ClanoviStatistikaComponent } from './pages/clanovi-detalji/clanovi-statistika/clanovi-statistika.component';
+import { ClanoviEvidencijaComponent } from './pages/clanovi-evidencija/clanovi-evidencija.component';
 import { ClanoviPregledComponent } from './pages/clanovi-pregled/clanovi-pregled.component';
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
       { path: 'statistika', component: ClanoviStatistikaComponent },
       { path: 'placanje', component: ClanoviPlacanjeComponent },
     ]
-  }
+  },
+  { path: 'clanovi/:id/evidencija', component: ClanoviEvidencijaComponent },
 ];
 
 @NgModule({

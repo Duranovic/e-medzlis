@@ -13,14 +13,19 @@ export class TableComponent {
 
   @Input() data: DataTableType;
   @Input() route: string;
+  @Input() postIndexRoute: string;
 
   constructor(private router: Router) { 
     // console.log(this.router.getCurrentNavigation()?.previousNavigation);
   }
 
   public click(index: any): void {
-    if(this.route) 
-      this.router.navigateByUrl(`${this.route}/${index}`);
+    let finalRoute: string;
+
+    if(this.route) {
+      finalRoute = `${this.route}/${index}` + (this.postIndexRoute ? `/${this.postIndexRoute}` : '');
+      this.router.navigateByUrl(finalRoute);
+    }
   }
 
   public parseField(fieldData: any, dataProperty: string): any {

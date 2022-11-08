@@ -13,7 +13,6 @@ export class ClanoviDetaljiComponent implements OnInit {
   public ngOnInit(): void {
     this.navigationTabs = [
       { label: 'Opcenito', route: 'opcenito' },
-      { label: 'Statistika', route: 'statistika' },
       { label: 'Placanje', route: 'placanje' }
     ]
   }

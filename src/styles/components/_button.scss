@@ -53,6 +53,19 @@ button {
       background-size: contain;
     }
   }
+
+  &--alter {
+    color: variables.$font-color;
+    background-color: variables.$white;
+    border: 2px solid variables.$primary_color;
+  }
+
+  &--gray {
+    font-family: variables.$font-ubuntu--regular;
+    color: variables.$font-color;
+    background-color: variables.$button-gray;
+    box-shadow: none;
+  }
 }
 
 // Dialog close button
@@ -64,9 +77,10 @@ button {
   right: 0;
   &::after {
     content: "";
-    background-image: url("/assets/images/close-icon.svg");
+    background-image: url("/assets/images/icon-close.svg");
     position: absolute;
     inset: 0;
+    background-size: cover;
   }
 }
 
