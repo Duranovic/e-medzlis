@@ -6,7 +6,7 @@
     <th *ngIf="data.rowActions"></th>
   </thead>
   <tbody *ngIf="data.source | async as source">
-    <tr *ngFor="let dataRow of source; let index = index;" (click)="click(dataRow, index)">
+    <tr *ngFor="let dataRow of source;" (click)="click(dataRow)">
       <td *ngFor="let field of data.columns">
         <button [ngClass]="getExtraClass(dataRow, field.dataProperty)" *ngIf="(getTypeOfHtmlELement(dataRow, field.dataProperty) === 'button'); else span">
           {{ parseField(dataRow, field.dataProperty) }}

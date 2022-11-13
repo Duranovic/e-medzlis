@@ -4,7 +4,6 @@ export interface DataTableType {
     columns: DataTableColumn [],
     rowActions?: DataTableRowActions [],
     source: Observable<any []>, // It can be different models
-    rowAction?: string,
 };
 
 export interface DataTableColumn {

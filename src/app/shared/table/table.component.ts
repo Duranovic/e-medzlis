@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { DataTableType } from 'src/app/core/models/tableConfig.model';
 import { TableService } from 'src/app/core/services/table.service';
-import { PlacanjeVM } from 'src/app/features/clanovi/models/placanje.model';
 
 @Component({
   selector: 'iz-table',
@@ -19,16 +18,12 @@ export class TableComponent implements OnInit {
   @Input() postIndexRoute: string;
 
   constructor(private router: Router, private tableService: TableService) { 
-    console.log(this.router.url)
     // console.log(this.router.getCurrentNavigation()?.previousNavigation);
   }
 
-  public ngOnInit(): void {
+  public ngOnInit(): void { }
 
-  }
-
-  public click(dataRow: PlacanjeVM, index: any): void {
-    console.log('DATA ROW: ', dataRow, 'INDEX: ', index);
+  public click(dataRow: any): void {
     let finalRoute: string;
     this.tableService.setSelectedElement(dataRow);
     if(this.clickableRow) {

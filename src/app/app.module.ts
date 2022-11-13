@@ -12,13 +12,7 @@ import { LoginService } from './core/services/login.service';
 import { DzematiModule } from './features/dzemati/dzemati.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClanoviModule } from './features/clanovi/clanovi.module';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideFunctions,getFunctions } from '@angular/fire/functions';
-import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 
@@ -39,14 +33,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     ClanoviModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
-    // provideAnalytics(() => getAnalytics()),
-    // provideAuth(() => getAuth()),
-    // provideFirestore(() => getFirestore()),
-    // provideFunctions(() => getFunctions()),
-    // provideStorage(() => getStorage()),
-    // AngularFirestoreModule,
   ],
-  providers: [LoginService, ScreenTrackingService,UserTrackingService],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
-import { map, Observable, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { getCurrentDateToString } from 'src/app/core/helpers/date.helper';
 import { saveToPDF } from 'src/app/core/helpers/print.helper';
 import { Clan } from 'src/app/core/models/clan.model';
@@ -49,7 +48,6 @@ export class ClanoviEvidencijaComponent implements OnInit {
   }
 
   public composeDescriptionText(clan: Clan): string {
-    console.log(getCurrentDateToString());
     return `
       ${clan.first_name} ${clan.last_name} nastanjen na adresi u ${clan.address }, I koji je član u džematu Divičani, ${this.evidention.obligationFulfilled.value=='DA' ? 'izmirio je': 'nije izmirio'} obaveze za
      ${this.evidention.for_year}. godinu do dana ${getCurrentDateToString()} godine

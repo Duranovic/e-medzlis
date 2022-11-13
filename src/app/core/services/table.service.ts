@@ -5,7 +5,7 @@ import { PlacanjeVM } from 'src/app/features/clanovi/models/placanje.model';
   providedIn: 'root'
 })
 export class TableService {
-  public selectedElement: any;
+  public selectedElement: PlacanjeVM;
    
   constructor() { }
 

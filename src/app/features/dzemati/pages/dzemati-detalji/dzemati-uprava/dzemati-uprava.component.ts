@@ -33,27 +33,6 @@ export class DzematiUpravaComponent implements OnInit {
         }
       ],
       rowActions: tableStandardActionRows,
-      // source: [
-      //   {
-      //     name: "Velid Duranovic",
-      //     phoneNumber: "+38762421855",
-      //     position: "Efendija",
-      //   },
-      //   {
-      //     name: "Salvedin Duranovic",
-      //     phoneNumber: "+38761403723",
-      //     position: "Blagajnik"
-      //   },
-      //   {
-      //     name: "Nudzejma Mujic Duranovic",
-      //     position: "Clan upravnog odbora",
-      //   },
-      //   {
-      //     name: "Niko Nikic",
-      //       phoneNumber: "+38762421855",
-      //       position: "Clan upravnog odbora",
-      //   },
-      // ],
       source: this.store.collection('clanovi').valueChanges().pipe(
         map((array: any)=> {
           return array.map((x: any)=> {

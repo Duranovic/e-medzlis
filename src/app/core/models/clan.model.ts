@@ -5,12 +5,10 @@ export interface Clan {
     birth_year: number,
     sex: string,
     payer: boolean,
-
     father_name: string,
     mother_name: string,
     married: boolean,
     spouseId?: string,
-
     phone_number: string,
     email: string,
     jmbg: string,
@@ -19,6 +17,5 @@ export interface Clan {
     status: boolean,
     obligations: boolean, 
     role: number,
-
     year_registrered: number;
 }
