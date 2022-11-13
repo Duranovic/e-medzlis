@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formGroup]="form" *ngIf="form != undefined">
     <div class="cards">
         <div class="card">
             <iz-input [type]="inputType.TEXT" [label]="formLabels.first_name"
@@ -14,13 +14,13 @@
                 <label for="sex">Odaberi spol</label>
                 <div class="radio-group">
                     <div class="radio">
-                        <input type="radio" id="musko" name="sex" value="Musko"
+                        <input type="radio" id="musko" name="sex" value="male"
                             [formControlName]="formControlNames.sex">
                         <label for="musko">Musko</label>
                     </div>
 
                     <div class="radio">
-                        <input type="radio" id="zensko" name="sex" value="Zensko"
+                        <input type="radio" id="zensko" name="sex" value="female"
                             [formControlName]="formControlNames.sex">
                         <label for="zensko">Zensko</label>
                     </div>

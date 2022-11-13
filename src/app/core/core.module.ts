@@ -3,12 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormControlPipe } from './pipes/form-control.pipe';
 import { SplitStringPipe } from './pipes/split.pipe';
 
-
-
 @NgModule({
   declarations: [FormControlPipe, SplitStringPipe],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [FormControlPipe, SplitStringPipe],
 })

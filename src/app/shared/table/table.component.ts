@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataTableType } from 'src/app/core/models/tableConfig.model';
+import { TableService } from 'src/app/core/services/table.service';
+import { PlacanjeVM } from 'src/app/features/clanovi/models/placanje.model';
 
 @Component({
   selector: 'iz-table',
@@ -8,23 +10,30 @@ import { DataTableType } from 'src/app/core/models/tableConfig.model';
   styleUrls: ['./table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableComponent {
+export class TableComponent implements OnInit {
   public actionPanelOpened: boolean = false;
 
   @Input() data: DataTableType;
+  @Input() clickableRow: boolean = true;
   @Input() route: string;
   @Input() postIndexRoute: string;
 
-  constructor(private router: Router) { 
+  constructor(private router: Router, private tableService: TableService) { 
+    console.log(this.router.url)
     // console.log(this.router.getCurrentNavigation()?.previousNavigation);
   }
 
-  public click(index: any): void {
-    let finalRoute: string;
+  public ngOnInit(): void {
 
-    if(this.route) {
-      finalRoute = `${this.route}/${index}` + (this.postIndexRoute ? `/${this.postIndexRoute}` : '');
-      this.router.navigateByUrl(finalRoute);
+  }
+
+  public click(dataRow: PlacanjeVM, index: any): void {
+    console.log('DATA ROW: ', dataRow, 'INDEX: ', index);
+    let finalRoute: string;
+    this.tableService.setSelectedElement(dataRow);
+    if(this.clickableRow) {
+        finalRoute = `${this.route}/${dataRow.id ?? ''}` + (this.postIndexRoute ? `/${this.postIndexRoute}` : '');
+        this.router.navigateByUrl(finalRoute);
     }
   }
 

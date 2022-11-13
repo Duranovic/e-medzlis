@@ -17,7 +17,7 @@ const routes: Routes = [
       { path: 'placanje', component: ClanoviPlacanjeComponent },
     ]
   },
-  { path: 'clanovi/:id/evidencija', component: ClanoviEvidencijaComponent },
+  { path: 'evidencija/:id', component: ClanoviEvidencijaComponent },
 ];
 
 @NgModule({

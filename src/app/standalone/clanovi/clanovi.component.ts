@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DataTableType } from 'src/app/core/models/tableConfig.model';
 import { tableStandardActionRows } from 'src/app/core/constants/table.constants';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs';
+import { StoreService } from 'src/app/core/services/store.service';
 
 @Component({
   selector: 'iz-clanovi',
@@ -15,7 +18,7 @@ import { tableStandardActionRows } from 'src/app/core/constants/table.constants'
 export class ClanoviComponent implements OnInit {
   @Input() clanoviTableSource: DataTableType;
 
-  constructor() { }
+  constructor(private store: StoreService) { }
 
   public ngOnInit(): void {
     this.clanoviTableSource = {
@@ -27,7 +30,7 @@ export class ClanoviComponent implements OnInit {
         },
         {
           title: "Broj telefona",
-          dataProperty: "phoneNumber",
+          dataProperty: "phone_number",
           sortable: false,
         },
         {
@@ -42,55 +45,24 @@ export class ClanoviComponent implements OnInit {
         }
       ],
       rowActions: tableStandardActionRows,
-      source: [
-        {
-          name: "Velid Duranovic",
-          phoneNumber: "+38762421855",
-          obligations: {
-            value: "DA",
-            extraClass: 'success',
-          },
-          status: {
-            value: "Aktivan",
-            extraClass: 'success status'
+      source: this.store.clanovi.pipe(
+        map((array: any)=> {
+          return array.map((x: any)=> {
+            return {
+              ...x,
+              name: `${x.first_name} ${x.last_name}`,
+              obligations: {
+                value: x.obligations ? 'DA' : 'NE',
+                extraClass: x.obligations ? 'success' : 'error',
+              },
+              status: {
+                value: x.status ? 'Aktivan' : 'Neaktivan',
+                extraClass: x.status ? 'status success' : 'status error',
+              }
           }
-        },
-        {
-          name: "Salvedin Duranovic",
-          phoneNumber: "+38761403723",
-          obligations: {
-            value: "NE",
-            extraClass: 'error',
-          },
-          status: {
-            value: "Aktivan",
-            extraClass: 'success status'
-          }
-        },
-        {
-          name: "Nudzejma Mujic Duranovic",
-          obligations: {
-            value: "DA",
-            extraClass: 'success',
-          },
-          status: {
-            value: "Aktivan",
-            extraClass: 'success status'
-          }
-        },
-        {
-          name: "Niko Nikic",
-          phoneNumber: "+38762421855",
-          obligations: {
-            value: "NE",
-            extraClass: 'error',
-          },
-          status: {
-            value: "Neaktivan",
-            extraClass: 'error status'
-          }
-        },
-      ]
+          })
+        })
+      )
     }
   }
 }
