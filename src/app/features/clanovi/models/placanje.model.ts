@@ -1,5 +1,3 @@
-import { Timestamp } from "firebase/firestore";
-
 export interface PlacanjeVM {
     id?: string,
     for_year: number;

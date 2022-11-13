@@ -10,6 +10,7 @@ import { Range } from 'src/app/core/helpers/array.helper';
 import { evidentionConstant, obligationFulfilledErrorConstant, obligationFulfilledSuccessConstant } from '../../../constants/placanje.constants';
 import { PlacanjeVM } from '../../../models/placanje.model';
 import { TableService } from 'src/app/core/services/table.service';
+import { convertToLocalDateString } from 'src/app/core/helpers/date.helper';
 
 @Component({
   templateUrl: './clanovi-placanje.component.html',
@@ -88,7 +89,7 @@ export class ClanoviPlacanjeComponent implements OnInit {
         placanjaFinal.push({
           id: placanja[index].id,
           for_year: placanja[index].for_year,
-          payment_date: new Timestamp(placanja[index].payment_date.seconds, placanja[index].payment_date.nanoseconds).toDate().toLocaleDateString(),
+          payment_date: convertToLocalDateString(new Timestamp(placanja[index].payment_date.seconds, placanja[index].payment_date.nanoseconds).toDate()),
           obligationFulfilled: obligationFulfilledSuccessConstant
         })
       }

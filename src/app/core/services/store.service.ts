@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map, Observable } from 'rxjs';
+import { PlacanjeVM } from 'src/app/features/clanovi/models/placanje.model';
 import { GetDocumentWithId } from '../helpers/firebase.helper';
 import { Clan } from '../models/clan.model';
 import { Dzemat } from '../models/dzemat.model';
@@ -13,11 +14,7 @@ export class StoreService {
   public clanovi: Observable<Clan []>;
   public dzemati: Observable<Dzemat []>
   public selectedClan$: Observable<Clan>;
-  public selectedEvidencija: Observable<{
-    for_year: number,
-    clan_id: string,
-    evidencija_id: string,
-  }>;
+  public selectedEvidencija: Observable<Partial<PlacanjeVM>>;
 
   constructor(private store: AngularFirestore) {
     this.clanovi = this.getClanovi();
