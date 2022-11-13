@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private loginService: LoginService){
     this.isUserLoggedIn = this.loginService.isUserLoggedIn; 
     this.isUserLoggedIn.subscribe(x=>{
-      console.log(x);
+      console.log("USER LOGGED IN: ", x);
     })
   }
 }

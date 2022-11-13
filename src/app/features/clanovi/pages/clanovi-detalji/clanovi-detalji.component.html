@@ -1,14 +1,17 @@
 <iz-breadcrumb route="/clanovi" label="Clanovi"></iz-breadcrumb>
-<iz-title title="Velid Duranovic"></iz-title>
 
-<div class="info-bar">
-    <span class="info status success">Aktivan</span>
-    <span>+387 62/421-855</span>
-    <span>Divičani</span>
-    <div>
-        Izmirio obaveze: 
-        <span class="info success">DA</span>
+<ng-container *ngIf="clan$ | async as clan">
+    <iz-title [title]="clan.first_name + ' ' + clan.last_name"></iz-title>
+    
+    <div class="info-bar">
+        <span class="info" [ngClass]="clan.status.extraClass">{{ clan.status.value }}</span>
+        <span *ngIf="clan.phone_number">{{ clan.phone_number }}</span>
+        <span *ngIf="clan.address">{{ clan.address }}</span>
+        <div>
+            Izmirio obaveze: 
+            <span class="info success">{{ clan.obligations.value }}</span>
+        </div>
     </div>
-</div>
-
-<iz-nav-tabs [tabs]="navigationTabs"></iz-nav-tabs>
+    
+    <iz-nav-tabs [tabs]="navigationTabs"></iz-nav-tabs>
+</ng-container>

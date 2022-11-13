@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "e-medzlis": {
+      "hosting": {
+        "e-medzlis": [
+          "e-medzlis"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "e-medzlis"
+  }
+}

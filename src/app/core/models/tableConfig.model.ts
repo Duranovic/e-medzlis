@@ -1,7 +1,9 @@
+import { Observable } from "rxjs"
+
 export interface DataTableType {
     columns: DataTableColumn [],
     rowActions?: DataTableRowActions [],
-    source: any [], // It can be different models
+    source: Observable<any []>, // It can be different models
 };
 
 export interface DataTableColumn {

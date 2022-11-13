@@ -12,6 +12,9 @@ import { LoginService } from './core/services/login.service';
 import { DzematiModule } from './features/dzemati/dzemati.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClanoviModule } from './features/clanovi/clanovi.module';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { ClanoviModule } from './features/clanovi/clanovi.module';
     DzematiModule,
     BrowserAnimationsModule,
     ClanoviModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

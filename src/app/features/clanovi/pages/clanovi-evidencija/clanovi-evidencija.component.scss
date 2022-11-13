@@ -43,7 +43,15 @@
         .year {
             font-family: variables.$font_ubuntu__bold;
             font-size: 36px;
-            color: variables.$red--dark;
+
+            &.error {
+                background-color: none;
+                color: variables.$red--dark;
+            }
+
+            &.success {
+                color: variables.$primary_color;
+            }
         }
     }
 
