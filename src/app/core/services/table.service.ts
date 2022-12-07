@@ -17,6 +17,6 @@ export class TableService {
     this.selectedElement = {
       ...this.selectedElement,
       ...obj
-    }
+    };
   }
 }

@@ -9,7 +9,7 @@
         <span *ngIf="clan.address">{{ clan.address }}</span>
         <div>
             Izmirio obaveze: 
-            <span class="info success">{{ clan.obligations.value }}</span>
+            <span class="info" [ngClass]="clan.obligations.extraClass">{{ clan.obligations.value }}</span>
         </div>
     </div>
     

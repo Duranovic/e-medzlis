@@ -1,6 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable, tap } from 'rxjs';
+import { map, Observable, tap, withLatestFrom } from 'rxjs';
 import { getCurrentDateToString } from 'src/app/core/helpers/date.helper';
 import { saveToPDF } from 'src/app/core/helpers/print.helper';
 import { Clan } from 'src/app/core/models/clan.model';
@@ -16,23 +16,31 @@ import { ClanoviEvidentirajModalComponent } from '../clanovi-evidentiraj-modal/c
 export class ClanoviEvidencijaComponent implements OnInit {
   @ViewChild('evidencijaPdf') content: ElementRef;
 
-  public clan$: Observable<Clan>;
+  public vm$: Observable<any>;
   public evidention: PlacanjeVM;
   public descriptionText: string;
   public breadcrumbValues: any;
 
-  constructor(public dialog: MatDialog, private store: StoreService, private tableService: TableService) { }
+  constructor(public dialog: MatDialog, private store: StoreService, private tableService: TableService, private ch: ChangeDetectorRef) { }
 
   public ngOnInit(): void {
-    this.clan$ = this.store.selectedClan$.pipe(
-      tap((selectedClan: Clan)=> {
+
+    this.store.selectedClan$.pipe(
+      tap(x=>{
+        console.log("CUSOTM MAP: ", x);
+      })
+    )
+    this.vm$ = this.store.selectedClan$.pipe(
+      withLatestFrom(this.store.placanja$),
+      map(([selectedClan, evidention]:any) => {
+        this.evidention = evidention.find((x: any)=>x.for_year == this.tableService.selectedElement.for_year);
         this.tableService.patchSelectedElement({clan_id: selectedClan.id})
-        this.evidention = this.tableService.selectedElement;
-        this.descriptionText = this.composeDescriptionText(selectedClan);
+        this.descriptionText = this.composeDescriptionText(selectedClan, evidention);
         this.breadcrumbValues = {
           label: selectedClan.first_name + ' ' + selectedClan.last_name,
           route: `/clanovi/${selectedClan.id}/placanje`,
         }
+        return {selectedClan, evidention};
       })
     );
   }
@@ -47,10 +55,10 @@ export class ClanoviEvidencijaComponent implements OnInit {
     saveToPDF(this.content.nativeElement, "Izvjestaj-o-placanja-ABC");
   }
 
-  public composeDescriptionText(clan: Clan): string {
+  public composeDescriptionText(clan: Clan, evidention: PlacanjeVM): string {
     return `
-      ${clan.first_name} ${clan.last_name} nastanjen na adresi u ${clan.address }, I koji je član u džematu Divičani, ${this.evidention.obligationFulfilled.value=='DA' ? 'izmirio je': 'nije izmirio'} obaveze za
-     ${this.evidention.for_year}. godinu do dana ${getCurrentDateToString()} godine
+      ${clan.first_name} ${clan.last_name} nastanjen na adresi u ${clan.address }, I koji je član u džematu Divičani, ${evidention.obligationFulfilled.value=='DA' ? 'izmirio je': 'nije izmirio'} obaveze za
+     ${evidention.for_year}. godinu do dana ${getCurrentDateToString()} godine
     `
   }
 }

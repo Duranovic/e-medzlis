@@ -6,6 +6,7 @@ import { GetDocumentWithId } from '../helpers/firebase.helper';
 import { Clan } from '../models/clan.model';
 import { Dzemat } from '../models/dzemat.model';
 import { Placanje } from '../models/placanje.model';
+import { serverTimestamp } from "firebase/firestore"
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class StoreService {
   public dzemati: Observable<Dzemat []>
   public selectedClan$: Observable<Clan>;
   public selectedEvidencija: Observable<Partial<PlacanjeVM>>;
+  public placanja$: Observable<Placanje []>;
 
   constructor(private store: AngularFirestore) {
     this.clanovi = this.getClanovi();
@@ -45,6 +47,15 @@ export class StoreService {
 
   public getPlacanja(clanId: string): Observable<Placanje []> {
     const q = this.store.collection('placanje', ref => ref.where('clan_id', '==', clanId).orderBy('for_year', 'desc')).snapshotChanges();
-    return GetDocumentWithId(q);
+    this.placanja$ = GetDocumentWithId(q);
+    return this.placanja$;
+  }
+
+  public evidentiraj(clan_id: string, for_year: number) {
+    this.store.collection('placanje').ref.add({
+      clan_id,
+      for_year,
+      payment_date: serverTimestamp(),
+    });
   }
 }

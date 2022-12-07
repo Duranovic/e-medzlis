@@ -1,9 +1,10 @@
-<ng-container *ngIf="clan$ | async as clan">
-    <iz-breadcrumb [label]="breadcrumbValues.label" [route]="breadcrumbValues.route"></iz-breadcrumb>
+{{vm$ | async | json}}
 
+<ng-container *ngIf="vm$ | async as vm">
+    <iz-breadcrumb [label]="breadcrumbValues.label" [route]="breadcrumbValues.route"></iz-breadcrumb>
     <div class="clanovi-evidencija">
         <div class="status-container">
-            <span class="year" [ngClass]="evidention.obligationFulfilled.value == 'DA' ? 'success' : 'error'">{{evidention.for_year}}</span>
+            <span class="year" [ngClass]="evidention.obligationFulfilled.value == 'DA' ? 'success' : 'error'">{{ evidention.for_year }}</span>
             <span [ngClass]="evidention.obligationFulfilled.extraClass">{{ evidention.obligationFulfilled.value == 'DA' ? 'Izmirio' : 'Nije izmirio' }} obaveze</span>
         </div>
         <div class="clanovi-evidencija-inner-container" #evidencijaPdf>
