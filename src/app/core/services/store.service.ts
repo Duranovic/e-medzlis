@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map, Observable } from 'rxjs';
+import { serverTimestamp } from "firebase/firestore";
 import { PlacanjeVM } from 'src/app/features/clanovi/models/placanje.model';
 import { GetDocumentWithId } from '../helpers/firebase.helper';
 import { Clan } from '../models/clan.model';
@@ -46,5 +47,13 @@ export class StoreService {
   public getPlacanja(clanId: string): Observable<Placanje []> {
     const q = this.store.collection('placanje', ref => ref.where('clan_id', '==', clanId).orderBy('for_year', 'desc')).snapshotChanges();
     return GetDocumentWithId(q);
+  }
+
+  public evidentiraj(clanId: string, forYear: number) {
+    this.store.collection('placanje').add({
+      for_year: forYear,
+      clan_id: clanId,
+      payment_date: serverTimestamp(),
+    })
   }
 }
