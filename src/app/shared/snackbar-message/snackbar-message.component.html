@@ -1,0 +1,15 @@
+<div [ngClass]="[data.status, 'snackbar-message']">
+    <div class="status-icon-container">
+        <img src="assets/images/icon-check.svg" alt="Icon check" *ngIf="data.status === 'success'; else iconError">
+        <ng-template #iconError>
+           <img src="assets/images/icon-error.svg" alt="Icon check">
+        </ng-template>
+    </div>
+    <div class="content">
+        <span class="title">{{data.title}}</span>
+        <p class="description">{{data.description}}</p>
+    </div>
+    <button (click)="close()" class="close">
+        <img src="assets/images/icon-close.svg" alt="Icon close">
+    </button>
+</div>

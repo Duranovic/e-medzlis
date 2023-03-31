@@ -1,0 +1,17 @@
+@use '/src/styles/utilities/variables';
+
+.mat-snack-bar-container {
+    &.status-snackbar {
+        border-left-width: 3px;
+        border-left-style: solid;
+        max-width: 450px;
+    
+        &.success {
+            border-color: variables.$primary_color;
+        }
+    
+        &.error {
+            border-color: variables.$red;
+        }
+    }
+}

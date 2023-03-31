@@ -15,3 +15,13 @@ export const evidentionConstant: Evidention = {
     extraClass: "button gray",
     typeOfElement: 'button',
 }
+
+export const snackbarEvidentionSuccess = {
+    title: 'Plaćanje članarine uspješno evidentirano.',
+    description: 'Uspješno evidentirano plaćanje za odabranu godinu.'
+}
+
+export const snackbarEvidentionError = {
+    title: 'Plaćanje članarine nije moguce evidentirati evidentirati.',
+    description: 'Nije moguce evidentirati plaćanje za odabranu godinu. Sacekajte malo i pokusajte ponovo.'
+}
