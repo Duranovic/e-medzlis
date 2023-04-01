@@ -12,8 +12,9 @@ export class InputSearchComponent implements OnInit, OnDestroy {
   @Input() isSmall: boolean = true;
   @Input() placeholder: string;
   @Output() searchTermEvent = new EventEmitter<string>();
-  searchControl: FormControl;
+
   private destroy$ = new Subject<void>();
+  public searchControl: FormControl;
 
   constructor() { }
 

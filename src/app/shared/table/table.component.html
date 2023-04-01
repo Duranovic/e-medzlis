@@ -1,26 +1,36 @@
-<table>
-  <thead>
-    <th *ngFor="let column of data.columns">
-      {{ column.title }}
-    </th>
-    <th *ngIf="data.rowActions"></th>
-  </thead>
-  <tbody *ngIf="data.source | async as source">
-    <tr *ngFor="let dataRow of source; trackBy: trackByFn" (click)="click(dataRow)">
-      <td *ngFor="let field of data.columns">
-        <button [ngClass]="getExtraClass(dataRow, field.dataProperty)" *ngIf="(getTypeOfHtmlELement(dataRow, field.dataProperty) === 'button'); else span">
-          {{ parseField(dataRow, field.dataProperty) }}
-        </button>
-
-        <ng-template #span>
-          <span [ngClass]="getExtraClass(dataRow, field.dataProperty)">
+<ng-container *ngIf="data.source | async as source">
+  <table *ngIf="source.length; else noData">
+    <thead>
+      <th *ngFor="let column of data.columns">
+        {{ column.title }}
+      </th>
+      <th *ngIf="data.rowActions"></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dataRow of source; trackBy: trackByFn" (click)="click(dataRow)">
+        <td *ngFor="let field of data.columns">
+          <button [ngClass]="getExtraClass(dataRow, field.dataProperty)" *ngIf="(getTypeOfHtmlELement(dataRow, field.dataProperty) === 'button'); else span">
             {{ parseField(dataRow, field.dataProperty) }}
-          </span>
-        </ng-template>
-      </td>
-      <td class="action-button" *ngIf="data.rowActions">
-        <iz-action-panel [actions]="data.rowActions"></iz-action-panel>
-      </td>
-    </tr>
-  </tbody>
-</table>
+          </button>
+  
+          <ng-template #span>
+            <span [ngClass]="getExtraClass(dataRow, field.dataProperty)">
+              {{ parseField(dataRow, field.dataProperty) }}
+            </span>
+          </ng-template>
+        </td>
+        <td class="action-button" *ngIf="data.rowActions">
+          <iz-action-panel [actions]="data.rowActions"></iz-action-panel>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #noData>
+  <div class="no-data">
+    <img src="assets/images/noData.png" alt="No data">
+    <span class="title">{{data.emptyData}}</span>
+    <button class="button button--gray button--round">Dodaj</button>
+  </div>
+</ng-template>

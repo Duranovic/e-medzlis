@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DataTableType } from 'src/app/core/models/tableConfig.model';
@@ -18,7 +18,7 @@ export class ClanoviComponent implements OnInit {
   @Input() clanoviTableSource: DataTableType;
   clanovi$: Observable<any>;
 
-  constructor(private store: StoreService, private ch: ChangeDetectorRef) { }
+  constructor(private store: StoreService) { }
 
   public ngOnInit(): void {
     this.search();
@@ -47,7 +47,8 @@ export class ClanoviComponent implements OnInit {
         }
       ],
       rowActions: tableStandardActionRows,
-      source: this.clanovi$
+      source: this.clanovi$,
+      emptyData: 'Nije dodan niti jedan član. Dodaj sada klikom na dugme ispod.'
     }
   }
 
