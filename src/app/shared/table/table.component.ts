@@ -53,4 +53,9 @@ export class TableComponent implements OnInit {
   public openActionPanel(): void {
     this.actionPanelOpened = true;
   }
+
+  public trackByFn(index: number, item: any): any {
+    // Use the item's ID as the unique identifier
+    return item.id;
+  }
 }
