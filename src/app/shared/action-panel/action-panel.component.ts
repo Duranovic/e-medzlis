@@ -31,7 +31,7 @@ export class ActionPanelComponent {
 
   public delete($event: MouseEvent | PointerEvent): void {
     this.closePanel($event);
-    console.log("DELETE ACTOION");
+    console.log("DELETE ACTION");
   }
 
   public callSpecificMethod(methodName: string, $event: MouseEvent | PointerEvent): void {
