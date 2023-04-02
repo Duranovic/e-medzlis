@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ActionRowType } from 'src/app/core/enums/table.enums';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { DataTableRowActions } from 'src/app/core/models/tableConfig.model';
 
 @Component({
@@ -11,40 +10,21 @@ import { DataTableRowActions } from 'src/app/core/models/tableConfig.model';
 export class ActionPanelComponent {
   public isOpened: boolean;
   @Input() actions: DataTableRowActions[];
+  @Input() data: any;
+  @Output() actionEvent = new EventEmitter()
 
   constructor() { }
 
-  public openPanel($event: MouseEvent | PointerEvent): void {
-    this.isOpened = true;
+  public togglePanel($event: MouseEvent | PointerEvent): void {
+    this.isOpened = !this.isOpened;
     $event.stopPropagation();
   }
 
-  public closePanel($event: MouseEvent | PointerEvent): void {
-    this.isOpened = false;
-    $event.stopPropagation();
-  }
-
-  public edit($event: MouseEvent | PointerEvent): void {
-    this.closePanel($event);
-    console.log("EDIT ACTION");
-  }
-
-  public delete($event: MouseEvent | PointerEvent): void {
-    this.closePanel($event);
-    console.log("DELETE ACTION");
-  }
-
-  public callSpecificMethod(methodName: string, $event: MouseEvent | PointerEvent): void {
-    switch (methodName) {
-      case ActionRowType.EDIT:
-        this.edit($event);
-        break;
-      case ActionRowType.DELETE:
-        this.delete($event);
-        break;
-      default:
-        console.log("YOU DON'T HAVE ANY METHOD DEFINED BY THAT NAME!!");
-        break;
-    }
+  public callAction(actionId: string, $event: MouseEvent | PointerEvent): void {
+      this.togglePanel($event);
+      this.actionEvent.emit({
+        actionId,
+        entityId: this.data.id
+      })
   }
 }

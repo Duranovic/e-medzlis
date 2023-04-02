@@ -6,4 +6,4 @@
         Dodaj Dzematliju
     </button>
 </div>
-<iz-table [data]="clanoviTableSource" route="clanovi"></iz-table>
+<iz-table [data]="clanoviTableSource" route="clanovi" (actionEvent)="callAction($event)"></iz-table>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataTableType } from 'src/app/core/models/tableConfig.model';
 import { TableService } from 'src/app/core/services/table.service';
@@ -16,6 +16,7 @@ export class TableComponent implements OnInit {
   @Input() clickableRow: boolean = true;
   @Input() route: string;
   @Input() postIndexRoute: string;
+  @Output() actionEvent = new EventEmitter();
 
   constructor(private router: Router, private tableService: TableService) { 
     // console.log(this.router.getCurrentNavigation()?.previousNavigation);
@@ -57,5 +58,12 @@ export class TableComponent implements OnInit {
   public trackByFn(index: number, item: any): any {
     // Use the item's ID as the unique identifier
     return item.id;
+  }
+
+  public callActionFromPanel({actionId, entityId}: any) {
+    this.actionEvent.emit({
+      actionId,
+      entityId
+    })
   }
 }

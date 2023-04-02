@@ -1,0 +1,1 @@
+export type ActionRowType = 'edit' | 'set_active' | 'delete';

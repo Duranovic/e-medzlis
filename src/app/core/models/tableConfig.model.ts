@@ -16,6 +16,7 @@ export interface DataTableColumn {
 export interface DataTableRowActions {
     label: string,
     actionId: string,
+    entityId?: string,
     extraClass?: string,
     typeOfElement?: HTMLElement
 }

@@ -1,14 +1,14 @@
-import { ActionRowType } from "../enums/table.enums"
+import { ActionRowEnum } from "../enums/table.enums"
 
-export const tableEditActionRow = {
-    actionId: ActionRowType.EDIT,
-    label: 'Uredi',
+export const tableChangeStatusActionRow = {
+    actionId: ActionRowEnum.SET_ACTIVE,
+    label: 'Promijeni status',
 }
 
 export const tableDeleteActionRow = {
-    actionId: ActionRowType.DELETE,
+    actionId: ActionRowEnum.DELETE,
     label: 'Izbrisi',
     extraClass: "red-color",
 }
 
-export const tableStandardActionRows = [tableEditActionRow, tableDeleteActionRow]
+export const tableStandardActionRows = [tableChangeStatusActionRow, tableDeleteActionRow]

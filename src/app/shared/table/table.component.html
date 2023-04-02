@@ -20,7 +20,7 @@
           </ng-template>
         </td>
         <td class="action-button" *ngIf="data.rowActions">
-          <iz-action-panel [actions]="data.rowActions"></iz-action-panel>
+          <iz-action-panel [actions]="data.rowActions" [data]="{id: dataRow.id}" (actionEvent)="callActionFromPanel($event)"></iz-action-panel>
         </td>
       </tr>
     </tbody>
