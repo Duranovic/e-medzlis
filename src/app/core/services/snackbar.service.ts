@@ -29,7 +29,7 @@ export class SnackbarService {
   public openSnackBar(data: SnackbarMessage): void {
     this._snackBar.openFromComponent(SnackbarMessageComponent, {
       data,
-      duration: 100000,
+      duration: 5000,
       horizontalPosition: 'end',
       panelClass: ['status-snackbar', data.status],
     });

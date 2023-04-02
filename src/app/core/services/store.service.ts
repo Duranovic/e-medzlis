@@ -42,13 +42,13 @@ export class StoreService {
         }
         
         // Update the document in Firestore with the modified data
-        return clanRef.set(updatedData);
-      } else {
-        console.log('Document not found');
-        return;
-      }
-    }).catch((error) => {
-      console.error('Error getting or updating document:', error);
+        return clanRef.set(updatedData).then((x)=> {
+          this.snackbarMessage.openSnackbarSuccess('Promjena statusa je uspjela.', 'Uspjesna promjena statusa clana.');
+        })
+      } 
+      return;
+    }).catch(() => {
+      this.snackbarMessage.openSnackbarError('Promjena statusa nije uspjela.', 'Neuspjesna promjena statusa clana. Pokusajte ponovo.');
     });
 
   }
@@ -56,7 +56,7 @@ export class StoreService {
   public deleteClan(id: string) {
     this.store.collection('clanovi').doc(id).delete().then(x=> {
       this.snackbarMessage.openSnackbarSuccess('Brisanje uspjesno.', 'Uspjesno izbrisan clan');
-    }).catch(x=> {
+    }).catch(() => {
       this.snackbarMessage.openSnackbarSuccess('Brisanje neuspjesno.', 'Neuspjesno brisanje clana. Pokusajte ponovo.');
     });
   }
