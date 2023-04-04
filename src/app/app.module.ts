@@ -15,10 +15,13 @@ import { ClanoviModule } from './features/clanovi/clanovi.module';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddNewClanDialogComponent } from './standalone/clanovi/add-new-clan-dialog/add-new-clan-dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddNewClanDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     BrowserAnimationsModule,
     ClanoviModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatDialogModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

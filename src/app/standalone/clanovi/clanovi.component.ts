@@ -7,6 +7,8 @@ import { map, Observable } from 'rxjs';
 import { StoreService } from 'src/app/core/services/store.service';
 import { ActionRowEnum } from 'src/app/core/enums/table.enums';
 import { Clan } from 'src/app/core/models/clan.model';
+import { MatDialog } from '@angular/material/dialog';
+import { AddNewClanDialogComponent } from './add-new-clan-dialog/add-new-clan-dialog.component';
 
 @Component({
   selector: 'iz-clanovi',
@@ -20,7 +22,7 @@ export class ClanoviComponent implements OnInit {
   @Input() clanoviTableSource: DataTableType;
   clanovi$: Observable<any>;
 
-  constructor(private store: StoreService) { }
+  constructor(private store: StoreService, public dialog: MatDialog) { }
 
   public ngOnInit(): void {
     this.search();
@@ -96,5 +98,9 @@ export class ClanoviComponent implements OnInit {
         console.log("YOU DON'T HAVE ANY METHOD DEFINED BY THAT NAME!!");
         break;
     }
+  }
+
+  public openForm(): void {
+    this.dialog.open(AddNewClanDialogComponent);
   }
 }

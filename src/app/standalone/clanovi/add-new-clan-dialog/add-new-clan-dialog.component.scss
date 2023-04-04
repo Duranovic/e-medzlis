@@ -1,0 +1,44 @@
+@use '/src/styles/utilities/variables';
+
+.dialog-container {
+    position: relative;
+    width: 65vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+
+    .close-dialog-cross-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        img {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    .dialog-content {
+        flex: 1;
+
+        h1 {
+            margin-top: 16px;
+            font-size: 24px;
+            font-weight: 400;
+            text-align: center;
+        }
+    }
+
+    .dialog-actions {
+        display: flex;
+        justify-content: flex-end;
+        min-height: auto;
+        gap: 4px;
+
+        button {
+            font-family: variables.$font_ubuntu__regular;
+            font-size: 12px;
+            padding: 8px 26px;
+        }
+    }
+}

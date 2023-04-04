@@ -8,6 +8,7 @@ import { Clan } from '../models/clan.model';
 import { Dzemat } from '../models/dzemat.model';
 import { Placanje } from '../models/placanje.model';
 import { SnackbarService } from './snackbar.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +19,32 @@ export class StoreService {
   public selectedClan$: Observable<Clan>;
   public selectedEvidencija: Observable<Partial<PlacanjeVM>>;
 
+  // Multi form step
+  public createClanForm: FormGroup;
+
   constructor(private store: AngularFirestore, private snackbarMessage: SnackbarService) {
     this.clanovi = this.getClanovi();
     this.dzemati = this.getDzemati();
+  }
+
+  public initCreateClanForm() {
+    this.createClanForm = new FormGroup({
+      // First form step
+      first_name: new FormControl('', Validators.required),
+      last_name: new FormControl('', Validators.required),
+      date_of_birth: new FormControl(null, Validators.required),
+      address: new FormControl('', Validators.required),
+      sex: new FormControl('', Validators.required),
+  
+      // Second form step
+      payer: new FormControl(false, Validators.required),
+      father_name: new FormControl(''),
+      mother_name: new FormControl(''),
+      married: new FormControl(false),
+      spouse_id: new FormControl(null),
+      phone_number: new FormControl(null),
+      email: new FormControl(null),
+    });
   }
 
   public setSelectedClan(id: string) {

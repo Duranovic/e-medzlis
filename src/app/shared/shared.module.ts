@@ -15,6 +15,7 @@ import { ActionPanelComponent } from './action-panel/action-panel.component';
 import { StatisticsCardComponent } from './statistics-card/statistics-card.component';
 import { NumberPlaceholderComponent } from './number-placeholder/number-placeholder.component';
 import { SnackbarMessageComponent } from './snackbar-message/snackbar-message.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SnackbarMessageComponent } from './snackbar-message/snackbar-message.co
     CoreModule,
     RouterModule,
     ReactiveFormsModule,
+    MatDialogModule
   ],
   exports: [
     InputComponent,
