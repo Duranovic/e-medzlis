@@ -11,6 +11,7 @@ export class InputComponent implements OnInit {
   @Input() frmControl: FormControl;
   @Input() type: string;
   @Input() label: string;
+  @Input() placeholder: string = '';
 
   public focusInput: boolean;
   constructor() { }

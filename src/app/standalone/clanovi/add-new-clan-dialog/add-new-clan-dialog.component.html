@@ -2,12 +2,44 @@
     <button class="close-dialog-cross-btn" mat-dialog-close>
         <img src="assets/images/icon-close.svg" alt="Close icon">
     </button>
-    <div class="dialog-content">
+    <div class="dialog-header">
         <h1>Dodaj novog clana</h1>
+        <p>Dzematlija je vezan za jedan dzemat. On moze biti platisa, supruznik koji nije duzan da placa, dijete, skolarac, student, korisnik socijalne pomoci. 
+            Ukoliko postoji opravdan razlog, dzematlija moze biti oslobodjen placanja i mimo navedenih kategorija stim sto se mora navesti razlog izuzeca.</p>
+    </div>
+
+    <div class="dialog-content">
+        <div class="step step-1">
+            <div class="left-side">
+                <iz-input placeholder="npr. Velid" label="Ime"  [frmControl]="store.createClanForm.get('first_name') | formControl" [type]="InputType.TEXT"></iz-input>
+                <iz-input placeholder="npr. Duranovic" label="Prezime"  [frmControl]="store.createClanForm.get('last_name') | formControl" [type]="InputType.TEXT"></iz-input>
+                <iz-input placeholder="npr. 1998" label="Godina rodjenja"  [frmControl]="store.createClanForm.get('year_of_birth') | formControl" [type]="InputType.NUMBER"></iz-input>
+                <iz-input placeholder="npr. Marsala Tita 54" label="Adresa"  [frmControl]="store.createClanForm.get('address') | formControl" [type]="InputType.TEXT"></iz-input>
+                <div class="radio-controls">
+                    <label for="sex">Odaberi spol</label>
+                    <div class="radio-group">
+                        <div class="radio">
+                            <input type="radio" id="musko" name="sex" value="male"
+                                [formControl]="store.createClanForm.get('sex') | formControl">
+                            <label for="musko">Musko</label>
+                        </div>
+    
+                        <div class="radio">
+                            <input type="radio" id="zensko" name="sex" value="female"
+                                [formControl]="store.createClanForm.get('sex') | formControl">
+                            <label for="zensko">Zensko</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side">
+                <img src="assets/images/family.png">
+            </div>
+        </div>
     </div>
 
     <div class="dialog-actions">
         <button class="button button--round button--gray" mat-dialog-close>Prekini</button>
-        <button mat-dialog-close class="button button--round">Dalje</button>
+        <button (click)="nextStep()" class="button button--round" [disabled]="!store.createClanForm.valid">Dalje</button>
     </div>
 </div>

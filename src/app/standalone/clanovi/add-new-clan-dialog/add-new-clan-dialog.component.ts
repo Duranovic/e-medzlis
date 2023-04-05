@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { InputType } from 'src/app/core/enums/input.enums';
+import { StoreService } from 'src/app/core/services/store.service';
 
 @Component({
   selector: 'app-add-new-clan-dialog',
@@ -9,8 +10,17 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AddNewClanDialogComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(public store: StoreService) { }
+  
+  get InputType() {
+    return InputType;
+  }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    this.store.initCreateClanForm(); 
+  }
+
+  public nextStep(): void {
+    console.log(this.store.createClanForm);
   }
 }

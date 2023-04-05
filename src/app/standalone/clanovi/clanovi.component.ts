@@ -9,11 +9,12 @@ import { ActionRowEnum } from 'src/app/core/enums/table.enums';
 import { Clan } from 'src/app/core/models/clan.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNewClanDialogComponent } from './add-new-clan-dialog/add-new-clan-dialog.component';
+import { CoreModule } from 'src/app/core/core.module';
 
 @Component({
   selector: 'iz-clanovi',
   standalone: true,
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, CoreModule],
   templateUrl: './clanovi.component.html',
   styleUrls: ['./clanovi.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default

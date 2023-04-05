@@ -17,6 +17,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddNewClanDialogComponent } from './standalone/clanovi/add-new-clan-dialog/add-new-clan-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AddNewClanDialogComponent } from './standalone/clanovi/add-new-clan-dia
     ClanoviModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

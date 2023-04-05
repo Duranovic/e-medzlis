@@ -32,7 +32,7 @@ export class StoreService {
       // First form step
       first_name: new FormControl('', Validators.required),
       last_name: new FormControl('', Validators.required),
-      date_of_birth: new FormControl(null, Validators.required),
+      year_of_birth: new FormControl(null, Validators.required),
       address: new FormControl('', Validators.required),
       sex: new FormControl('', Validators.required),
   
