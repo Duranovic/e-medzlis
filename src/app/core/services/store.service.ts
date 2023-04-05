@@ -28,6 +28,7 @@ export class StoreService {
   }
 
   public initCreateClanForm() {
+    // TODO: Should create form array with two seperated form groups
     this.createClanForm = new FormGroup({
       // First form step
       first_name: new FormControl('', Validators.required),
@@ -38,14 +39,29 @@ export class StoreService {
   
       // Second form step
       payer: new FormControl(false, Validators.required),
+      jmbg: new FormControl('', [Validators.minLength(13), Validators.maxLength(13)]),
       father_name: new FormControl(''),
       mother_name: new FormControl(''),
       married: new FormControl(false),
       spouse_id: new FormControl(null),
       phone_number: new FormControl(null),
       email: new FormControl(null),
+      dzemat_id: new FormControl('KxptPSlbcOFdHmfaBJKO'),
     });
   }
+
+  public addNewClan(): boolean {
+    let newClan = this.createClanForm.getRawValue() as Clan;
+    let returnValue = false;
+    this.store.collection('clanovi').add(this.createClanForm.getRawValue()).then(success => {
+      this.snackbarMessage.openSnackbarSuccess('Uspjesno dodat novi clan.', `Uspjesno ste dodali ${newClan.first_name} ${newClan.last_name}.`);
+      returnValue = true;
+    }).catch(err => {
+      this.snackbarMessage.openSnackbarError('Neuspjesno dodavanje clana.', `Niste uspjeli dodati novog clana - ${newClan.first_name} ${newClan.last_name}. Pokusajte ponovo.`)
+      returnValue = false;
+    });
+    return returnValue;
+  };
 
   public setSelectedClan(id: string) {
     return this.selectedClan$ = this.getClan(id);

@@ -47,6 +47,10 @@
             width: 100%;
         }
 
+        .step-2 {
+            gap: 100px;
+        }
+
         .left-side {
             width: 50%;
             display: flex;
@@ -66,6 +70,13 @@
                 max-width: 300px;
                 object-fit: contain;
             }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 16px;
         }
     }
 

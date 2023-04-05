@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { InputType } from 'src/app/core/enums/input.enums';
 import { StoreService } from 'src/app/core/services/store.service';
 
@@ -9,8 +10,10 @@ import { StoreService } from 'src/app/core/services/store.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddNewClanDialogComponent implements OnInit {
+  public step: number = 1;
+  public maxSteps: number = 2;
 
-  constructor(public store: StoreService) { }
+  constructor(public store: StoreService, private dialogRef: MatDialogRef<AddNewClanDialogComponent>) { }
   
   get InputType() {
     return InputType;
@@ -21,6 +24,15 @@ export class AddNewClanDialogComponent implements OnInit {
   }
 
   public nextStep(): void {
-    console.log(this.store.createClanForm);
+    this.step++;
+  }
+
+  public previousStep(): void {
+    this.step = this.step - 1;
+  }
+
+  public addNewClan() {
+    this.store.addNewClan();
+    this.dialogRef.close();
   }
 }

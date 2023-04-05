@@ -9,7 +9,7 @@
     </div>
 
     <div class="dialog-content">
-        <div class="step step-1">
+        <div class="step step-1" *ngIf="step === 1; else step2">
             <div class="left-side">
                 <iz-input placeholder="npr. Velid" label="Ime"  [frmControl]="store.createClanForm.get('first_name') | formControl" [type]="InputType.TEXT"></iz-input>
                 <iz-input placeholder="npr. Duranovic" label="Prezime"  [frmControl]="store.createClanForm.get('last_name') | formControl" [type]="InputType.TEXT"></iz-input>
@@ -36,10 +36,35 @@
                 <img src="assets/images/family.png">
             </div>
         </div>
+        <ng-template #step2>
+            <div class="step step-2">
+                <div class="left-side">
+                    <iz-input placeholder="npr. Ahmet" label="Ime oca"  [frmControl]="store.createClanForm.get('father_name') | formControl" [type]="InputType.TEXT"></iz-input>
+                    <iz-input placeholder="npr. Redzifa" label="Ime majke"  [frmControl]="store.createClanForm.get('mother_name') | formControl" [type]="InputType.TEXT"></iz-input>
+                    <div class="checkbox-control">
+                        <input type="checkbox" id="married" name="married" checked [formControl]="store.createClanForm.get('married') | formControl">
+                        <label for="married">U braku</label>
+                    </div>
+                    <div class="checkbox-control">
+                        <input type="checkbox" id="payer" name="payer" checked [formControl]="store.createClanForm.get('payer') | formControl">
+                        <label for="payer">Platisa</label>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="form-group">
+                        <iz-input placeholder="npr. velidprivate@gmail.com" label="Email"  [frmControl]="store.createClanForm.get('email') | formControl" [type]="InputType.TEXT"></iz-input>
+                        <iz-input placeholder="npr. +387 62 421 855" label="Broj telefona"  [frmControl]="store.createClanForm.get('phone_number') | formControl" [type]="InputType.TEXT"></iz-input>
+                        <iz-input placeholder="2907991132200" label="JMBG"  [frmControl]="store.createClanForm.get('jmbg') | formControl" [type]="InputType.NUMBER"></iz-input>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
     </div>
 
     <div class="dialog-actions">
         <button class="button button--round button--gray" mat-dialog-close>Prekini</button>
-        <button (click)="nextStep()" class="button button--round" [disabled]="!store.createClanForm.valid">Dalje</button>
+        <button class="button button--round button--gray" *ngIf="step > 1" (click)="previousStep()">Nazad</button>
+        <button class="button button--round" [disabled]="!store.createClanForm.valid" (click)="nextStep()" *ngIf="step !== maxSteps">Dalje</button>
+        <button class="button button--round" [disabled]="!store.createClanForm.valid" *ngIf="step === maxSteps" (click)="addNewClan()">Spremi</button>
     </div>
 </div>

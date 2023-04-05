@@ -1,13 +1,13 @@
 <form [formGroup]="form" *ngIf="form != undefined">
     <div class="cards">
         <div class="card">
-            <iz-input [type]="inputType.TEXT" [label]="formLabels.first_name"
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.first_name" placeholder="npr. Velija"
                 [frmControl]="form.get(formControlNames.first_name) | formControl"></iz-input>
 
-            <iz-input [type]="inputType.TEXT" [label]="formLabels.last_name"
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.last_name" placeholder="npr. Velijovic"
                 [frmControl]="form.get(formControlNames.last_name) | formControl"></iz-input>
 
-            <iz-input [type]="inputType.TEXT" [label]="formLabels.date_birth"
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.date_birth" placeholder="npr. 1964"
                 [frmControl]="form.get(formControlNames.date_birth) | formControl"></iz-input>
 
             <div class="radio-controls">
@@ -32,10 +32,10 @@
             </div>
         </div>
         <div class="card">
-            <iz-input [type]="inputType.TEXT" [label]="formLabels.father_name"
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.father_name" placeholder="npr. Osman"
                 [frmControl]="form.get(formControlNames.father_name) | formControl"></iz-input>
 
-            <iz-input [type]="inputType.TEXT" [label]="formLabels.mother_name"
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.mother_name" placeholder="npr. Osmanlija"
                 [frmControl]="form.get(formControlNames.mother_name) | formControl"></iz-input>
 
             <div class="checkbox-control">
@@ -47,13 +47,13 @@
                 [label]="formLabels.spouse"></iz-select>
         </div>
         <div class="card">
-            <iz-input [type]="inputType.TEXT" [label]="formLabels.phone_number"
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.phone_number" placeholder="npr. +387 62 421 855"
                 [frmControl]="form.get(formControlNames.phone_number) | formControl"></iz-input>
 
-            <iz-input [type]="inputType.EMAIL" [label]="formLabels.email"
+            <iz-input [type]="inputType.EMAIL" [label]="formLabels.email" placeholder="npr. velidtest@email.com"
                 [frmControl]="form.get(formControlNames.email) | formControl"></iz-input>
 
-            <iz-input [type]="inputType.TEXT" [label]="formLabels.address"
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.address" placeholder="npr. Divicani bb"
                 [frmControl]="form.get(formControlNames.address) | formControl"></iz-input>
 
             <iz-number-placeholder [value]="form.get(formControlNames.jmbg)?.value" [label]="formLabels.jmbg"></iz-number-placeholder>
