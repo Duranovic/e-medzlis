@@ -38,6 +38,7 @@ export class StoreService {
       sex: new FormControl('', Validators.required),
   
       // Second form step
+      year_registrered: new FormControl(null, [Validators.min(1900), Validators.max(new Date().getFullYear())]),
       payer: new FormControl(false, Validators.required),
       jmbg: new FormControl('', [Validators.minLength(13), Validators.maxLength(13)]),
       father_name: new FormControl(''),

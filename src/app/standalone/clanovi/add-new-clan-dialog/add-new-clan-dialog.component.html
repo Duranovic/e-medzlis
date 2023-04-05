@@ -39,6 +39,7 @@
         <ng-template #step2>
             <div class="step step-2">
                 <div class="left-side">
+                    <iz-input placeholder="npr. 2018" label="Godina uclanjenja"  [frmControl]="store.createClanForm.get('year_registrered') | formControl" [type]="InputType.NUMBER"></iz-input>
                     <iz-input placeholder="npr. Ahmet" label="Ime oca"  [frmControl]="store.createClanForm.get('father_name') | formControl" [type]="InputType.TEXT"></iz-input>
                     <iz-input placeholder="npr. Redzifa" label="Ime majke"  [frmControl]="store.createClanForm.get('mother_name') | formControl" [type]="InputType.TEXT"></iz-input>
                     <div class="checkbox-control">

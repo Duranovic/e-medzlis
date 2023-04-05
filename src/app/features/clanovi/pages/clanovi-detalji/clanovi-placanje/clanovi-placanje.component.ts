@@ -73,7 +73,9 @@ export class ClanoviPlacanjeComponent implements OnInit {
 
   public mapYears(yearRegistrered: number, placanja: Placanje []): PlacanjeVM [] {
     let placanjaFinal: PlacanjeVM [] = [];
-    let years = Range(yearRegistrered, new Date().getFullYear(), 1);
+    // TODO: Fix the issue - To avoid explicit casting, year_registrered should be stored as a number in database
+    // Currently it is stored as a string.
+    let years = Range(Number(yearRegistrered), new Date().getFullYear(), 1);
 
     years.forEach(year => {
       let index = placanja.findIndex(placanje => placanje.for_year == year);
