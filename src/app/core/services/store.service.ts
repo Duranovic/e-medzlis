@@ -52,9 +52,14 @@ export class StoreService {
   }
 
   public addNewClan(): boolean {
-    let newClan = this.createClanForm.getRawValue() as Clan;
+    let clanFormRawValue = this.createClanForm.getRawValue();
+    let newClan = {
+      ...clanFormRawValue,
+      dzemat_id: clanFormRawValue.dzemat_id.id
+    };
+
     let returnValue = false;
-    this.store.collection('clanovi').add(this.createClanForm.getRawValue()).then(success => {
+    this.store.collection('clanovi').add(newClan).then(success => {
       this.snackbarMessage.openSnackbarSuccess('Uspjesno dodat novi clan.', `Uspjesno ste dodali ${newClan.first_name} ${newClan.last_name}.`);
       returnValue = true;
     }).catch(err => {

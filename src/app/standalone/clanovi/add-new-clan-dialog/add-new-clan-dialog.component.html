@@ -42,6 +42,7 @@
                     <iz-input placeholder="npr. 2018" label="Godina uclanjenja"  [frmControl]="store.createClanForm.get('year_registrered') | formControl" [type]="InputType.NUMBER"></iz-input>
                     <iz-input placeholder="npr. Ahmet" label="Ime oca"  [frmControl]="store.createClanForm.get('father_name') | formControl" [type]="InputType.TEXT"></iz-input>
                     <iz-input placeholder="npr. Redzifa" label="Ime majke"  [frmControl]="store.createClanForm.get('mother_name') | formControl" [type]="InputType.TEXT"></iz-input>
+                    <iz-select [secondary]="true" label="Odaberi dzemat" [source]="dzematiSelect" [frmControl]="store.createClanForm.get('dzemat_id') | formControl"></iz-select>
                     <div class="checkbox-control">
                         <input type="checkbox" id="married" name="married" checked [formControl]="store.createClanForm.get('married') | formControl">
                         <label for="married">U braku</label>

@@ -13,7 +13,7 @@ export interface Clan {
     email: string,
     jmbg: string,
     address: string,
-    dzematId: string,
+    dzemat_id: string,
     status: boolean,
     obligations: boolean, 
     role: number,
