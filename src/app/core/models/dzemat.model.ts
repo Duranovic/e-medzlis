@@ -1,5 +1,6 @@
 export interface Dzemat {
+    id?: string,
     name: string,
-    numberOfPayers: number,
-    numberOfCustomers: number,
+    number_of_payers: number,
+    number_of_customers: number,
 }
