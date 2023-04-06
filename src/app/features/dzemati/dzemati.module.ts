@@ -12,6 +12,7 @@ import { DzematiStatistikaComponent } from './pages/dzemati-detalji/dzemati-stat
 import { ClanoviComponent } from 'src/app/standalone/clanovi/clanovi.component';
 import { AddNewDzematDialogComponent } from './pages/add-new-dzemat-dialog/add-new-dzemat-dialog.component';
 import { CoreModule } from "../../core/core.module";
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { CoreModule } from "../../core/core.module";
         CommonModule,
         DzematiRoutingModule,
         SharedModule,
+        MatDialogModule,
         ClanoviComponent,
         MatTabsModule,
         CoreModule

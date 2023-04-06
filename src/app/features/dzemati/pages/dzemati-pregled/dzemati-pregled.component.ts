@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { combineLatest, map, Observable, tap } from 'rxjs';
-import { tableStandardActionRows } from 'src/app/core/constants/table.constants';
+import { tableDeleteActionRow, tableStandardActionRows } from 'src/app/core/constants/table.constants';
+import { ActionRowEnum } from 'src/app/core/enums/table.enums';
 import { Dzemat } from 'src/app/core/models/dzemat.model';
 import { DataTableType } from 'src/app/core/models/tableConfig.model';
 import { StoreService } from 'src/app/core/services/store.service';
@@ -43,7 +44,7 @@ export class DzematiPregledComponent implements OnInit {
           sortable: false,
         }
       ],
-      rowActions: tableStandardActionRows,
+      rowActions: [tableDeleteActionRow],
       emptyData: 'Nije dodan niti jedan dzemat.',
       source: this.dzematiData$
     }
@@ -77,5 +78,16 @@ export class DzematiPregledComponent implements OnInit {
 
   public openForm(): void {
     this.dialog.open(AddNewDzematDialogComponent);
+  }
+
+  public callAction({actionId, entityId }: any): void {
+    switch (actionId) {
+      case  ActionRowEnum.DELETE:
+        this.store.deleteDzemat(entityId);
+        break;
+      default:
+        console.log("YOU DON'T HAVE ANY METHOD DEFINED BY THAT NAME!!");
+        break;
+    }
   }
 }

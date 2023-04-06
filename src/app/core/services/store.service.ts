@@ -125,11 +125,19 @@ export class StoreService {
   }
 
   public deleteClan(id: string) {
-    this.store.collection('clanovi').doc(id).delete().then(x => {
-      this.snackbarMessage.openSnackbarSuccess('Brisanje uspjesno.', 'Uspjesno izbrisan clan');
+    this.store.collection('clanovi').doc(id).delete().then(() => {
+      this.snackbarMessage.openSnackbarSuccess('Brisanje uspjesno.', 'Uspjesno izbrisan clan.');
     }).catch(() => {
       this.snackbarMessage.openSnackbarSuccess('Brisanje neuspjesno.', 'Neuspjesno brisanje clana. Pokusajte ponovo.');
     });
+  }
+
+  public deleteDzemat(id: string) {
+    this.store.collection('dzemati').doc(id).delete().then(() => {
+      this.snackbarMessage.openSnackbarSuccess('Brisanje uspjesno.', 'Uspjesno izbrisan dzemat.');
+    }).catch(() => {
+      this.snackbarMessage.openSnackbarError('Brisanje neuspjesno', 'Neuspjesno brisanje clana. Pokusajte ponovo.')
+    })
   }
 
   private getClanovi(): Observable<Clan[]> {

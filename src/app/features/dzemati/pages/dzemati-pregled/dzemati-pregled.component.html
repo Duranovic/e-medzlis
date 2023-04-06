@@ -10,6 +10,6 @@
       placeholder="Pretrazi dzemate po imenu"
       (searchTermEvent)="search($event)"
     ></iz-search>
-    <iz-table [data]="dzematiTableSource" route="dzemati"></iz-table>
+    <iz-table [data]="dzematiTableSource" route="dzemati" (actionEvent)="callAction($event)"></iz-table>
 </div> 
 
