@@ -1,13 +1,13 @@
 <label for="someId">{{ label }}</label>
 <div class="custom-dropdown" [ngClass]="{'open': isOpened, 'secondary': secondary}">
   <div class="button-selected">
-    <button (click)="open()">{{selected || 'Odaberi'}}</button>
+    <button (click)="open()">{{ selected?.label || 'Odaberi'}}</button>
   </div>
   <ul>
-    <li *ngFor="let option of [2022, 2021, 2020, 2019, 2018, 2017]" (click)="selectOption(option)"
-      [ngClass]="{'active': option == selected}">
+    <li *ngFor="let option of source" (click)="selectOption(option)"
+      [ngClass]="{'active': option.id === selected?.id}">
       <button>
-        {{option}}
+        {{ option?.label }}
       </button>
     </li>
   </ul>
