@@ -13,9 +13,9 @@ import { ClanoviModule } from './clanovi/clanovi.module';
   imports: [
     CommonModule,
     AuthentificationModule,
+    SharedModule,
     DzematiModule,
     ClanoviModule,
-    SharedModule,
   ]
 })
 export class FeaturesModule { }

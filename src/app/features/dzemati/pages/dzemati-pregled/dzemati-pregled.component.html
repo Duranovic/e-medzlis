@@ -1,13 +1,14 @@
 <div class="main-container">
     <div class="header">
      <iz-title title="Dzemati" [description]="countMessage"></iz-title>
-      <button class="button button--round button--bigger button--add">
+      <button class="button button--round button--bigger button--add" (click)="openForm()">
         Dodaj Dzemat
       </button>
     </div>
     <iz-search
       [isSmall]="false"
       placeholder="Pretrazi dzemate po imenu"
+      (searchTermEvent)="search($event)"
     ></iz-search>
     <iz-table [data]="dzematiTableSource" route="dzemati"></iz-table>
 </div> 

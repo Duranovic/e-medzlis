@@ -10,21 +10,25 @@ import { DzematiDetaljiComponent } from './pages/dzemati-detalji/dzemati-detalji
 import { DzematiUpravaComponent } from './pages/dzemati-detalji/dzemati-uprava/dzemati-uprava.component';
 import { DzematiStatistikaComponent } from './pages/dzemati-detalji/dzemati-statistika/dzemati-statistika.component';
 import { ClanoviComponent } from 'src/app/standalone/clanovi/clanovi.component';
+import { AddNewDzematDialogComponent } from './pages/add-new-dzemat-dialog/add-new-dzemat-dialog.component';
+import { CoreModule } from "../../core/core.module";
 
 @NgModule({
-  declarations: [
-    DzematiPregledComponent,
-    DzematiClanoviComponent,
-    DzematiDetaljiComponent,
-    DzematiUpravaComponent,
-    DzematiStatistikaComponent
-  ],
-  imports: [
-    CommonModule,
-    DzematiRoutingModule,
-    SharedModule,
-    ClanoviComponent,
-    MatTabsModule,
-  ]
+    declarations: [
+        DzematiPregledComponent,
+        DzematiClanoviComponent,
+        DzematiDetaljiComponent,
+        DzematiUpravaComponent,
+        DzematiStatistikaComponent,
+        AddNewDzematDialogComponent,
+    ],
+    imports: [
+        CommonModule,
+        DzematiRoutingModule,
+        SharedModule,
+        ClanoviComponent,
+        MatTabsModule,
+        CoreModule
+    ]
 })
 export class DzematiModule { }

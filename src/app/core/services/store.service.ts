@@ -14,13 +14,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   providedIn: 'root'
 })
 export class StoreService {
-  public clanovi: Observable<Clan []>;
-  public dzemati: Observable<Dzemat []>
+  public clanovi: Observable<Clan[]>;
+  public dzemati: Observable<Dzemat[]>
   public selectedClan$: Observable<Clan>;
   public selectedEvidencija: Observable<Partial<PlacanjeVM>>;
 
-  // Multi form step
+  // Multi step from
   public createClanForm: FormGroup;
+  public createDzematForm: FormGroup;
 
   constructor(private store: AngularFirestore, private snackbarMessage: SnackbarService) {
     this.clanovi = this.getClanovi();
@@ -36,7 +37,7 @@ export class StoreService {
       year_of_birth: new FormControl(null, Validators.required),
       address: new FormControl('', Validators.required),
       sex: new FormControl('', Validators.required),
-  
+
       // Second form step
       year_registrered: new FormControl(null, [Validators.min(1900), Validators.max(new Date().getFullYear())]),
       payer: new FormControl(false, Validators.required),
@@ -47,8 +48,32 @@ export class StoreService {
       spouse_id: new FormControl(null),
       phone_number: new FormControl(null),
       email: new FormControl(null),
-      dzemat_id: new FormControl('KxptPSlbcOFdHmfaBJKO'),
     });
+  }
+
+  public initCreateDzematForm() {
+    this.createDzematForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      clan_id: new FormControl('', Validators.required),
+    })
+  };
+
+  public addNewDzemat(): boolean {
+    let dzematFormValue = this.createDzematForm.getRawValue();
+
+    let newDzemat = {
+      ...dzematFormValue,
+      clan_id: dzematFormValue.clan_id.id,
+    }
+    let returnValue = false;
+    this.store.collection('dzemati').add(newDzemat).then(success => {
+      this.snackbarMessage.openSnackbarSuccess('Uspjesno dodat novi dzemat.', `Uspjesno ste dodali dzemat: ${newDzemat.name}.`);
+      returnValue = true;
+    }).catch(err => {
+      this.snackbarMessage.openSnackbarError('Neuspjesno dodavanje dzemata.', `Niste uspjeli dodati novi dzemat - ${newDzemat.name}. Pokusajte ponovo.`)
+      returnValue = false;
+    });
+    return returnValue;
   }
 
   public addNewClan(): boolean {
@@ -78,7 +103,7 @@ export class StoreService {
 
     // Get the document data and store it in a variable
     clanRef.get().then((doc) => {
-      if(doc.exists) {
+      if (doc.exists) {
         const docData = doc.data() as { [key: string]: any };
 
         // Perform any modifications to the data
@@ -86,12 +111,12 @@ export class StoreService {
           ...docData,
           status: !docData['status']
         }
-        
+
         // Update the document in Firestore with the modified data
-        return clanRef.set(updatedData).then((x)=> {
+        return clanRef.set(updatedData).then((x) => {
           this.snackbarMessage.openSnackbarSuccess('Promjena statusa je uspjela.', 'Uspjesna promjena statusa clana.');
         })
-      } 
+      }
       return;
     }).catch(() => {
       this.snackbarMessage.openSnackbarError('Promjena statusa nije uspjela.', 'Neuspjesna promjena statusa clana. Pokusajte ponovo.');
@@ -100,32 +125,32 @@ export class StoreService {
   }
 
   public deleteClan(id: string) {
-    this.store.collection('clanovi').doc(id).delete().then(x=> {
+    this.store.collection('clanovi').doc(id).delete().then(x => {
       this.snackbarMessage.openSnackbarSuccess('Brisanje uspjesno.', 'Uspjesno izbrisan clan');
     }).catch(() => {
       this.snackbarMessage.openSnackbarSuccess('Brisanje neuspjesno.', 'Neuspjesno brisanje clana. Pokusajte ponovo.');
     });
   }
 
-  private getClanovi(): Observable<Clan []> {
+  private getClanovi(): Observable<Clan[]> {
     const collection = this.store.collection<Clan>('clanovi').snapshotChanges();
     return GetDocumentWithId(collection);
   };
 
   public getClan(id: string): Observable<Clan | any> {
     return this.clanovi.pipe(
-      map((clanovi: Clan[])=>{
-        return clanovi.find((clan:Clan) => clan.id === id)
+      map((clanovi: Clan[]) => {
+        return clanovi.find((clan: Clan) => clan.id === id)
       }),
     )
   }
 
-  private getDzemati(): Observable<Dzemat []> {
+  private getDzemati(): Observable<Dzemat[]> {
     const collection = this.store.collection('dzemati').snapshotChanges();
     return GetDocumentWithId(collection);
   }
 
-  public getPlacanja(clanId: string): Observable<Placanje []> {
+  public getPlacanja(clanId: string): Observable<Placanje[]> {
     const q = this.store.collection('placanje', ref => ref.where('clan_id', '==', clanId).orderBy('for_year', 'desc')).snapshotChanges();
     return GetDocumentWithId(q);
   }
