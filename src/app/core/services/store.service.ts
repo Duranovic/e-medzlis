@@ -48,6 +48,7 @@ export class StoreService {
       spouse_id: new FormControl(null),
       phone_number: new FormControl(null),
       email: new FormControl(null),
+      dzemat_id: new FormControl(null),
     });
   }
 
@@ -58,40 +59,32 @@ export class StoreService {
     })
   };
 
-  public addNewDzemat(): boolean {
-    let dzematFormValue = this.createDzematForm.getRawValue();
-
+  public addNewDzemat(): void {
+    let dzematFormRawValue = this.createDzematForm.getRawValue();
     let newDzemat = {
-      ...dzematFormValue,
-      clan_id: dzematFormValue.clan_id.id,
+      ...dzematFormRawValue,
+      clan_id: dzematFormRawValue.clan_id.id,
     }
-    let returnValue = false;
-    this.store.collection('dzemati').add(newDzemat).then(success => {
+    this.store.collection('dzemati').add(newDzemat).then(() => {
       this.snackbarMessage.openSnackbarSuccess('Uspjesno dodat novi dzemat.', `Uspjesno ste dodali dzemat: ${newDzemat.name}.`);
-      returnValue = true;
-    }).catch(err => {
+    }).catch(() => {
       this.snackbarMessage.openSnackbarError('Neuspjesno dodavanje dzemata.', `Niste uspjeli dodati novi dzemat - ${newDzemat.name}. Pokusajte ponovo.`)
-      returnValue = false;
     });
-    return returnValue;
   }
 
-  public addNewClan(): boolean {
+  public addNewClan(): void {
     let clanFormRawValue = this.createClanForm.getRawValue();
+    console.log(clanFormRawValue);
     let newClan = {
       ...clanFormRawValue,
       dzemat_id: clanFormRawValue.dzemat_id.id
     };
 
-    let returnValue = false;
-    this.store.collection('clanovi').add(newClan).then(success => {
+    this.store.collection('clanovi').add(newClan).then(() => {
       this.snackbarMessage.openSnackbarSuccess('Uspjesno dodat novi clan.', `Uspjesno ste dodali ${newClan.first_name} ${newClan.last_name}.`);
-      returnValue = true;
     }).catch(err => {
       this.snackbarMessage.openSnackbarError('Neuspjesno dodavanje clana.', `Niste uspjeli dodati novog clana - ${newClan.first_name} ${newClan.last_name}. Pokusajte ponovo.`)
-      returnValue = false;
     });
-    return returnValue;
   };
 
   public setSelectedClan(id: string) {
@@ -149,6 +142,14 @@ export class StoreService {
     return this.clanovi.pipe(
       map((clanovi: Clan[]) => {
         return clanovi.find((clan: Clan) => clan.id === id)
+      }),
+    )
+  }
+
+  public getDzemat(id: string): Observable<Dzemat | any> {
+    return this.dzemati.pipe(
+      map((dzemati: Dzemat[]) => {
+        return dzemati.find((clan: Dzemat) => clan.id === id)
       }),
     )
   }

@@ -10,6 +10,7 @@ import { Clan } from 'src/app/core/models/clan.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNewClanDialogComponent } from './add-new-clan-dialog/add-new-clan-dialog.component';
 import { CoreModule } from 'src/app/core/core.module';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'iz-clanovi',
@@ -22,10 +23,17 @@ import { CoreModule } from 'src/app/core/core.module';
 export class ClanoviComponent implements OnInit {
   @Input() clanoviTableSource: DataTableType;
   clanovi$: Observable<any>;
+  public dzematId: string;
+  public isDzematiRoute: boolean; 
 
-  constructor(private store: StoreService, public dialog: MatDialog) { }
+  constructor(private store: StoreService, public dialog: MatDialog, private route: ActivatedRoute) { }
 
   public ngOnInit(): void {
+    this.isDzematiRoute = this.route.snapshot.parent?.url[0]?.path === 'dzemati';
+    if (this.isDzematiRoute) {
+      this.dzematId = this.route.parent?.snapshot.params['id'];
+    }
+
     this.search();
 
     this.clanoviTableSource = {
@@ -74,20 +82,26 @@ export class ClanoviComponent implements OnInit {
             }
           }
         }).filter((clan: any) => {
-          if (!searchKey?.trim())
+          let isSameDzemat = clan.dzemat_id === this.dzematId;
+
+          if (!searchKey?.trim() && !this.isDzematiRoute)
+            return true
+
+          if(!searchKey?.trim() && this.isDzematiRoute && isSameDzemat)
             return true;
-          return clan.name.includes(searchKey);
+
+          return clan.name.includes(searchKey) && isSameDzemat
         })
       }
-      ))
-
+      )
+    )
     this.clanoviTableSource = {
       ...this.clanoviTableSource,
       source: this.clanovi$,
     }
   }
 
-  public callAction({actionId, entityId }: any): void {
+  public callAction({ actionId, entityId }: any): void {
     switch (actionId) {
       case ActionRowEnum.SET_ACTIVE:
         this.store.changeClanStatus(entityId);

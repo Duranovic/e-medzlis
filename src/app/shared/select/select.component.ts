@@ -20,7 +20,7 @@ export class SelectComponent implements OnInit {
   constructor() { }
 
   public ngOnInit(): void {
-    this.selected = this.frmControl.value;
+    this.selected = this.frmControl?.value;
   }
 
   public open() : void{
@@ -30,6 +30,6 @@ export class SelectComponent implements OnInit {
   public selectOption(option: Select): void {
     this.selected = option;
     this.isOpened = false;
-    this.frmControl.setValue(option);
+    this.frmControl?.setValue(option);
   }
 }
