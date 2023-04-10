@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { map, tap, Observable, switchMap, combineLatest } from 'rxjs';
+import { Range } from 'src/app/core/helpers/array.helper';
 import { Clan } from 'src/app/core/models/clan.model';
 import { NavigationTabs } from 'src/app/core/models/navigation-tabs.model';
+import { Placanje } from 'src/app/core/models/placanje.model';
 import { StoreService } from 'src/app/core/services/store.service';
 
 @Component({
@@ -11,27 +13,37 @@ import { StoreService } from 'src/app/core/services/store.service';
 })
 export class ClanoviDetaljiComponent implements OnInit {
   public navigationTabs: NavigationTabs[];
-  public clan$: Observable<any>; 
+  public clan$: Observable<any>;
+  public obligationsFulifilled: boolean = true;
 
   constructor(private route: ActivatedRoute, private store: StoreService) { }
 
   public ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.clan$ = this.store.getClan(params['id']).pipe(
-        map(x=> {
+      let clanId: string = params['id'];
+      this.clan$ = combineLatest([this.store.getClan(clanId), this.store.getPlacanja(clanId)]).pipe(
+        map(([clan, placanja]): Clan => {
+          let years = Range(Number(clan.year_registrered), new Date().getFullYear(), 1);
+          years.forEach(year => {
+            if (!placanja.find(placanje => placanje.for_year === year)) {
+              this.obligationsFulifilled = false;
+              return;
+            }
+          })
           return {
-            ...x,
+            ...clan,
             obligations: {
-              value: x.obligations ? 'DA' : 'NE',
-              extraClass: x.obligations ? 'success' : 'error',
+              value: this.obligationsFulifilled ? 'DA' : 'NE',
+              extraClass: this.obligationsFulifilled ? 'success' : 'error',
             },
             status: {
-              value: x.status ? 'Aktivan' : 'Neaktivan',
-              extraClass: x.status ? 'status success' : 'status error',
+              value: clan.status ? 'Aktivan' : 'Neaktivan',
+              extraClass: clan.status ? 'status success' : 'status error',
             }
+
           }
         })
-      );
+      )
     })
 
     this.navigationTabs = [

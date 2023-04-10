@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map, Observable } from 'rxjs';
+import { map, Observable, switchMap } from 'rxjs';
 import { serverTimestamp } from "firebase/firestore";
 import { PlacanjeVM } from 'src/app/features/clanovi/models/placanje.model';
 import { GetDocumentWithId } from '../helpers/firebase.helper';
@@ -141,7 +141,7 @@ export class StoreService {
   public getClan(id: string): Observable<Clan | any> {
     return this.clanovi.pipe(
       map((clanovi: Clan[]) => {
-        return clanovi.find((clan: Clan) => clan.id === id)
+        return clanovi.find((clan: Clan) => clan.id === id);
       }),
     )
   }
