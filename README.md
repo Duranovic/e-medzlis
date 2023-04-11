@@ -1,11 +1,14 @@
 # E-Medzlis
 E-Medzlis is web application built in Angular for Islamic organization on a city level (Medzlis). 
-Admin of this application is able to add new users, dzemat's (it's on Village level in the most cases). 
+Complete design is done by me 😁 (Someone might say that I have a talent for design. 😅)
+<br><br>Admin of this application is able to add new users, dzemat's (it's on Village level in the most cases). 
 For every user, it is possible to see informations like: First name, Last name, Year of birth, Address, Phone Number, Email, Sexual orientation, Mother name, Father name, is married, is payer and so on.
-Also there is an option to check if a user has been user fulfilled its obligations and to make evidention for each year. 
+<br><br>Also there is an option to check if a user has been user fulfilled its obligations and to make evidention for each year. 
 Admin is able to edit all those personal informations and to make all evidentions in form of obligations and payments. After payment evidented,
 it is possible to see and print status of that specific year. 
 There is a lot of more options and possibilities, and will add more on top of that, but this is some breaf explanation of the application.
+<br>
+### >>>> It is still Work in Progress <<<<
 
 # Screenshots:
 ## Login
