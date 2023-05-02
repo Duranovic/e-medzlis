@@ -16,6 +16,7 @@ import { StatisticsCardComponent } from './statistics-card/statistics-card.compo
 import { NumberPlaceholderComponent } from './number-placeholder/number-placeholder.component';
 import { SnackbarMessageComponent } from './snackbar-message/snackbar-message.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SaveCancelBarComponent } from './save-cancel-bar/save-cancel-bar.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ActionPanelComponent,
     StatisticsCardComponent,
     NumberPlaceholderComponent,
-    SnackbarMessageComponent
+    SnackbarMessageComponent,
+    SaveCancelBarComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +53,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ActionPanelComponent,
     StatisticsCardComponent,
     NumberPlaceholderComponent,
-    SnackbarMessageComponent
+    SnackbarMessageComponent,
+    SaveCancelBarComponent,
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,4 @@
+<div class="save-cancel-bar" *ngIf="formChanged$ | async">
+    <button class="button button--round button--alter" (click)="resetForm()">Prekini</button>
+    <button class="button button--round button--white" (click)="updateForm()">Spremi</button>
+</div>

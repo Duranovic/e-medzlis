@@ -1,0 +1,46 @@
+@use '/src/styles/utilities/variables';
+
+.save-cancel-bar {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background-color: #29935E;
+    padding: 8px 32px; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    animation: moveUp .8s forwards;
+
+    .button {
+        font-family: variables.$font_ubuntu__regular;
+        box-shadow: none;
+        font-size: 12px;
+        padding: 8px 22px;
+        border: 2px solid variables.$white;
+
+        &:hover {
+            font-weight: normal;
+        }
+
+        &--alter {
+            color: variables.$white;
+            background-color: transparent;
+            border-color: variables.$white;
+        }
+
+        &--white {
+            color: variables.$black;
+        }
+    }
+}
+
+@keyframes moveUp {
+    0% {
+        bottom: -100%;
+    }
+    100% {
+        bottom: 0;
+    }
+}

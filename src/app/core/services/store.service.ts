@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map, Observable, switchMap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { serverTimestamp } from "firebase/firestore";
 import { PlacanjeVM } from 'src/app/features/clanovi/models/placanje.model';
 import { GetDocumentWithId } from '../helpers/firebase.helper';
@@ -74,7 +74,6 @@ export class StoreService {
 
   public addNewClan(): void {
     let clanFormRawValue = this.createClanForm.getRawValue();
-    console.log(clanFormRawValue);
     let newClan = {
       ...clanFormRawValue,
       dzemat_id: clanFormRawValue.dzemat_id.id
@@ -144,6 +143,21 @@ export class StoreService {
         return clanovi.find((clan: Clan) => clan.id === id);
       }),
     )
+  }
+
+  public updateClan(clanFormGroup: FormGroup): void {
+    let clanId = clanFormGroup?.get('id')?.value;
+    let clanRawValue: Clan;
+
+    clanFormGroup.removeControl('id');
+    clanRawValue = clanFormGroup.getRawValue();
+
+    this.store.collection('clanovi').doc(clanId).update(clanRawValue).then((x) => {
+      this.snackbarMessage.openSnackbarSuccess('Izmjena podataka je uspjelo.', 'Uspjesna izmjena podataka clana.');
+    }).catch((err) => {
+      this.snackbarMessage.openSnackbarError('Izmjena podataka nije uspjelo.', 'Neuspjesna izmjena podataka clana. Pokusajte ponovo.');
+      console.error(err);
+    });
   }
 
   public getDzemat(id: string): Observable<Dzemat | any> {
