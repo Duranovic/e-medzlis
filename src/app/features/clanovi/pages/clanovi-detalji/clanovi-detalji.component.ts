@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map, tap, Observable, switchMap, combineLatest } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { map, Observable, combineLatest } from 'rxjs';
 import { Range } from 'src/app/core/helpers/array.helper';
 import { Clan } from 'src/app/core/models/clan.model';
 import { NavigationTabs } from 'src/app/core/models/navigation-tabs.model';
-import { Placanje } from 'src/app/core/models/placanje.model';
 import { StoreService } from 'src/app/core/services/store.service';
 
 @Component({
