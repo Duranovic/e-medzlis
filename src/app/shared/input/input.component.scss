@@ -64,6 +64,13 @@ $left-padding: 20px;
         }
     }
 
+    &.white {
+        input {
+            background: white;
+            box-shadow: 0 3px 6px gainsboro;
+        }
+    }
+
     &--focused {
         &:not(.classic) {
             label {

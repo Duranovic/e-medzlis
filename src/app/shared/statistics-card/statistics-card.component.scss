@@ -4,12 +4,12 @@ $light-green-card-color: #EDFBEF;
 $beige-card-color: #F9F8F2;
 
 .statistics-card {
-    height: 250px;
+    height: 200px;
     width: 100%;
     display: flex;
     border-radius: 20px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
-    padding: 36px 30px;
+    padding: 10px 30px;
     margin: 4px;
 
     &__details {
@@ -22,7 +22,7 @@ $beige-card-color: #F9F8F2;
 
         .title {
             font-family: variables.$font_ubuntu__bold;
-            font-size: 32px;
+            font-size: 20px;
         }
 
         .description {
@@ -31,7 +31,7 @@ $beige-card-color: #F9F8F2;
         }
 
         .value {
-            font-size: 42px;
+            font-size: 30px;
             font-family: variables.$font_ubuntu__bold;
         }
     }
