@@ -1,34 +1,3 @@
-@use '/src/styles/utilities/variables';
-@use '/src/styles/utilities/mixins';
-
 .select-container {
     max-width: 200px;
-}
-
-.cards-container { 
-    position: relative;
-    display: flex;
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-right: 8px;
-
-    .cards-inner-container {
-        position: relative;
-        flex: 1;
-        height: 100%;
-
-        .cards-list {
-            position: relative;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            padding-bottom: 100px;
-
-            iz-statistics-card {
-                flex-grow: 1;
-                width: calc((100% / 2) - 100px);
-            }
-        }
-    }
 }

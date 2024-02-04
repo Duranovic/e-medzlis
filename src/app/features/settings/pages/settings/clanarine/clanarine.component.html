@@ -1,0 +1,11 @@
+<div class="clanarine">
+  <form [formGroup]="form" *ngIf="form != undefined">
+    <h2 class="subsection underline">Članarine</h2>
+    <ul *ngIf="store.clanarine$ | async as clanarine" class="dopustenja-list">
+      <form [formGroup]="form">
+        <iz-input [type]="InputType.NUMBER" placeholder="npr. 60" styleApperience="white" [label]="labelForSubscription" [frmControl]="form.get('iznos') | formControl" ></iz-input>
+      </form>
+        <iz-table [data]="clanarinaTableSource" [clickableRow]="false"></iz-table>
+    </ul>
+  </form>
+</div>

@@ -60,7 +60,14 @@ input[type="radio"] {
 .checkbox-control {
     display: flex;
     align-items: center;
-    
+
+  &.large {
+    input {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
     input {
         margin: 0 8px 0 0;
         accent-color: variables.$green;

@@ -24,7 +24,7 @@ export class DzematiDetaljiComponent implements OnInit {
     })
     this.navigationTabs = [
       { label: 'Clanovi', route: 'clanovi'},
-      { label: 'Uprava', route: 'uprava' },
+      // { label: 'Uprava', route: 'uprava' },
       { label: 'Statistika', route: 'statistika' },
     ];
   }

@@ -1,0 +1,13 @@
+<div class="dopustenja">
+  <form [formGroup]="form" *ngIf="form != undefined">
+    <h2 class="subsection underline">Dopuštenja</h2>
+    <ul *ngIf="postavkeFormArray" class="dopustenja-list">
+      <li *ngFor="let postavkaForm of postavkeFormArray.controls">
+        <div class="checkbox-control large" [formGroup]="postavkaForm | formGroup">
+          <input type="checkbox" [id]="postavkaForm.get('id')?.value" [name]="postavkaForm.get('id')?.value" [checked]="postavkaForm.get('value')" [formControlName]="formControlNames.value">
+          <label [for]="postavkaForm.get('id')?.value">{{ postavkaForm.get('type')?.value }}</label>
+        </div>
+      </li>
+    </ul>
+  </form>
+</div>

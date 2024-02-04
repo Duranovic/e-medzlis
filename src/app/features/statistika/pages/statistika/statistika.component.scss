@@ -1,0 +1,108 @@
+@use "/src/styles/utilities/variables";
+
+:host {
+    overflow-y: auto;
+}
+
+.main {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 90vh;
+    padding-right: 16px;
+}
+
+.charts {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    margin-bottom: 32px;
+    width: 100%;
+
+    .chart-wrapper {
+        width: auto;
+        flex: 1;
+        height: 350px;
+        background-color: white;
+        border-radius: 32px;
+
+        ngx-charts-line-chart{
+            transform: translateY(30px);
+            height: 90%;
+            width: 90%;
+            display: inline-block;
+        }
+    }
+}
+
+.select-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+    max-width: 30%;
+
+    iz-select {
+        flex: 1;
+    }
+}
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.cards-container {
+    display: flex;
+    gap: 32px;
+    height: auto;
+    margin-bottom: 64px;
+
+    iz-statistics-card {
+        flex: 1;
+    }
+}
+
+.small-cards-row {
+    display: flex;
+    gap: 32px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-block: 32px;
+
+    .small-cards-column {
+        flex: 1;
+    }
+
+    .title {
+        font-size: 16px;   
+        margin-bottom: 12px;
+    }
+
+
+    .small-info-card {
+        flex: 1;
+        margin-bottom: 8px;
+        border-left: 2px solid #a7ffd3;
+
+
+        .inner-card {
+            background-color: variables.$white;
+            display: flex;
+            gap: 12px;
+            box-shadow: 2px 0 5px variables.$gray--800;
+            padding: 16px;
+            border-radius: 4px;
+
+            span {
+                max-width: calc(100/3);
+                width: 100%;
+            }
+
+            .amount {
+                display: inline-block;
+                color: variables.$red;
+            }
+        }
+
+    }
+}

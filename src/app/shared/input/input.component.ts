@@ -11,8 +11,10 @@ import { Subject, takeUntil } from 'rxjs';
 export class InputComponent implements OnInit, OnDestroy {
   @Input() frmControl: FormControl;
   @Input() type: string;
+  @Input() styleApperience: string;
   @Input() label: string;
   @Input() placeholder: string;
+  @Input() additionalClasses: string;
 
   public focusInput: boolean;
   private destroy$ = new Subject<void>();

@@ -6,15 +6,6 @@ import { DzematiStatistikaComponent } from './pages/dzemati-detalji/dzemati-stat
 import { DzematiUpravaComponent } from './pages/dzemati-detalji/dzemati-uprava/dzemati-uprava.component';
 import { DzematiPregledComponent } from './pages/dzemati-pregled/dzemati-pregled.component';
 
-// const routes: Routes = [
-//   {
-//     path: 'dzemati',
-//     component: DzematiPregledComponent,
-//   },
-//   { path: 'dzemati/:id', redirectTo: 'dzemati/:id/detalji', pathMatch: 'full' },
-//   { path: 'dzemati/:id/detalji', component: DzematiDetaljiComponent },
-// ];
-
 const routes: Routes = [
   {
     path: 'dzemati',

@@ -14,6 +14,34 @@
     }
 }
 
+.cards-container { 
+    position: relative;
+    display: flex;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 8px;
+
+    .cards-inner-container {
+        position: relative;
+        flex: 1;
+        height: 100%;
+
+        .cards-list {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding-bottom: 100px;
+
+            iz-statistics-card {
+                flex-grow: 1;
+                width: calc((100% / 2) - 100px);
+            }
+        }
+    }
+}
+
 /* Overwrite the default to keep the scrollbar always visible */
 
 ::-webkit-scrollbar {
