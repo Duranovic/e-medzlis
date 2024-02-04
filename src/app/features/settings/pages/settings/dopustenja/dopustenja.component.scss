@@ -1,0 +1,15 @@
+.dopustenja {
+  display: inline-flex;
+
+  .subsection {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+}
+
+.dopustenja-list {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}

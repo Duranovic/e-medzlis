@@ -9,6 +9,10 @@ import { Dzemat } from '../models/dzemat.model';
 import { Placanje } from '../models/placanje.model';
 import { SnackbarService } from './snackbar.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {Postavka} from "../models/postavka.model";
+import {Clanarina} from "../models/clanarina.model";
+import firebase from "firebase/compat";
+import firestore = firebase.firestore;
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +22,8 @@ export class StoreService {
   public dzemati: Observable<Dzemat[]>
   public selectedClan$: Observable<Clan>;
   public selectedEvidencija: Observable<Partial<PlacanjeVM>>;
+  public postavke$: Observable<Postavka[]>
+  public clanarine$: Observable<Clanarina[]>;
 
   // Multi step from
   public createClanForm: FormGroup;
@@ -26,6 +32,8 @@ export class StoreService {
   constructor(private store: AngularFirestore, private snackbarMessage: SnackbarService) {
     this.clanovi = this.getClanovi();
     this.dzemati = this.getDzemati();
+    this.postavke$ = this.getPostavke();
+    this.clanarine$ = this.getClanarine();
   }
 
   public initCreateClanForm() {
@@ -160,6 +168,34 @@ export class StoreService {
     });
   }
 
+  public updatePostavke(formGroup: FormGroup) {
+    const postavke = formGroup.get('postavke')?.value;
+
+    postavke.map((postavka: Postavka, index: number) => {
+      this.store.collection('postavke').doc(postavka.id).update(postavka);
+      this.snackbarMessage.openSnackbarSuccess('Izmjena podataka je uspjelo.', `Uspjesna izmjena za postavke`);
+    })
+  }
+
+  public updateClanarina(formGroup: FormGroup) {
+    const clanarinaRawValue = formGroup.getRawValue();
+    if(clanarinaRawValue.id) {
+      this.store.collection('clanarine').doc(clanarinaRawValue.id).update({
+        iznos: +clanarinaRawValue.iznos,
+        godina: +clanarinaRawValue.godina,
+      }).then(x=>{
+        this.snackbarMessage.openSnackbarSuccess('Izmjena podataka je uspjelo.', `Uspjesna izmijenjen iznos za ${clanarinaRawValue.godina} godinu`);
+      });
+    } else {
+      this.store.collection('clanarine').add({
+        iznos: +clanarinaRawValue.iznos,
+        godina: +clanarinaRawValue.godina,
+      }).then(x=>{
+          this.snackbarMessage.openSnackbarSuccess('Izmjena podataka je uspjelo.', `Uspjesna dodat novi iznos za ${clanarinaRawValue.godina} godinu`);
+      })
+    }
+  }
+
   public getDzemat(id: string): Observable<Dzemat | any> {
     return this.dzemati.pipe(
       map((dzemati: Dzemat[]) => {
@@ -184,5 +220,15 @@ export class StoreService {
       clan_id: clanId,
       payment_date: serverTimestamp(),
     })
+  }
+
+  private getPostavke(): Observable<Postavka> | any {
+    const postavke = this.store.collection<Postavka>('postavke').snapshotChanges();
+    return GetDocumentWithId(postavke);
+  }
+
+  private getClanarine(): Observable<Clanarina | any> {
+    const clanarine = this.store.collection<Clanarina>('clanarine').snapshotChanges();
+    return GetDocumentWithId(clanarine);
   }
 }

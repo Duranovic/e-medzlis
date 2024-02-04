@@ -19,3 +19,9 @@ p, span, th, td, label, div{
 .red-color {
     color: variables.$red;
 }
+
+.underline {
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom: 2px solid variables.$primary_color;
+}
