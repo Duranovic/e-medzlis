@@ -1,7 +1,7 @@
 <div class="main-container">
     <div class="header">
      <iz-title title="Dzemati" [description]="countMessage"></iz-title>
-      <button class="button button--round button--bigger button--add" (click)="openForm()">
+      <button class="button button--round button--bigger button--add" (click)="openForm()" *ngIf="isDodavanjeDzemataEnabled()">
         Dodaj Dzemat
       </button>
     </div>
@@ -11,5 +11,5 @@
       (searchTermEvent)="search($event)"
     ></iz-search>
     <iz-table [data]="dzematiTableSource" route="dzemati" (actionEvent)="callAction($event)"></iz-table>
-</div> 
+</div>
 

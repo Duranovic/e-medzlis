@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DataTableType } from 'src/app/core/models/tableConfig.model';
-import { tableStandardActionRows } from 'src/app/core/constants/table.constants';
-import { combineLatest, exhaustMap, filter, forkJoin, map, mergeMap, Observable, switchMap } from 'rxjs';
+import {tableChangeStatusActionRow, tableStandardActionRows} from 'src/app/core/constants/table.constants';
+import {combineLatest, exhaustMap, filter, forkJoin, map, mergeMap, Observable, Subscription, switchMap} from 'rxjs';
 import { StoreService } from 'src/app/core/services/store.service';
 import { ActionRowEnum } from 'src/app/core/enums/table.enums';
 import { Clan } from 'src/app/core/models/clan.model';
@@ -12,6 +12,7 @@ import { AddNewClanDialogComponent } from './add-new-clan-dialog/add-new-clan-di
 import { CoreModule } from 'src/app/core/core.module';
 import { ActivatedRoute } from '@angular/router';
 import { Range } from 'src/app/core/helpers/array.helper';
+import {Postavka} from "../../core/models/postavka.model";
 
 @Component({
   selector: 'iz-clanovi',
@@ -21,49 +22,56 @@ import { Range } from 'src/app/core/helpers/array.helper';
   styleUrls: ['./clanovi.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default
 })
-export class ClanoviComponent implements OnInit {
+export class ClanoviComponent implements OnInit, OnDestroy {
   @Input() clanoviTableSource: DataTableType;
   clanovi$: Observable<any>;
+  postavke: Postavka[];
   public dzematId: string;
   public isDzematiRoute: boolean;
+  private subscription: Subscription;
 
-  constructor(private store: StoreService, public dialog: MatDialog, private route: ActivatedRoute) { }
+  constructor(public store: StoreService, public dialog: MatDialog, private route: ActivatedRoute) { }
 
   public ngOnInit(): void {
+    this.subscription = this.store.postavke$.subscribe((postavke: Postavka[]) => {
+      this.postavke = postavke;
+      this.clanoviTableSource = {
+        columns: [
+          {
+            title: "Ime i prezime",
+            dataProperty: "name",
+            sortable: false,
+          },
+          {
+            title: "Broj telefona",
+            dataProperty: "phone_number",
+            sortable: false,
+          },
+          {
+            title: "Izmirio obaveze",
+            dataProperty: "obligations",
+            sortable: false,
+          },
+          {
+            title: "Status",
+            dataProperty: "status",
+            sortable: false,
+          }
+        ],
+        rowActions: this.isBrisanjeClanovaEnabled() ? tableStandardActionRows : [tableChangeStatusActionRow],
+        source: this.clanovi$,
+        emptyData: 'Nije dodan niti jedan član. Dodaj sada klikom na dugme ispod.'
+      }
+    })
+
+
+
     this.isDzematiRoute = this.route.snapshot.parent?.url[0]?.path === 'dzemati';
     if (this.isDzematiRoute) {
       this.dzematId = this.route.parent?.snapshot.params['id'];
     }
 
     this.search();
-
-    this.clanoviTableSource = {
-      columns: [
-        {
-          title: "Ime i prezime",
-          dataProperty: "name",
-          sortable: false,
-        },
-        {
-          title: "Broj telefona",
-          dataProperty: "phone_number",
-          sortable: false,
-        },
-        {
-          title: "Izmirio obaveze",
-          dataProperty: "obligations",
-          sortable: false,
-        },
-        {
-          title: "Status",
-          dataProperty: "status",
-          sortable: false,
-        }
-      ],
-      rowActions: tableStandardActionRows,
-      source: this.clanovi$,
-      emptyData: 'Nije dodan niti jedan član. Dodaj sada klikom na dugme ispod.'
-    }
   }
 
   public search(searchKey?: string): void {
@@ -152,5 +160,16 @@ export class ClanoviComponent implements OnInit {
 
   public openForm(): void {
     this.dialog.open(AddNewClanDialogComponent);
+  }
+
+  public isDodavanjeClanovaEnabled(): boolean {
+    return this.postavke?.find(x=>x.type === 'dodavanje_clanova')!.value;
+  }
+
+  public isBrisanjeClanovaEnabled(): boolean {
+    return this.postavke?.find(x=>x.type === 'dodavanje_clanova')!.value;
+  }
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

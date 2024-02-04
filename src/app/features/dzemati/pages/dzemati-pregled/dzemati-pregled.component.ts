@@ -1,21 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { combineLatest, map, Observable, tap } from 'rxjs';
+import {combineLatest, map, Observable, Subscription, tap} from 'rxjs';
 import { tableDeleteActionRow, tableStandardActionRows } from 'src/app/core/constants/table.constants';
 import { ActionRowEnum } from 'src/app/core/enums/table.enums';
 import { Dzemat } from 'src/app/core/models/dzemat.model';
 import { DataTableType } from 'src/app/core/models/tableConfig.model';
 import { StoreService } from 'src/app/core/services/store.service';
 import { AddNewDzematDialogComponent } from '../add-new-dzemat-dialog/add-new-dzemat-dialog.component';
+import {Postavka} from "../../../../core/models/postavka.model";
 
 @Component({
   templateUrl: './dzemati-pregled.component.html',
   styleUrls: ['./dzemati-pregled.component.scss']
 })
-export class DzematiPregledComponent implements OnInit {
+export class DzematiPregledComponent implements OnInit, OnDestroy {
   public dzematiTableSource: DataTableType;
   public dzematiData$: Observable<Dzemat[]>;
   public dzematiCount: number = 0;
+  public postavke: Postavka[];
+  private subscription: Subscription;
 
   constructor(private store: StoreService, public dialog: MatDialog) { }
 
@@ -26,28 +29,33 @@ export class DzematiPregledComponent implements OnInit {
   public ngOnInit(): void {
     this.search();
 
-    this.dzematiTableSource = {
-      columns: [
-        {
-          title: "Naziv",
-          dataProperty: "name",
-          sortable: false,
-        },
-        {
-          title: "Broj platitelja",
-          dataProperty: "number_of_payers",
-          sortable: false,
-        },
-        {
-          title: "Broj dzematlija",
-          dataProperty: "number_of_customers",
-          sortable: false,
-        }
-      ],
-      rowActions: [tableDeleteActionRow],
-      emptyData: 'Nije dodan niti jedan dzemat.',
-      source: this.dzematiData$
-    }
+    this.subscription = this.store.postavke$.subscribe((postavke: Postavka[])=> {
+      this.postavke = postavke;
+
+      this.dzematiTableSource = {
+        columns: [
+          {
+            title: "Naziv",
+            dataProperty: "name",
+            sortable: false,
+          },
+          {
+            title: "Broj platitelja",
+            dataProperty: "number_of_payers",
+            sortable: false,
+          },
+          {
+            title: "Broj dzematlija",
+            dataProperty: "number_of_customers",
+            sortable: false,
+          }
+        ],
+        rowActions: this.isBrisanjeDzemataEnabled() ? [tableDeleteActionRow] : undefined,
+        emptyData: 'Nije dodan niti jedan dzemat.',
+        source: this.dzematiData$
+      }
+    })
+
   }
 
   public search(searchKey?: string): void {
@@ -89,5 +97,17 @@ export class DzematiPregledComponent implements OnInit {
         console.log("YOU DON'T HAVE ANY METHOD DEFINED BY THAT NAME!!");
         break;
     }
+  }
+
+  public isBrisanjeDzemataEnabled(): boolean {
+    return this.postavke?.find(x=>x.type === 'brisanje_dzemata')!.value;
+  }
+
+  public isDodavanjeDzemataEnabled(): boolean {
+    return this.postavke?.find(x=>x.type === 'dodavanje_dzemata')!.value;
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

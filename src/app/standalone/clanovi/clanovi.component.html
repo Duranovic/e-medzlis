@@ -2,8 +2,9 @@
     <div class="search-container">
         <iz-search [isSmall]="true" placeholder="Pretrazi clanove dzemata po imenu ili prezimenu" (searchTermEvent)='search($event)'></iz-search>
     </div>
-    <button class="button button--round button--add" (click)="openForm()">
-        Dodaj Dzematliju
+
+    <button class="button button--round button--add" (click)="openForm()" *ngIf="isDodavanjeClanovaEnabled()">
+      Dodaj Dzematliju
     </button>
 </div>
 <iz-table [data]="clanoviTableSource" route="clanovi" (actionEvent)="callAction($event)"></iz-table>
