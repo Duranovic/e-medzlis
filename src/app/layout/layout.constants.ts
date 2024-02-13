@@ -7,15 +7,3 @@ export const navigation_links = [
     ['graph', 'statistika'],
     ['settings', 'postavke'],
 ] as [string, string][];
-
-export const layoutOpenProfileActionRow = {
-  actionId: ActionRowEnum.OPEN_PROFILE,
-  label: 'Otvroi korisnicki racun',
-}
-
-export const layoutLogOutActionRow = {
-  actionId: ActionRowEnum.LOG_OUT,
-  label: 'Odjavi se',
-}
-
-export const layoutStandardActionRows = [layoutOpenProfileActionRow, layoutLogOutActionRow]

@@ -1,0 +1,8 @@
+<div class="osobni-podaci">
+  <form [formGroup]="form" *ngIf="form != undefined">
+    <h2 class="subsection underline">Osobni podaci</h2>
+    <iz-input [type]="InputType.TEXT" placeholder="npr. Orhan" styleApperience="white" label="Vaš ime" [frmControl]="form.get('first_name') | formControl" ></iz-input>
+    <iz-input [type]="InputType.TEXT" placeholder="npr. Mehmedagić" styleApperience="white" label="Vaše prezime" [frmControl]="form.get('last_name') | formControl" ></iz-input>
+    <iz-input [type]="InputType.TEXT" placeholder="npr. 2904996130033" styleApperience="white" label="Vaše jedinstveni matični broj (JMBG)" [frmControl]="form.get('jmbg') | formControl" ></iz-input>
+  </form>
+</div>

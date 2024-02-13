@@ -1,0 +1,11 @@
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+}

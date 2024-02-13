@@ -1,0 +1,8 @@
+<div class="racun">
+  <form [formGroup]="form" *ngIf="form != undefined">
+    <h2 class="subsection underline">Račun</h2>
+    <iz-input [type]="InputType.EMAIL" placeholder="npr. validemail@email.com" styleApperience="white" label="Vaš email" [frmControl]="form.get('email') | formControl" ></iz-input>
+    <iz-input [type]="InputType.PASSWORD" styleApperience="white" label="Unesite novu lozinku" placeholder="npr. 12345678" [frmControl]="form.get('password') | formControl" ></iz-input>
+    <iz-input [type]="InputType.PASSWORD" styleApperience="white" label="Ponovite novu lozinku" placeholder="npr. 12345678" [frmControl]="form.get('repeatPassword') | formControl" ></iz-input>
+  </form>
+</div>

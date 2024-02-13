@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { SvgSize } from 'src/app/core/enums/icon.enums';
-import {layoutStandardActionRows, navigation_links} from '../layout.constants';
+import { navigation_links} from '../layout.constants';
 import {MatDialog} from "@angular/material/dialog";
 import {
   KorisnickiRacunDialogComponent

@@ -1,0 +1,6 @@
+<iz-title title="Korisnički račun" description="Upravljajte korisnikom i njegovim podacima"> </iz-title>
+
+<div class="korisnicki-racun-wrapper" *ngIf="korisnik">
+  <iz-osobni-podaci [osobniPodaci]="korisnik"></iz-osobni-podaci>
+  <iz-racun [racun]="korisnik"></iz-racun>
+</div>
