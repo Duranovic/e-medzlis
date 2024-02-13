@@ -11,8 +11,7 @@ import { SnackbarService } from './snackbar.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {Postavka} from "../models/postavka.model";
 import {Clanarina} from "../models/clanarina.model";
-import firebase from "firebase/compat";
-import firestore = firebase.firestore;
+import {Korisnik} from "../models/korisnik.model";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +23,7 @@ export class StoreService {
   public selectedEvidencija: Observable<Partial<PlacanjeVM>>;
   public postavke$: Observable<Postavka[]>
   public clanarine$: Observable<Clanarina[]>;
+  public trenutniKorisnik$: Observable<Korisnik>;
 
   // Multi step from
   public createClanForm: FormGroup;
@@ -34,6 +34,7 @@ export class StoreService {
     this.dzemati = this.getDzemati();
     this.postavke$ = this.getPostavke();
     this.clanarine$ = this.getClanarine();
+    this.trenutniKorisnik$ = this.getTrenutniKorisnik('velidprivate@gmail.com');
   }
 
   public initCreateClanForm() {
@@ -177,6 +178,26 @@ export class StoreService {
     })
   }
 
+  public updateKorisnik(formGroup: FormGroup) {
+    const korisnikRawValue = formGroup.getRawValue();
+
+    if(korisnikRawValue.password !== korisnikRawValue.repeatPassword) {
+      this.snackbarMessage.openSnackbarError('Izmjena podataka nije uspjela!', `Lozinke se ne podudaraju u oba polja! 'Unesite novu lozinku' i 'Ponovite novu lozinku' moraju biti iste vrijednosti.`);
+      return;
+    }
+
+    const id = korisnikRawValue.id;
+    delete korisnikRawValue.id;
+    delete korisnikRawValue.repeatPassword;
+
+    this.store.collection('korisnik').doc(id).update({
+      ...korisnikRawValue
+    }).then(x=>{
+      this.snackbarMessage.openSnackbarSuccess('Izmjena podataka je uspjelo.', `Uspjesno izmijenjeni podaci za korisnika.`);
+    });
+
+  }
+
   public updateClanarina(formGroup: FormGroup) {
     const clanarinaRawValue = formGroup.getRawValue();
     if(clanarinaRawValue.id) {
@@ -222,6 +243,13 @@ export class StoreService {
     })
   }
 
+
+  public getTrenutniKorisnik(email: string): Observable<Korisnik> {
+    const korisnikCollection = this.store.collection('korisnik', ref => ref.where('email', '==', email)).snapshotChanges();
+    const korisnikDocument = GetDocumentWithId(korisnikCollection) as Observable<Korisnik>;
+    return korisnikDocument;
+  }
+
   private getPostavke(): Observable<Postavka> | any {
     const postavke = this.store.collection<Postavka>('postavke').snapshotChanges();
     return GetDocumentWithId(postavke);
@@ -231,4 +259,7 @@ export class StoreService {
     const clanarine = this.store.collection<Clanarina>('clanarine').snapshotChanges();
     return GetDocumentWithId(clanarine);
   }
+
+
+
 }

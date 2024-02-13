@@ -8,6 +8,7 @@ import { DzematiModule } from './dzemati/dzemati.module';
 import { ClanoviModule } from './clanovi/clanovi.module';
 import { StatistikaModule } from './statistika/statistika.module';
 import { SettingsModule } from './settings/settings.module';
+import {KorisnickiRacunModule} from "./korisnicki-racun/korisnicki-racun.module";
 
 @NgModule({
   declarations: [],
@@ -18,6 +19,7 @@ import { SettingsModule } from './settings/settings.module';
     ClanoviModule,
     StatistikaModule,
     SettingsModule,
+    KorisnickiRacunModule,
   ]
 })
 export class FeaturesModule { }

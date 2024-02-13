@@ -18,7 +18,7 @@ export class InputComponent implements OnInit, OnDestroy {
 
   public focusInput: boolean;
   private destroy$ = new Subject<void>();
-  
+
   constructor() { }
 
   public ngOnInit(): void {

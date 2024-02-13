@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SideNavigationComponent } from './side-navigation/side-navigation.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     SharedModule,
     RouterModule,
+    MatDialogModule,
   ],
   exports: [
     SideNavigationComponent
