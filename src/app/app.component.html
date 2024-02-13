@@ -1,4 +1,4 @@
-<iz-side-navigation></iz-side-navigation>
+<iz-side-navigation *ngIf="!isCurrentRouteLogin"></iz-side-navigation>
 <main>
     <router-outlet></router-outlet>
     <iz-save-cancel-bar></iz-save-cancel-bar>

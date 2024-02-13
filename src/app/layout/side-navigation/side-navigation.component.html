@@ -1,6 +1,6 @@
 <aside>
-  <button class="profile-button" (click)="openProfileDialog()">
-    <span>VD</span>
+  <button class="profile-button" (click)="openProfileDialog()" *ngIf="trenutniKorisnik$ | async as korisnik">
+    <span>{{getInitials(korisnik)}}</span>
   </button>
   <nav>
     <ul>

@@ -23,7 +23,7 @@ export class StoreService {
   public selectedEvidencija: Observable<Partial<PlacanjeVM>>;
   public postavke$: Observable<Postavka[]>
   public clanarine$: Observable<Clanarina[]>;
-  public trenutniKorisnik$: Observable<Korisnik>;
+  public trenutniKorisnik$: Observable<Korisnik[]>;
 
   // Multi step from
   public createClanForm: FormGroup;
@@ -244,9 +244,9 @@ export class StoreService {
   }
 
 
-  public getTrenutniKorisnik(email: string): Observable<Korisnik> {
+  public getTrenutniKorisnik(email: string): Observable<Korisnik[]> {
     const korisnikCollection = this.store.collection('korisnik', ref => ref.where('email', '==', email)).snapshotChanges();
-    const korisnikDocument = GetDocumentWithId(korisnikCollection) as Observable<Korisnik>;
+    const korisnikDocument = GetDocumentWithId(korisnikCollection) as Observable<Korisnik[]>;
     return korisnikDocument;
   }
 

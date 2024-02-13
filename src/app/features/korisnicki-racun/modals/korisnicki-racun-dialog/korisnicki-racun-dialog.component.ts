@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material/dialog";
 import {StoreService} from "../../../../core/services/store.service";
+import {SvgSize} from "../../../../core/enums/icon.enums";
 
 @Component({
   selector: 'app-korisnicki-racun-dialog',
@@ -22,7 +23,8 @@ export class KorisnickiRacunDialogComponent implements OnInit {
   }
 
   public logOut(): void {
-    console.log("LOG OUT!");
+    this.router.navigate(['/login']);
   }
 
+  protected readonly SvgSize = SvgSize;
 }
