@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {filter, Observable, Subject} from 'rxjs';
 import { LoginService } from './core/services/login.service';
 import {NavigationEnd, Router} from "@angular/router";
+import {StoreService} from "./core/services/store.service";
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,9 @@ import {NavigationEnd, Router} from "@angular/router";
 })
 export class AppComponent implements OnInit{
   title = 'e-medzlis';
-  isUserLoggedIn: Subject<boolean>;
   currentRoute: string = '';
 
-  constructor(private loginService: LoginService, private router: Router){
-    this.isUserLoggedIn = this.loginService.isUserLoggedIn;
-    this.isUserLoggedIn.subscribe(x=>{
-      console.log("USER LOGGED IN: ", x);
-    })
+  constructor(private store: StoreService, private loginService: LoginService, private router: Router){
   }
 
   get isCurrentRouteLogin() {
@@ -30,5 +26,11 @@ export class AppComponent implements OnInit{
       .subscribe((event: any) => {
         this.currentRoute = event.url;
       });
+
+    const userFromLocalStorage = localStorage.getItem('iz-user');
+    if(userFromLocalStorage) {
+      this.store.getTrenutniKorisnik(userFromLocalStorage);
+      this.loginService.setUserLoggedIn();
+    }
   }
 }

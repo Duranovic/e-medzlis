@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material/dialog";
 import {StoreService} from "../../../../core/services/store.service";
 import {SvgSize} from "../../../../core/enums/icon.enums";
+import {LoginService} from "../../../../core/services/login.service";
 
 @Component({
   selector: 'app-korisnicki-racun-dialog',
@@ -11,7 +12,7 @@ import {SvgSize} from "../../../../core/enums/icon.enums";
 })
 export class KorisnickiRacunDialogComponent implements OnInit {
 
-  constructor(private store: StoreService, private router: Router, private dialogRef: MatDialogRef<KorisnickiRacunDialogComponent>) { }
+  constructor(public store: StoreService, private loginService: LoginService, private router: Router, private dialogRef: MatDialogRef<KorisnickiRacunDialogComponent>) { }
 
   ngOnInit(): void {
   }
@@ -23,8 +24,14 @@ export class KorisnickiRacunDialogComponent implements OnInit {
   }
 
   public logOut(): void {
+    localStorage.removeItem('iz-user');
+    this.store.trenutniKorisnik$ = undefined;
+    this.loginService.setUserLoggedOut();
     this.router.navigate(['/login']);
   }
 
+  public getUsername(korisnik: any): string {
+    return korisnik[0]?.first_name + " " + korisnik[0]?.last_name;
+  }
   protected readonly SvgSize = SvgSize;
 }

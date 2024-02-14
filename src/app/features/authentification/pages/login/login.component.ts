@@ -5,6 +5,8 @@ import { FormStatus } from 'src/app/core/enums/form.enums';
 import { InputType } from 'src/app/core/enums/input.enums';
 import { LoginService } from 'src/app/core/services/login.service';
 import { formControlNames, formLabels } from '../../constants/form.constants';
+import {StoreService} from "../../../../core/services/store.service";
+import {SnackbarService} from "../../../../core/services/snackbar.service";
 
 @Component({
   templateUrl: './login.component.html',
@@ -17,9 +19,9 @@ export class LoginComponent implements OnInit {
   public formControlNames = formControlNames;
   public formLabels = formLabels;
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private store: StoreService, private router: Router, private snackbar: SnackbarService) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
     this.form = this.formBuilder.group({
       [this.formControlNames.username]: new FormControl('', Validators.required),
       [this.formControlNames.password]: new FormControl('', Validators.required),
@@ -28,12 +30,16 @@ export class LoginComponent implements OnInit {
   }
 
   public logIn(): void{
-    this.loginService.logIn();
-    this.router.navigate(['/pocetna']);
-    
-  }
-
-  public logOut(): void {
-    this.loginService.logOut();
+    const username: string = this.form?.get('username')?.value;
+    const password: string = this.form?.get('password')?.value;
+    this.store.login(username, password).subscribe(korisnik=>{
+      if(korisnik.length > 0) {
+        localStorage.setItem('iz-user', username);
+        this.router.navigate(['/pocetna']);
+        this.loginService.setUserLoggedIn();
+      } else {
+        this.snackbar.openSnackbarError('Neuspješna prijava na sistem.', `Provjerite da li ste unijeli ispravne podatke.`)
+      }
+    })
   }
 }

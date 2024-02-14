@@ -1,8 +1,8 @@
 <div class="dialog-container">
-  <div class="dialog-heading">
+  <div class="dialog-heading" *ngIf="store.trenutniKorisnik$ | async as korisnik">
     <p>
       <iz-icon name="icon-people" color="grey" [size]="SvgSize.large" [disableHover]="true"></iz-icon>
-      <strong>Velid Duranovic</strong>
+      <strong>{{getUsername(korisnik)}}</strong>
     </p>
   </div>
   <div class="dialog-content">

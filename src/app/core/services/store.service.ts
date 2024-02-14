@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map, Observable } from 'rxjs';
+import {map, Observable, Subject} from 'rxjs';
 import { serverTimestamp } from "firebase/firestore";
 import { PlacanjeVM } from 'src/app/features/clanovi/models/placanje.model';
 import { GetDocumentWithId } from '../helpers/firebase.helper';
@@ -12,6 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {Postavka} from "../models/postavka.model";
 import {Clanarina} from "../models/clanarina.model";
 import {Korisnik} from "../models/korisnik.model";
+import {LoginService} from "./login.service";
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class StoreService {
   public selectedEvidencija: Observable<Partial<PlacanjeVM>>;
   public postavke$: Observable<Postavka[]>
   public clanarine$: Observable<Clanarina[]>;
-  public trenutniKorisnik$: Observable<Korisnik[]>;
+  public trenutniKorisnik$?: Observable<Korisnik[]>;
 
   // Multi step from
   public createClanForm: FormGroup;
@@ -34,7 +35,12 @@ export class StoreService {
     this.dzemati = this.getDzemati();
     this.postavke$ = this.getPostavke();
     this.clanarine$ = this.getClanarine();
-    this.trenutniKorisnik$ = this.getTrenutniKorisnik('velidprivate@gmail.com');
+  }
+
+  public login(email: string, password: string) {
+    const korisnikCollection = this.store.collection('korisnik', ref => ref.where('email', '==', email).where('password', '==', password)).snapshotChanges();
+    this.trenutniKorisnik$ = GetDocumentWithId(korisnikCollection) as Observable<Korisnik[]>;
+    return this.trenutniKorisnik$;
   }
 
   public initCreateClanForm() {
@@ -244,10 +250,9 @@ export class StoreService {
   }
 
 
-  public getTrenutniKorisnik(email: string): Observable<Korisnik[]> {
+  public getTrenutniKorisnik(email: string) {
     const korisnikCollection = this.store.collection('korisnik', ref => ref.where('email', '==', email)).snapshotChanges();
-    const korisnikDocument = GetDocumentWithId(korisnikCollection) as Observable<Korisnik[]>;
-    return korisnikDocument;
+    this.trenutniKorisnik$ = GetDocumentWithId(korisnikCollection) as Observable<Korisnik[]>;
   }
 
   private getPostavke(): Observable<Postavka> | any {

@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
+import {StoreService} from "./store.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  private _isUserLoggedIn: Subject<boolean> = new Subject();
 
-  isUserLoggedIn: any;
+  constructor(private store: StoreService)
+  { }
 
-  constructor() {
-    this.isUserLoggedIn = new Subject();
+  public setUserLoggedIn(){
+    this._isUserLoggedIn.next(true);
   }
 
-  public logIn(){
-    this.isUserLoggedIn.next(true);
+  public setUserLoggedOut() {
+    this._isUserLoggedIn.next(false);
   }
 
-  public logOut() {
-    this.isUserLoggedIn.next(false);
+  public isUserLoggedIn() {
+    return this._isUserLoggedIn;
   }
 }

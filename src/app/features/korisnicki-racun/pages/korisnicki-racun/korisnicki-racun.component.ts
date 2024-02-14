@@ -11,7 +11,7 @@ export class KorisnickiRacunComponent implements OnInit {
   constructor(private store: StoreService) { }
 
   ngOnInit(): void {
-    this.store.trenutniKorisnik$.subscribe((x: any)=>{
+    this.store.trenutniKorisnik$?.subscribe((x: any)=>{
       this.korisnik = x[0];
     })
   }
