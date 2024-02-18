@@ -9,6 +9,7 @@ import { ClanoviModule } from './clanovi/clanovi.module';
 import { StatistikaModule } from './statistika/statistika.module';
 import { SettingsModule } from './settings/settings.module';
 import {KorisnickiRacunModule} from "./korisnicki-racun/korisnicki-racun.module";
+import {PocetnaModule} from "./pocetna/pocetna.module";
 
 @NgModule({
   declarations: [],
@@ -20,6 +21,7 @@ import {KorisnickiRacunModule} from "./korisnicki-racun/korisnicki-racun.module"
     StatistikaModule,
     SettingsModule,
     KorisnickiRacunModule,
+    PocetnaModule,
   ]
 })
 export class FeaturesModule { }

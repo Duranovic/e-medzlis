@@ -1,0 +1,35 @@
+<ng-container *ngIf="(store.trenutniKorisnik$ | async)![0] as korisnik">
+  <h1><span>Dobrodošao,</span> {{korisnik.first_name}} {{korisnik.last_name}}</h1>
+  <p class="last-time-log-in">Posljednji put ste bili prijavljeni:
+    <span>29.04.2024</span>
+  </p>
+
+  <div class="info-banner">
+    <p>Dobrodošao na administratorski panel Medžlisa Islamske Zajednica Jajce. Upravljajte članovima, članarinama, dżematima. Imate mogućnost da izmjenite svoje podatke ili da pogledate statistiku.</p>
+  </div>
+<br><br>
+  <div class="quick-actions">
+      <h2>Brze akcije</h2>
+      <p>
+        Brze akcije su prijedlozi akcija koje možete uraditi, a veano je za stvari koje ste posljednji put radili.
+      </p>
+      <ul class="quick-actions_cards">
+        <li class="quick-actions_card" [ngClass]="{'quick-actions_card--disabled': !isDodavanjeClanovaEnabled()}">
+          <button (click)="openDialogDodajCLan()">
+          Dodaj člana
+          </button>
+        </li>
+        <li class="quick-actions_card" [ngClass]="{'quick-actions_card--disabled': !isDodavanjeDzemataEnabled()}">
+          <button (click)="openDialogDodajDzemat()">
+            Dodaj džemat
+          </button>
+        </li>
+        <li class="quick-actions_card">
+          <a [routerLink]="['/statistika']" >
+            Pogledaj statistiku
+          </a>
+        </li>
+      </ul>
+  </div>
+</ng-container>
+

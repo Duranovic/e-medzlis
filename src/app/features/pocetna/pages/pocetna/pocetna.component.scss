@@ -1,0 +1,95 @@
+@use '/src/styles/utilities/variables';
+
+h1 {
+  font-size: 36px;
+
+  span {
+    font-size: inherit;
+    font-family: variables.$font_ubuntu__regular;
+  }
+}
+
+.last-time-log-in {
+  margin-block: 16px;
+  color: variables.$gray;
+
+  span {
+    font-family: variables.$font_ubuntu__bold;
+  }
+}
+
+.info-banner {
+  background-color: aliceblue;
+  padding: 22px;
+  border-radius: 8px;
+  line-height: 1.5;
+  border: 1px solid gainsboro;
+}
+
+.quick-actions {
+  background-color: white;
+  border-radius: 8px;
+  padding: 23px;
+  flex: 1;
+
+  h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  &_cards {
+    margin-block: 64px;
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+  }
+
+  &_card {
+    height: 220px;
+    width: 220px;
+    box-shadow: 0 0 5px 1px variables.$gray--800;
+    background: url("/assets/images/star-white.png") variables.$primary_color repeat;
+    background-size: 47%;
+    background-position-x: 48%;
+    border-radius: 8px;
+    transition: transform .2s, background 20s;
+
+    &:hover:not(.quick-actions_card--disabled) {
+      transform: translateY(-4px);
+      background-position-y: -50%;
+    }
+
+    button, a {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      color: variables.$white;
+      font-size: 18px;
+      font-family: variables.$font-ubuntu__bold;
+      z-index: 1;
+      text-shadow: 0 1px black;
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: transparentize(black, 0.7);
+        z-index: -1;
+        border-radius: 8px;
+      }
+    }
+
+    &--disabled {
+      background-color: variables.$button-gray;
+
+      a, button {
+        cursor: default;
+      }
+    }
+  }
+}
