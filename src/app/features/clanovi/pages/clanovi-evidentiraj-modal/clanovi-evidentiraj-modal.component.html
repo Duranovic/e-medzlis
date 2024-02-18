@@ -22,26 +22,26 @@
             <div class="column">
                 <div class="data">
                     <span class="label">Ovlastena osoba</span>
-                    <span class="value">Osman Osmanbegovic</span>
-                </div>
-                <div class="data">
-                    <span class="label">Broj priznanice</span>
-                    <span class="value">JC323356</span>
+                    <ng-container *ngIf="(store.trenutniKorisnik$ | async) as korisnik">
+                      <span class="value">{{getOvlastenaOsoba(korisnik[0])}}</span>
+                    </ng-container>
                 </div>
                 <div class="data">
                     <span class="label">Za godinu</span>
-                    <span class="value">2022.</span>
+                    <span class="value">{{ evidention.for_year }}</span>
                 </div>
                 <div class="data">
                     <span class="label">Iznos</span>
-                    <span class="value">85,00 KM</span>
+                    <ng-container *ngIf="clanarina$ | async as clanarina">
+                      <span class="value">{{ clanarina.iznos }} KM</span>
+                    </ng-container>
                 </div>
             </div>
         </div>
 
        <div class="footer">
             <div class="date field">
-                <span class="date human-input-place">29.04.1998</span>
+                <span class="date human-input-place">{{ getDate() }}</span>
                 <span class="label">Datum</span>
             </div>
             <div class="place-for-sign-and-stamp field">
