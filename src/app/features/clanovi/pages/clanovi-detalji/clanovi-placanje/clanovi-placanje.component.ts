@@ -51,8 +51,8 @@ export class ClanoviPlacanjeComponent implements OnInit {
           sortable: false,
         },
         {
-          title: "Evidencija",
-          dataProperty: "evidention",
+          title: "",
+          dataProperty: "",
           sortable: false,
         }
       ],
