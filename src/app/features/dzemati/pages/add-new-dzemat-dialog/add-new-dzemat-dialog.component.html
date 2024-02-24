@@ -11,7 +11,6 @@
         <div class="step">
             <div class="left-side">
                 <iz-input placeholder="npr. Divicani" label="Naziv"  [frmControl]="store.createDzematForm.get('name') | formControl" [type]="InputType.TEXT"></iz-input>
-                <iz-select [secondary]="true" label="Odaberi imama" [source]="clanoviSelect" [frmControl]="store.createDzematForm.get('clan_id') | formControl"></iz-select>
             </div>
             <div class="right-side">
                 <img src="assets/images/dzemat.png">

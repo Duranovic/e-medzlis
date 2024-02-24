@@ -12,18 +12,18 @@ import { StoreService } from 'src/app/core/services/store.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddNewDzematDialogComponent implements OnInit, OnDestroy {
-  public clanoviSelect: Select[];
+  // public clanoviSelect: Select[];
   private _destroy$ = new Subject<void>();
 
   constructor(public store: StoreService, private dialogRef: MatDialogRef<AddNewDzematDialogComponent>) { }
-  
+
   get InputType() {
     return InputType;
   }
 
   public ngOnInit(): void {
-    this.store.initCreateDzematForm(); 
-    this.prepareClanoviSelect();
+    this.store.initCreateDzematForm();
+    // this.prepareClanoviSelect();
   }
 
   public addNewDzemat() {
@@ -31,16 +31,16 @@ export class AddNewDzematDialogComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
 
-  public prepareClanoviSelect(): void {
-    this.store.clanovi.pipe(takeUntil(this._destroy$)).subscribe((clanovi: Clan[]) => {
-      this.clanoviSelect = clanovi.map((clan: Clan) => {
-        return {
-          id: clan.id,
-          label: `${clan.first_name} ${clan.last_name}`
-        }
-      })
-    });
-  }
+  // public prepareClanoviSelect(): void {
+  //   this.store.clanovi.pipe(takeUntil(this._destroy$)).subscribe((clanovi: Clan[]) => {
+  //     this.clanoviSelect = clanovi.map((clan: Clan) => {
+  //       return {
+  //         id: clan.id,
+  //         label: `${clan.first_name} ${clan.last_name}`
+  //       }
+  //     })
+  //   });
+  // }
 
   public ngOnDestroy(): void {
     this._destroy$.next();

@@ -12,7 +12,7 @@
           <button [ngClass]="getExtraClass(dataRow, field.dataProperty)" *ngIf="(getTypeOfHtmlELement(dataRow, field.dataProperty) === 'button'); else span">
             {{ parseField(dataRow, field.dataProperty) }}
           </button>
-  
+
           <ng-template #span>
             <span [ngClass]="getExtraClass(dataRow, field.dataProperty)">
               {{ parseField(dataRow, field.dataProperty) }}
@@ -31,6 +31,5 @@
   <div class="no-data">
     <img src="assets/images/noData.png" alt="No data">
     <span class="title">{{data.emptyData}}</span>
-    <button class="button button--gray button--round">Dodaj</button>
   </div>
 </ng-template>

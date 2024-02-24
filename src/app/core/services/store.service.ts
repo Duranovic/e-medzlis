@@ -70,7 +70,6 @@ export class StoreService {
   public initCreateDzematForm() {
     this.createDzematForm = new FormGroup({
       name: new FormControl('', Validators.required),
-      clan_id: new FormControl('', Validators.required),
     })
   };
 
@@ -78,7 +77,6 @@ export class StoreService {
     let dzematFormRawValue = this.createDzematForm.getRawValue();
     let newDzemat = {
       ...dzematFormRawValue,
-      clan_id: dzematFormRawValue.clan_id.id,
     }
     this.store.collection('dzemati').add(newDzemat).then(() => {
       this.snackbarMessage.openSnackbarSuccess('Uspjesno dodat novi dzemat.', `Uspjesno ste dodali dzemat: ${newDzemat.name}.`);

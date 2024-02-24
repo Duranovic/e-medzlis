@@ -7,7 +7,7 @@ export const tableChangeStatusActionRow = {
 
 export const tableDeleteActionRow = {
     actionId: ActionRowEnum.DELETE,
-    label: 'Izbrisi',
+    label: 'Izbriši',
     extraClass: "red-color",
 }
 

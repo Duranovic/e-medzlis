@@ -45,13 +45,13 @@ export class DzematiPregledComponent implements OnInit, OnDestroy {
             sortable: false,
           },
           {
-            title: "Broj dzematlija",
+            title: "Broj članova",
             dataProperty: "number_of_customers",
             sortable: false,
           }
         ],
         rowActions: this.isBrisanjeDzemataEnabled() ? [tableDeleteActionRow] : undefined,
-        emptyData: 'Nije dodan niti jedan dzemat.',
+        emptyData: 'Nije dodan niti jedan džemat.',
         source: this.dzematiData$
       }
     })

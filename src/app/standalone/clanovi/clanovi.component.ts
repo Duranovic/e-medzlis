@@ -60,7 +60,7 @@ export class ClanoviComponent implements OnInit, OnDestroy {
         ],
         rowActions: this.isBrisanjeClanovaEnabled() ? tableStandardActionRows : [tableChangeStatusActionRow],
         source: this.clanovi$,
-        emptyData: 'Nije dodan niti jedan član. Dodaj sada klikom na dugme ispod.'
+        emptyData: 'Nije dodan niti jedan član.'
       }
     })
 

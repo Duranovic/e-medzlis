@@ -1,17 +1,17 @@
-<iz-breadcrumb route="/clanovi" label="Clanovi"></iz-breadcrumb>
+<iz-breadcrumb route="/clanovi" label="Članovi"></iz-breadcrumb>
 
 <ng-container *ngIf="clan$ | async as clan">
     <iz-title [title]="clan.first_name + ' ' + clan.last_name"></iz-title>
-    
+
     <div class="info-bar">
         <span class="info" [ngClass]="clan.status.extraClass">{{ clan.status.value }}</span>
         <span *ngIf="clan.phone_number">{{ clan.phone_number }}</span>
         <span *ngIf="clan.address">{{ clan.address }}</span>
         <div>
-            Izmirio obaveze: 
+            Izmirio obaveze:
             <span class="info" [ngClass]="clan.obligations.value == 'DA' ? 'success' : 'error'">{{ clan.obligations.value }}</span>
         </div>
     </div>
-    
+
     <iz-nav-tabs [tabs]="navigationTabs"></iz-nav-tabs>
 </ng-container>
