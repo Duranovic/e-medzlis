@@ -23,7 +23,7 @@ export class DzematiPregledComponent implements OnInit, OnDestroy {
   constructor(private store: StoreService, public dialog: MatDialog) { }
 
   get countMessage(): string {
-    return `${this.dzematiCount} ${this.dzematiCount === 1 ? 'dzemat prikazan' : 'dzemata prikazano'}`;
+    return `${this.dzematiCount} ${this.dzematiCount === 1 ? 'džemat prikazan' : 'džemata prikazano'}`;
   }
 
   public ngOnInit(): void {

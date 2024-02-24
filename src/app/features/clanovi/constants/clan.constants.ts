@@ -19,7 +19,7 @@ export const formLabels = {
     last_name: 'Prezime',
     date_birth: 'Datum rodjenja',
     sex: 'Spol',
-    payer: 'Platisa',
+    payer: 'Platiša',
     father_name: 'Ime oca',
     mother_name: 'Ime majke',
     married: 'U braku',

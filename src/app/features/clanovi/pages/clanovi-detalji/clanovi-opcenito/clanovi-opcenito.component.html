@@ -16,13 +16,13 @@
                     <div class="radio">
                         <input type="radio" id="musko" name="sex" value="male"
                             [formControlName]="formControlNames.sex">
-                        <label for="musko">Musko</label>
+                        <label for="musko">Muško</label>
                     </div>
 
                     <div class="radio">
                         <input type="radio" id="zensko" name="sex" value="female"
                             [formControlName]="formControlNames.sex">
-                        <label for="zensko">Zensko</label>
+                        <label for="zensko">Žensko</label>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
             <iz-input [type]="inputType.EMAIL" [label]="formLabels.email" placeholder="npr. velidtest@email.com"
                 [frmControl]="form.get(formControlNames.email) | formControl"></iz-input>
 
-            <iz-input [type]="inputType.TEXT" [label]="formLabels.address" placeholder="npr. Divicani bb"
+            <iz-input [type]="inputType.TEXT" [label]="formLabels.address" placeholder="npr. Divičani bb"
                 [frmControl]="form.get(formControlNames.address) | formControl"></iz-input>
 
             <iz-number-placeholder [value]="form.get(formControlNames.jmbg)?.value" [label]="formLabels.jmbg"></iz-number-placeholder>

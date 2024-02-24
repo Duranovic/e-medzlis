@@ -95,6 +95,11 @@ $beige-card-color: #F9F8F2;
     }
 }
 
+
+[stroke="none"] {
+  stroke: none !important;
+}
+
 @keyframes progress {
     0% {
         stroke-dasharray: 0 100;

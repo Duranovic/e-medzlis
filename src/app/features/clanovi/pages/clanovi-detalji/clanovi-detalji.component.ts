@@ -46,8 +46,8 @@ export class ClanoviDetaljiComponent implements OnInit {
     })
 
     this.navigationTabs = [
-      { label: 'Opcenito', route: 'opcenito' },
-      { label: 'Placanje', route: 'placanje' }
+      { label: 'Općenito', route: 'opcenito' },
+      { label: 'Plaćanje', route: 'placanje' }
     ]
   }
 }

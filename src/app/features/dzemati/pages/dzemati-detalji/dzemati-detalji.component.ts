@@ -13,7 +13,7 @@ export class DzematiDetaljiComponent implements OnInit {
   public navigationTabs: NavigationTabs[];
   public dzemat$: Observable<Dzemat>;
   private routeSub$: Subscription;
-  
+
 
   constructor(private store: StoreService, private route: ActivatedRoute) { }
 
@@ -23,7 +23,7 @@ export class DzematiDetaljiComponent implements OnInit {
       this.dzemat$ = this.store.getDzemat(dzematId);
     })
     this.navigationTabs = [
-      { label: 'Clanovi', route: 'clanovi'},
+      { label: 'Članovi', route: 'clanovi'},
       // { label: 'Uprava', route: 'uprava' },
       { label: 'Statistika', route: 'statistika' },
     ];

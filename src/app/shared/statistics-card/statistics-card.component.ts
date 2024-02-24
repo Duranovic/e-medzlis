@@ -12,6 +12,7 @@ export class StatisticsCardComponent implements OnInit {
   @Input() title: string;
   @Input() description: string;
   @Input() value: number;
+  @Input() valueText?: string;
   @Input() color: string;
   @Input() type: StatisticsCardType;
   @Input() chartOnePercent: number;
@@ -24,4 +25,12 @@ export class StatisticsCardComponent implements OnInit {
   constructor() { }
 
   public ngOnInit(): void { }
+
+  get firstPercentage(): string {
+    return  `${this.chartOnePercent}, 100`;
+  }
+
+  get secondPercentage(): string {
+    return  `${this.chartTwoPercent}, 100`;
+  }
 }
