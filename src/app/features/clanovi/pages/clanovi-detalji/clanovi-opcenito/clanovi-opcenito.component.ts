@@ -40,7 +40,7 @@ export class ClanoviOpcenitoComponent implements OnInit, OnDestroy {
       id: new FormControl(clan.id),
       [this.formControlNames.first_name] : new FormControl(clan.first_name, Validators.required),
       [this.formControlNames.last_name]: new FormControl(clan.last_name, Validators.required),
-      [this.formControlNames.date_birth]: new FormControl(clan.birth_year, Validators.required),
+      [this.formControlNames.year_of_birth]: new FormControl(clan.year_of_birth, Validators.required),
       [this.formControlNames.sex]: new FormControl(clan.sex, Validators.required),
       [this.formControlNames.payer]: new FormControl(clan.payer, Validators.required),
       [this.formControlNames.father_name] : new FormControl(clan.father_name, Validators.required),

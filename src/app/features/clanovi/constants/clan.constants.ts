@@ -1,7 +1,7 @@
 export const formControlNames = {
     first_name: 'first_name',
     last_name: 'last_name',
-    date_birth: 'date_birth',
+    year_of_birth: 'date_birth',
     sex: 'sex',
     payer: 'payer',
     father_name: 'father_name',
@@ -17,7 +17,7 @@ export const formControlNames = {
 export const formLabels = {
     first_name: 'Ime',
     last_name: 'Prezime',
-    date_birth: 'Datum rodjenja',
+    year_of_birth: 'Datum rodjenja',
     sex: 'Spol',
     payer: 'Platiša',
     father_name: 'Ime oca',

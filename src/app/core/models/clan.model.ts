@@ -15,7 +15,8 @@ export interface Clan {
     address: string,
     dzemat_id: string,
     status: boolean,
-    obligations: boolean, 
+    obligations: boolean,
     role: number,
     year_registrered: number;
+    year_of_birth: number;
 }

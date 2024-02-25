@@ -1,160 +1,127 @@
-<!-- <div class="select-container">
-    <iz-select label="Dzemat"></iz-select>
-    <iz-select label="Godina"></iz-select>
-</div> -->
 <div class="main">
-<div class="body-container">  
+<div class="body-container">
 
     <div class="cards-container">
-        <iz-statistics-card title="Mekteblije" description="Iz aktivne godine" [value]=300 color="standard"
-            chartOneLabel="Musko" chartTwoLabel="Zensko" [chartOnePercent]=30 [chartTwoPercent]=70>
+        <iz-statistics-card title="Prihodi" description="Iz aktivne godine" [value]=600
+            chartOneLabel="Muško" chartTwoLabel="Žensko" [chartOnePercent]=90 [chartTwoPercent]=10 valueText="KM">
         </iz-statistics-card>
 
 
-        <iz-statistics-card title="Mekteblije" description="Iz aktivne godine" [value]=300 color="standard"
-            chartOneLabel="Musko" chartTwoLabel="Zensko" [chartOnePercent]=30 [chartTwoPercent]=70>
+        <iz-statistics-card title="Članarine" description="Iz aktivne godine" [value]=5
+            chartOneLabel="Uplaćeno" chartTwoLabel="Nije uplaćeno" [chartOnePercent]=70 [chartTwoPercent]=30 [type]="cardTypes.TREND_NEGATIVE">
         </iz-statistics-card>
 
-        <iz-statistics-card title="Mekteblije" description="Iz aktivne godine" [value]=300 color="standard"
-            chartOneLabel="Musko" chartTwoLabel="Zensko" [chartOnePercent]=30 [chartTwoPercent]=70>
-        </iz-statistics-card>
+      <iz-statistics-card title="Članovi" description="Iz aktivne godine" [value]=9
+                          [type]="cardTypes.TREND_POSITIVE" chartOneLabel="Muško" chartTwoLabel="Žensko" [chartOnePercent]=80
+                          [chartTwoPercent]=20>
+      </iz-statistics-card>
     </div>
     <div class="charts">
         <div class="chart-wrapper">
             <ngx-charts-line-chart
-            [scheme]="colorScheme"
-            [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel"
-            [xAxis]="xAxis"
-            [yAxis]="yAxis"
-            [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel"
-            [timeline]="timeline"
-            [results]="multi"
+            [scheme]="optionsClanovi.colorScheme"
+            [showXAxisLabel]="optionsClanovi.showXAxisLabel"
+            [showYAxisLabel]="optionsClanovi.showYAxisLabel"
+            [xAxis]="optionsClanovi.xAxis"
+            [yAxis]="optionsClanovi.yAxis"
+            [xAxisLabel]="optionsClanovi.xAxisLabel"
+            [yAxisLabel]="optionsClanovi.yAxisLabel"
+            [timeline]="optionsClanovi.timeline"
+            [results]="optionsClanovi.multi"
             >
           </ngx-charts-line-chart>
         </div>
         <div class="chart-wrapper">
-            <ngx-charts-line-chart
-            [scheme]="colorScheme"
-            [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel"
-            [xAxis]="xAxis"
-            [yAxis]="yAxis"
-            [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel"
-            [timeline]="timeline"
-            [results]="multi"
-            >
+          <ngx-charts-line-chart
+            [scheme]="optionsClanarine.colorScheme"
+            [showXAxisLabel]="optionsClanarine.showXAxisLabel"
+            [showYAxisLabel]="optionsClanarine.showYAxisLabel"
+            [xAxis]="optionsClanarine.xAxis"
+            [yAxis]="optionsClanarine.yAxis"
+            [xAxisLabel]="optionsClanarine.xAxisLabel"
+            [yAxisLabel]="optionsClanarine.yAxisLabel"
+            [timeline]="optionsClanarine.timeline"
+            [results]="optionsClanarine.multi"
+          >
           </ngx-charts-line-chart>
         </div>
     </div>
 
     <div class="charts">
-        <div class="chart-wrapper">
-            <ngx-charts-bar-horizontal
-            [results]="single"
-            [scheme]="colorScheme"
-            [gradient]="false"
-            [xAxis]="true"
-            [yAxis]="true"
-            [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel"
-            [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel"
-            >
-          </ngx-charts-bar-horizontal>
-        </div>
         <div class="chart-wrapper">
             <ngx-charts-bar-vertical
-            [results]="single"
-            [scheme]="colorScheme"
+            [results]="ukupnoClanovaDzematSingle"
+            [scheme]="optionsClanarineDzemati.colorScheme"
             [gradient]="false"
             [xAxis]="true"
             [yAxis]="true"
-            [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel"
-            [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            xAxisLabel="Džemat"
+            yAxisLabel="Ukupno članova"
             >
-            </ngx-charts-bar-vertical>
+          </ngx-charts-bar-vertical>
+        </div>
+        <div class="chart-wrapper">
+            <ngx-charts-bar-horizontal
+            [results]="clanarineDzematiSingle"
+            [scheme]="optionsClanarineDzemati.colorScheme"
+            [gradient]="false"
+            [xAxis]="true"
+            [yAxis]="true"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            yAxisLabel="Ukupni prihodi od članarina"
+            xAxisLabel="Džemat"
+            >
+            </ngx-charts-bar-horizontal>
         </div>
     </div>
 
     <div class="small-cards-row">
-        <div class="small-cards-column">
-            <h2 class="title">Najmladji clanovi</h2>
-            <div class="small-info-card">
+        <div class="small-cards-column" *ngIf="clanoviNajmladji$ | async as clanoviNajmladji">
+            <h2 class="title">Najmladji članovi</h2>
+            <div class="small-info-card" *ngFor="let clan of clanoviNajmladji">
                 <div class="inner-card">
-                    <span class="name">Velid Duranovic</span>
-                    <span class="date">29.04.1998</span>
-                    <span class="years">25 godina</span>
+                    <span class="name">{{clan.first_name}} {{clan.last_name}}</span>
+                    <span class="date">{{clan.year_of_birth}}</span>
+                    <span class="years">{{ getYearsOld(clan.year_of_birth)}} godina</span>
                 </div>
             </div>
-            <div class="small-info-card">
+        </div>
+        <div class="small-cards-column" *ngIf="clanoviNajstariji$ | async as clanoviNajstariji">
+            <h2 class="title">Najstariji članovi</h2>
+            <div class="small-info-card" *ngFor="let clan of clanoviNajstariji">
                 <div class="inner-card">
-                    <span class="name">Osman Osmanovic</span>
-                    <span class="date">13.09.1952</span>
-                    <span class="years">70 godina</span>
-                </div>
-            </div>
-            <div class="small-info-card">
-                <div class="inner-card">
-                    <span class="name">Osman Osmanovic</span>
-                    <span class="date">13.09.1952</span>
-                    <span class="years">70 godina</span>
+                    <span class="name">{{clan.first_name}} {{clan.last_name}}</span>
+                    <span class="date">{{clan.year_of_birth}}</span>
+                    <span class="years">{{getYearsOld(clan.year_of_birth)}} godina</span>
                 </div>
             </div>
         </div>
         <div class="small-cards-column">
-            <h2 class="title">Najstariji clanovi</h2>
+            <h2 class="title">Članovi sa najviše duga</h2>
             <div class="small-info-card">
                 <div class="inner-card">
-                    <span class="name">Velid Duranovic</span>
-                    <span class="date">29.04.1998</span>
-                    <span class="years">25 godina</span>
+                    <span class="name">Naim Dorog</span>
+                    <span class="date">68 godina</span>
+                    <span class="amount">1260 KM</span>
                 </div>
             </div>
 
             <div class="small-info-card">
                 <div class="inner-card">
-                    <span class="name">Osman Osmanovic</span>
-                    <span class="date">13.09.1952</span>
-                    <span class="years">70 godina</span>
+                    <span class="name">Velid Duranović</span>
+                    <span class="date">26 godina</span>
+                    <span class="amount">1100 KM</span>
                 </div>
             </div>
 
             <div class="small-info-card">
                 <div class="inner-card">
-                    <span class="name">Osman Osmanovic</span>
-                    <span class="date">13.09.1952</span>
-                    <span class="years">70 godina</span>
-                </div>
-            </div>
-        </div>
-        <div class="small-cards-column">
-            <h2 class="title">Clanovi sa najvise duga</h2>
-            <div class="small-info-card">
-                <div class="inner-card">
-                    <span class="name">Velid Duranovic</span>
-                    <span class="date">29.04.1998</span>
-                    <span class="amount">4560 KM</span>
-                </div>
-            </div>
-
-            <div class="small-info-card">
-                <div class="inner-card">
-                    <span class="name">Osman Osmanovic</span>
-                    <span class="date">13.09.1952</span>
-                    <span class="amount">4560 KM</span>
-                </div>
-            </div>
-
-            <div class="small-info-card">
-                <div class="inner-card">
-                    <span class="name">Osman Osmanovic</span>
-                    <span class="date">13.09.1952</span>
-                    <span class="amount">4560 KM</span>
+                    <span class="name">Nadir Ajkunić</span>
+                    <span class="date">33 godine</span>
+                    <span class="amount">430 KM</span>
                 </div>
             </div>
         </div>
