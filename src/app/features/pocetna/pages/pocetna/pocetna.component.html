@@ -1,4 +1,4 @@
-<ng-container *ngIf="(store.trenutniKorisnik$ | async)![0] as korisnik">
+<ng-container *ngIf="(store.trenutniKorisnik$ | async)?.at(0) as korisnik">
   <h1><span>Dobrodošao,</span> {{korisnik.first_name}} {{korisnik.last_name}}</h1>
   <p class="last-time-log-in">Posljednji put ste bili prijavljeni:
     <span>29.04.2024</span>

@@ -31,6 +31,8 @@ export class AppComponent implements OnInit{
     if(userFromLocalStorage) {
       this.store.getTrenutniKorisnik(userFromLocalStorage);
       this.loginService.setUserLoggedIn();
+    } else {
+      this.router.navigate(['login']);
     }
   }
 }
